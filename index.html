@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhamad Lutfi | IT Professional - Data Analytics, Cyber Security & Machine Learning</title>
+<meta name="description" content="Portofolio Muhamad Lutfi, lulusan Sistem Informasi (IPK 3.94), berpengalaman di IT Operations & SOC, Data Science, Explainable AI, dan Network Operations. Terbuka untuk peluang BUMN, CPNS, dan swasta.">
+<meta property="og:title" content="Muhamad Lutfi | IT Professional Portfolio">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Lulusan Sistem Informasi Universitas Nusa Putra (IPK 3.94). Spesialisasi Data Analytics, Cyber Security, IT Governance, dan Machine Learning.">
+<!-- TODO setelah deploy: ganti dua URL di bawah ini dengan URL Vercel/domain asli kamu -->
+<meta property="og:url" content="https://GANTI-DENGAN-URL-VERCEL-KAMU.vercel.app/">
+<meta property="og:image" content="https://GANTI-DENGAN-URL-VERCEL-KAMU.vercel.app/og-image.jpg">
+<link rel="canonical" href="https://GANTI-DENGAN-URL-VERCEL-KAMU.vercel.app/">
+<meta name="theme-color" content="#14201F">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%230D9E90'/%3E%3Ctext x='16' y='21' font-family='Arial,sans-serif' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.pexels.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   Direction: "Control Room, daylight shift": the same instrument
+   panel, moved into a bright, paper-white studio. One signal
+   teal, one warm ochre for annotation. Monospace stays structural
+   (real ops readouts), not decorative. Elevation now comes from
+   soft shadow instead of dark panels, which is what an all-white
+   surface needs to still feel premium rather than flat.
+   ============================================================ */
+:root{
+  --bg:#F3F0EE;
+  --bg-alt:#EDE9E5;
+  --panel:#FFFFFF;
+  --panel-2:#FCFBFA;
+  --border:rgba(16,32,44,0.09);
+  --border-strong:rgba(16,32,44,0.17);
+  --ink:#14201F;
+  --ink-soft:#4C6470;
+  --ink-faint:#8B9CA5;
+  --signal:#0D9E90;
+  --signal-strong:#0B7F74;
+  --signal-dim:rgba(13,158,144,0.10);
+  --amber:#B87F2E;
+  --amber-dim:rgba(184,127,46,0.10);
+  --ok:#1E9A5B;
+  --shadow-sm:0 1px 2px rgba(16,32,44,0.04), 0 2px 8px rgba(16,32,44,0.04);
+  --shadow-md:0 16px 40px rgba(16,32,44,0.07);
+  --shadow-lg:0 32px 70px rgba(16,32,44,0.11);
+  /* Radius scale deliberately skips the 8-16px middle ground: elements
+     read as either precise/utility (6px) or soft/editorial (24-40px,
+     50%, full pill). Nothing sits in between. */
+  --radius-s:6px;
+  --radius-m:24px;
+  --radius-l:40px;
+  --radius-btn:20px;
+  --radius-pill:999px;
+  --maxw:1240px;
+  --ease:cubic-bezier(0.22, 1, 0.36, 1);
+  --font-display:"Space Grotesk", sans-serif;
+  --font-body:"Inter", -apple-system, sans-serif;
+  --font-mono:"JetBrains Mono", monospace;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family:var(--font-body);
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(13,158,144,0.07), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(184,127,46,0.05), transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+  min-height:100dvh;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{ font-family:var(--font-mono); }
+a{ color:inherit; text-decoration:none; }
+img,svg{ max-width:100%; display:block; }
+::selection{ background:var(--signal-dim); color:var(--signal); }
+button{ font-family:inherit; border:none; background:none; color:inherit; cursor:pointer; }
+ul{ list-style:none; }
+
+:focus-visible{ outline:2px solid var(--signal); outline-offset:3px; border-radius:4px; }
+
+.container{ max-width:var(--maxw); margin:0 auto; padding:0 1.75rem; }
+.visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+
+.reveal{ opacity:0; transform:translateY(16px); transition:opacity 700ms var(--ease), transform 700ms var(--ease); }
+.reveal.in-view{ opacity:1; transform:translateY(0); }
+
+/* Structural device: every section is framed like a log entry.
+   This is grounded in the subject: SOC/NOC work is literally
+   organized as timestamped, labeled log entries, not decoration. */
+.log-tag{
+  display:inline-flex; align-items:center; gap:0.5rem;
+  font-family:var(--font-mono); font-size:0.72rem; font-weight:600;
+  letter-spacing:0.06em; text-transform:uppercase; color:var(--signal);
+  margin-bottom:0.9rem;
+}
+.log-tag::before{ content:"//"; color:var(--ink-faint); font-weight:500; }
+.log-tag .blip{ width:6px; height:6px; border-radius:50%; background:var(--signal); box-shadow:0 0 0 4px var(--signal-dim); }
+
+h1,h2,h3{ font-family:var(--font-display); color:var(--ink); letter-spacing:-0.01em; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+header.nav{
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  padding:14px 1.25rem 0; pointer-events:none;
+}
+.nav-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0.85rem 1.5rem; max-width:var(--maxw); margin:0 auto;
+  background:rgba(255,255,255,0.86); backdrop-filter:blur(16px) saturate(150%);
+  border-radius:var(--radius-pill); border:1px solid var(--border);
+  box-shadow:0 4px 24px rgba(16,32,44,0.06);
+  transition:box-shadow 300ms ease, background 300ms ease;
+  pointer-events:auto;
+}
+header.nav.scrolled .nav-inner{ background:rgba(255,255,255,0.96); box-shadow:0 10px 32px rgba(16,32,44,0.09); }
+.logo{ font-family:var(--font-display); font-weight:700; font-size:1.05rem; letter-spacing:-0.01em; display:flex; align-items:center; gap:0.65rem; }
+.logo-mark{
+  width:32px; height:32px; border-radius:50%; position:relative; flex-shrink:0; overflow:hidden;
+  background:linear-gradient(145deg, var(--signal), var(--signal-strong));
+  display:flex; align-items:center; justify-content:center;
+  border:1.5px solid rgba(13,158,144,0.4); box-shadow:0 0 0 2px var(--panel), var(--shadow-sm);
+}
+.logo-mark img{ width:100%; height:100%; object-fit:cover; display:none; }
+.logo-mark-fallback{ display:flex; align-items:center; justify-content:center; width:100%; height:100%; font-family:var(--font-display); font-weight:700; font-size:0.62rem; color:#fff; letter-spacing:0.02em; }
+.logo small{ display:block; font-family:var(--font-mono); font-weight:500; font-size:0.62rem; color:var(--ink-faint); letter-spacing:0.04em; }
+
+nav.links{ display:flex; gap:2rem; }
+nav.links a{ font-size:0.87rem; color:var(--ink-soft); font-weight:500; cursor:pointer; transition:color 200ms; position:relative; padding:0.25rem 0; }
+nav.links a:hover, nav.links a:focus-visible{ color:var(--ink); }
+nav.links a::after{ content:""; position:absolute; left:0; bottom:-2px; width:0; height:1.5px; background:var(--signal); transition:width 220ms var(--ease); }
+nav.links a:hover::after{ width:100%; }
+
+.nav-actions{ display:flex; align-items:center; gap:0.9rem; }
+.status-pill{
+  display:inline-flex; align-items:center; gap:0.5rem;
+  font-family:var(--font-mono); font-size:0.7rem; font-weight:600; color:var(--ok);
+  border:1px solid rgba(30,154,91,0.3); background:rgba(30,154,91,0.08);
+  padding:0.4rem 0.75rem; border-radius:999px; white-space:nowrap;
+}
+.status-pill .dot{ width:6px; height:6px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 3px rgba(30,154,91,0.25); animation:blink 2.4s ease infinite; }
+@keyframes blink{ 0%,100%{ opacity:1; } 50%{ opacity:0.35; } }
+
+.nav-cta{ background:var(--ink); color:var(--bg); padding:0.62rem 1.35rem; border-radius:var(--radius-btn); font-size:0.85rem; font-weight:700; cursor:pointer; transition:all 200ms var(--ease); white-space:nowrap; }
+.nav-cta:hover{ background:#0A1414; transform:translateY(-1px); box-shadow:0 10px 22px rgba(20,32,31,0.22); }
+
+.nav-toggle{ display:none; color:var(--ink); padding:0.4rem; }
+.nav-toggle svg{ width:22px; height:22px; }
+
+.mobile-menu{
+  position:fixed; inset:0 0 auto 0; top:86px; z-index:190;
+  background:rgba(255,255,255,0.98); border:1px solid var(--border); box-shadow:var(--shadow-md);
+  border-radius:var(--radius-m); margin:0 1.25rem;
+  padding:1.25rem 1.75rem 1.75rem; display:flex; flex-direction:column; gap:1rem;
+  transform:translateY(-8px); opacity:0; pointer-events:none; transition:all 240ms var(--ease);
+}
+.mobile-menu.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+.mobile-menu a{ font-size:1rem; font-weight:600; color:var(--ink-soft); padding:0.5rem 0; border-bottom:1px solid var(--border); }
+.mobile-menu a:hover{ color:var(--signal); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{ position:relative; min-height:100dvh; display:flex; align-items:center; padding:8.5rem 0 4rem; overflow:hidden; }
+
+/* Living background: a lightweight "signal network" canvas: nodes
+   drifting and linking like packets on a monitored network, layered
+   over slow-drifting gradient orbs for depth, plus a cursor-tracked
+   spotlight for interactivity. Fully generative, zero licensing risk,
+   on-brand with the SOC/NOC theme. */
+.hero-media{ position:absolute; inset:0; z-index:0; overflow:hidden; }
+.parallax-layer{ position:absolute; inset:0; will-change:transform; }
+.hero-media canvas{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  animation:heroZoom 26s ease-in-out infinite alternate;
+  transform-origin:center;
+}
+@keyframes heroZoom{ from{ transform:scale(1); } to{ transform:scale(1.06); } }
+@media (prefers-reduced-motion: reduce){
+  .hero-media canvas{ animation:none; }
+}
+.hero-orb{
+  position:absolute; border-radius:50%; filter:blur(60px); opacity:0.5;
+  will-change:transform; mix-blend-mode:multiply;
+}
+.hero-orb-1{ width:38vw; height:38vw; max-width:520px; max-height:520px; background:radial-gradient(circle, rgba(13,158,144,0.28), transparent 70%); top:-8%; left:-6%; animation:orbFloat1 18s ease-in-out infinite; }
+.hero-orb-2{ width:30vw; height:30vw; max-width:420px; max-height:420px; background:radial-gradient(circle, rgba(184,127,46,0.22), transparent 70%); top:20%; right:-8%; animation:orbFloat2 22s ease-in-out infinite; }
+.hero-orb-3{ width:24vw; height:24vw; max-width:320px; max-height:320px; background:radial-gradient(circle, rgba(13,158,144,0.16), transparent 70%); bottom:-10%; left:32%; animation:orbFloat3 26s ease-in-out infinite; }
+@keyframes orbFloat1{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(4%,6%) scale(1.12); } }
+@keyframes orbFloat2{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(-5%,4%) scale(0.92); } }
+@keyframes orbFloat3{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(3%,-5%) scale(1.08); } }
+@media (prefers-reduced-motion: reduce){
+  .hero-orb{ animation:none; }
+}
+.hero-spotlight{
+  position:absolute; inset:0; pointer-events:none; opacity:0;
+  background:radial-gradient(circle 280px at var(--mx,50%) var(--my,50%), rgba(13,158,144,0.14), transparent 70%);
+  transition:opacity 400ms var(--ease);
+}
+.hero:hover .hero-spotlight{ opacity:1; }
+.ghost-watermark{
+  position:absolute; z-index:0; pointer-events:none; user-select:none;
+  font-family:var(--font-display); font-weight:700; letter-spacing:-0.03em;
+  font-size:clamp(6rem, 19vw, 15rem); line-height:0.85; color:#E7E1D8;
+  white-space:nowrap;
+}
+
+/* ============================================================
+   VELOCITY MARQUEE: two rows of kinetic type that drift on their
+   own, but accelerate and skew in response to how fast the person
+   scrolls (classic "scroll velocity" effect). Pure transform
+   updates in a rAF loop, no dependency on scroll events firing.
+   ============================================================ */
+.velocity-marquee{ position:relative; height:clamp(150px,21vw,196px); overflow:hidden; margin:0; z-index:2; }
+.vm-inner{
+  position:absolute; left:-6%; right:-6%; top:50%;
+  transform:translateY(-50%) rotate(-1.6deg);
+  background:var(--ink); padding:1.5rem 0;
+  box-shadow:0 24px 60px rgba(20,32,31,0.24);
+  display:flex; flex-direction:column; gap:0.7rem;
+}
+.vm-row{ overflow:hidden; white-space:nowrap; }
+.vm-track{
+  display:inline-flex; align-items:center; gap:1.3rem; will-change:transform;
+  font-family:var(--font-display); font-weight:700; text-transform:uppercase;
+  letter-spacing:0.01em; font-size:clamp(1.15rem,3vw,1.9rem); color:var(--bg);
+  padding-right:1.3rem;
+}
+.vm-row-alt .vm-track{ color:var(--signal); }
+.vm-dot{ font-size:0.85em; opacity:0.55; color:var(--amber); }
+.vm-row-alt .vm-dot{ color:var(--bg); opacity:0.35; }
+@media (prefers-reduced-motion: reduce){
+  .vm-track{ transform:none !important; }
+}
+.hero-media::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 65% 55% at 80% 26%, rgba(13,158,144,0.09), transparent 65%),
+    radial-gradient(ellipse 55% 50% at 12% 88%, rgba(184,127,46,0.07), transparent 62%),
+    linear-gradient(180deg, transparent 0%, transparent 82%, var(--bg) 100%);
+  pointer-events:none;
+}
+/* Cinematic grain, very subtle, tied to the theme not decoration */
+.grain-overlay{
+  position:fixed; inset:0; z-index:150; pointer-events:none; opacity:0.05; mix-blend-mode:multiply;
+}
+.scroll-progress{
+  position:fixed; top:0; left:0; height:3px; width:0%; z-index:300;
+  background:linear-gradient(90deg, var(--signal), var(--amber));
+  box-shadow:0 0 10px rgba(13,158,144,0.5);
+  transition:width 80ms linear;
+}
+/* Blueprint grid: replaces generic blurred color blobs with something
+   that actually reads as "engineering/ops", moved via the same
+   scroll-parallax mechanism. */
+.parallax-grid{
+  position:absolute; pointer-events:none; z-index:0; opacity:0.5;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size:34px 34px;
+  -webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 50%, #000 40%, transparent 78%);
+  mask-image:radial-gradient(ellipse 60% 60% at 50% 50%, #000 40%, transparent 78%);
+}
+.parallax-tag{
+  position:absolute; pointer-events:none; z-index:0;
+  font-family:var(--font-mono); font-weight:600; letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--border-strong); white-space:nowrap; user-select:none;
+}
+.hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.08fr 0.92fr; gap:3.5rem; align-items:center; width:100%; }
+
+.eyebrow-row{ display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+.eyebrow{ font-family:var(--font-mono); font-size:0.74rem; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:var(--signal); display:inline-flex; align-items:center; gap:0.5rem; }
+.eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--signal); box-shadow:0 0 0 4px var(--signal-dim); }
+.eyebrow-divider{ width:1px; height:12px; background:var(--border-strong); }
+
+h1.hero-title{ font-size:clamp(2.35rem, 4.4vw, 3.7rem); font-weight:700; letter-spacing:-0.02em; line-height:1.08; margin-bottom:1.35rem; }
+h1.hero-title .accent{ color:var(--signal); }
+.hero-desc{ font-size:1.08rem; color:var(--ink-soft); max-width:52ch; margin-bottom:2rem; }
+
+.hero-actions{ display:flex; gap:0.9rem; flex-wrap:wrap; margin-bottom:2.25rem; }
+.btn{ padding:0.85rem 1.6rem; border-radius:var(--radius-btn); font-weight:700; font-size:0.9rem; cursor:pointer; transition:transform 200ms var(--ease), background 200ms var(--ease), box-shadow 200ms var(--ease); display:inline-flex; align-items:center; gap:0.55rem; border:1.5px solid transparent; position:relative; overflow:hidden; }
+.btn-ripple{
+  position:absolute; width:10px; height:10px; margin:-5px 0 0 -5px; border-radius:50%;
+  background:rgba(255,255,255,0.55); pointer-events:none; transform:scale(0);
+  animation:rippleOut 620ms var(--ease) forwards;
+}
+.btn-ghost .btn-ripple, .btn-outline-amber .btn-ripple{ background:rgba(13,158,144,0.25); }
+@keyframes rippleOut{ to{ transform:scale(22); opacity:0; } }
+.nav-cta{ position:relative; overflow:hidden; }
+.btn-primary{ background:var(--ink); color:var(--bg); }
+.btn-primary:hover{ background:#0A1414; transform:translateY(-2px); box-shadow:0 16px 34px rgba(20,32,31,0.28); }
+.btn-ghost{ border-color:var(--border-strong); color:var(--ink); background:var(--panel); }
+.btn-ghost:hover{ background:var(--panel-2); transform:translateY(-2px); box-shadow:var(--shadow-sm); }
+.btn-outline-amber{ border-color:rgba(184,127,46,0.4); color:var(--amber); background:var(--amber-dim); }
+.btn-outline-amber:hover{ background:rgba(184,127,46,0.22); transform:translateY(-2px); }
+
+.hero-stats{ display:flex; gap:2.25rem; flex-wrap:wrap; padding-top:1.5rem; border-top:1px solid var(--border); }
+.stat b{ font-family:var(--font-display); display:block; font-size:1.55rem; font-weight:700; color:var(--ink); }
+.stat span{ font-size:0.78rem; color:var(--ink-faint); font-family:var(--font-mono); }
+
+.status-ticker{ margin-top:2rem; display:flex; align-items:center; gap:0.6rem; font-family:var(--font-mono); font-size:0.76rem; color:var(--ink-faint); overflow:hidden; white-space:nowrap; max-width:100%; }
+.status-ticker .cursor{ display:inline-block; width:7px; height:14px; background:var(--signal); animation:caret 1.1s steps(1) infinite; flex-shrink:0; }
+@keyframes caret{ 0%,49%{ opacity:1; } 50%,100%{ opacity:0; } }
+#tickerText{ color:var(--ink-soft); overflow:hidden; text-overflow:ellipsis; }
+
+.hero-visual{ position:relative; aspect-ratio:1/1.02; max-width:460px; width:100%; margin:0 auto; }
+.panel{
+  position:relative; width:100%; height:100%; border-radius:var(--radius-l);
+  background:linear-gradient(160deg, var(--panel), var(--panel-2));
+  border:1px solid var(--border-strong);
+  box-shadow:var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.6);
+  overflow:hidden; padding:1.5rem;
+  display:flex; flex-direction:column; gap:1rem;
+}
+.panel-head{ display:flex; align-items:center; justify-content:space-between; padding-bottom:1rem; border-bottom:1px solid var(--border); }
+.panel-head .dots{ display:flex; gap:0.4rem; }
+.panel-head .dots span{ width:8px; height:8px; border-radius:50%; background:var(--border-strong); }
+.panel-head .dots span:nth-child(1){ background:var(--amber); opacity:0.7; }
+.panel-head .dots span:nth-child(2){ background:var(--signal); opacity:0.7; }
+.panel-head .label{ font-family:var(--font-mono); font-size:0.68rem; color:var(--ink-faint); letter-spacing:0.05em; }
+
+.photo-wrap{ position:relative; flex:1; display:flex; align-items:center; justify-content:center; padding:0.5rem 0; }
+.photo-frame{
+  position:relative; width:78%; aspect-ratio:1/1; border-radius:50%;
+  overflow:hidden; background:linear-gradient(150deg, var(--signal), var(--signal-strong));
+  box-shadow:var(--shadow-md);
+}
+.photo-frame img{ width:100%; height:100%; object-fit:cover; display:none; }
+.photo-fallback{
+  display:flex; align-items:center; justify-content:center; width:100%; height:100%;
+  font-family:var(--font-display); font-weight:700; font-size:3rem; letter-spacing:0.02em; color:#fff;
+}
+.frame-corner{ display:none; }
+/* Satellite micro-CTA: docks onto the circular portrait's edge like a
+   moon, protruding partway outside the circle. */
+.satellite-cta{
+  position:absolute; bottom:2%; right:2%; width:54px; height:54px; border-radius:50%;
+  background:var(--panel); color:var(--ink); display:flex; align-items:center; justify-content:center;
+  box-shadow:var(--shadow-md); border:1px solid var(--border); z-index:2;
+  transition:transform 220ms var(--ease);
+}
+.satellite-cta svg{ width:20px; height:20px; }
+.photo-wrap:hover .satellite-cta{ transform:translateY(-3px) rotate(8deg); }
+.scan-badge{
+  position:absolute; bottom:8%; left:6%;
+  font-size:0.64rem; font-weight:600; letter-spacing:0.08em; color:#fff;
+  background:rgba(15,32,39,0.35); backdrop-filter:blur(4px);
+  padding:0.3rem 0.7rem; border-radius:999px; border:1px solid rgba(255,255,255,0.3);
+  z-index:2;
+}
+/* Thin orbital arc tracing a connection from the portrait outward,
+   echoing the reference's "constellation" motif. Teal instead of
+   orange to stay on-brand. */
+.orbit-arc{ position:absolute; pointer-events:none; z-index:1; overflow:visible; opacity:0.55; }
+.orbit-arc path{ fill:none; stroke:var(--signal); stroke-width:1.4; stroke-linecap:round; }
+
+.panel-rows{ display:flex; flex-direction:column; gap:0.6rem; }
+.panel-row{ display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:0.72rem; padding:0.5rem 0.7rem; border-radius:8px; background:rgba(16,32,44,0.025); border:1px solid var(--border); }
+.panel-row .k{ color:var(--ink-faint); }
+.panel-row .v{ color:var(--signal); font-weight:600; }
+
+.wave-divider{ display:block; width:100%; line-height:0; position:absolute; left:0; bottom:-2px; z-index:3; pointer-events:none; }
+.wave-divider svg{ width:100%; height:auto; display:block; }
+
+/* ============================================================
+   PARALLAX IMAGE BAND: full-bleed photo strip between sections,
+   image scrolls slower/faster than the page for depth. Same
+   grayscale/teal treatment as the hero so it reads as one system.
+   ============================================================ */
+.parallax-band{ position:relative; height:clamp(260px, 34vw, 420px); overflow:hidden; display:flex; align-items:center; }
+.parallax-band-media{ position:absolute; inset:0; overflow:hidden; }
+.parallax-band-media img{
+  position:absolute; top:50%; left:50%; width:100%; height:140%;
+  transform:translate3d(-50%,-50%,0) scale(1.12);
+  object-fit:cover; will-change:transform;
+  filter:grayscale(0.55) brightness(0.44) contrast(1.14) saturate(1.1) hue-rotate(-18deg);
+}
+.parallax-band-overlay{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(100deg, rgba(15,32,39,0.34) 0%, rgba(15,32,39,0.62) 60%, rgba(15,32,39,0.5) 100%),
+    linear-gradient(160deg, rgba(13,158,144,0.16), rgba(184,127,46,0.08));
+}
+.parallax-band-content{ position:relative; z-index:1; max-width:640px; }
+.parallax-band .log-tag{ color:#fff; }
+.parallax-band .log-tag::before{ color:rgba(255,255,255,0.55); }
+.parallax-band-text{ color:#fff; font-family:var(--font-display); font-weight:600; font-size:clamp(1.1rem, 2.3vw, 1.55rem); line-height:1.45; letter-spacing:-0.005em; }
+@media (prefers-reduced-motion: reduce){
+  .parallax-band-media img{ transform:translate3d(-50%,-50%,0) scale(1.02); }
+}
+
+/* ============================================================
+   SECTION SHELL
+   ============================================================ */
+section{ position:relative; padding:clamp(4rem, 7vw, 6.5rem) 0; }
+section .container{ position:relative; z-index:1; }
+.section-alt{
+  background:linear-gradient(180deg, transparent, rgba(255,255,255,0.015) 8%, rgba(255,255,255,0.015) 92%, transparent);
+  position:relative;
+}
+.section-alt::before, .section-alt::after{
+  content:""; position:absolute; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+}
+.section-alt::before{ top:0; }
+.section-alt::after{ bottom:0; }
+.section-head{ max-width:660px; margin-bottom:3rem; }
+h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.015em; margin-bottom:0.75rem; }
+.section-sub{ color:var(--ink-soft); font-size:1rem; max-width:62ch; }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:3.5rem; align-items:start; position:relative; z-index:1; }
+.about-text p{ color:var(--ink-soft); margin-bottom:1.1rem; max-width:60ch; }
+.about-text strong{ color:var(--ink); font-weight:600; }
+.about-cards{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.info-card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-m); padding:1.35rem; box-shadow:var(--shadow-sm); transition:transform 220ms var(--ease), box-shadow 220ms var(--ease); }
+.info-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.info-card b{ font-family:var(--font-display); display:block; font-size:1.3rem; color:var(--signal); font-weight:700; margin-bottom:0.15rem; }
+.info-card span{ font-size:0.8rem; color:var(--ink-faint); }
+
+/* ============================================================
+   EXPERIENCE - interactive slider
+   ============================================================ */
+.exp-slider{ display:flex; align-items:center; gap:1.1rem; }
+.exp-viewport{ flex:1; overflow:hidden; border-radius:var(--radius-l); }
+.exp-track{ display:flex; transition:transform 480ms var(--ease); touch-action:pan-y; }
+.exp-slide{
+  flex:0 0 100%; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-l);
+  padding:2.25rem clamp(1.5rem, 4vw, 2.75rem); box-shadow:var(--shadow-sm); position:relative; min-height:280px;
+}
+.exp-index{ position:absolute; top:1.5rem; right:2rem; font-size:0.7rem; color:var(--ink-faint); letter-spacing:0.05em; }
+.exp-arrow{
+  width:46px; height:46px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  background:var(--panel); border:1px solid var(--border); color:var(--ink); box-shadow:var(--shadow-sm);
+  transition:all 200ms var(--ease);
+}
+.exp-arrow svg{ width:19px; height:19px; }
+.exp-arrow:hover{ background:var(--signal); border-color:var(--signal); color:#fff; transform:scale(1.06); }
+.exp-dots{ display:flex; justify-content:center; gap:0.5rem; margin-top:1.75rem; }
+.exp-dot{ width:8px; height:8px; padding:0; border-radius:999px; background:var(--border-strong); border:none; cursor:pointer; transition:all 220ms var(--ease); }
+.exp-dot.active{ background:var(--signal); width:24px; }
+
+.tl-top{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.6rem; margin-bottom:0.9rem; padding-right:3.5rem; }
+.tl-date{ font-family:var(--font-mono); font-size:0.72rem; font-weight:600; color:var(--amber); letter-spacing:0.03em; }
+.tl-badge{ font-family:var(--font-mono); font-size:0.66rem; font-weight:600; color:var(--signal); background:var(--signal-dim); padding:0.2rem 0.55rem; border-radius:999px; text-transform:uppercase; letter-spacing:0.04em; }
+.tl-header{ display:flex; align-items:center; gap:1rem; margin-bottom:0.9rem; }
+.tl-avatar{
+  width:60px; height:60px; border-radius:50%; overflow:hidden; flex-shrink:0;
+  background:linear-gradient(150deg, var(--signal-dim), var(--amber-dim));
+  display:flex; align-items:center; justify-content:center; border:1px solid var(--border); box-shadow:var(--shadow-sm);
+}
+.tl-avatar img{ width:100%; height:100%; object-fit:cover; display:none; }
+.tl-avatar-fallback{ display:flex; align-items:center; justify-content:center; width:100%; height:100%; font-family:var(--font-display); font-weight:700; font-size:0.95rem; color:var(--signal-strong); }
+.tl-heading .tl-role{ margin-bottom:0.15rem; }
+.tl-heading .tl-org{ margin-bottom:0; }
+.tl-role{ font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:var(--ink); margin-bottom:0.2rem; }
+.tl-org{ font-size:0.9rem; color:var(--ink-soft); margin-bottom:0.9rem; font-weight:500; }
+.tl-desc{ font-size:0.94rem; color:var(--ink-soft); margin-bottom:0.9rem; max-width:70ch; }
+.tl-impact{ display:flex; flex-wrap:wrap; gap:0.5rem; }
+.tl-impact span{ font-family:var(--font-mono); font-size:0.72rem; color:var(--ink-faint); background:rgba(16,32,44,0.03); border:1px solid var(--border); padding:0.3rem 0.6rem; border-radius:6px; }
+
+/* ============================================================
+   "Jejak karir" photo trail: 2-3 real documentation photos per
+   internship, styled like tacked-up polaroids. Whole block hides
+   itself gracefully (via the onerror handler on each <img>) if
+   none of that company's photos have been uploaded yet.
+   ============================================================ */
+.tl-gallery{ display:none; margin-top:1.6rem; padding-top:1.4rem; border-top:1px dashed var(--border-strong); }
+.tl-gallery-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(150px,100%), 1fr)); gap:1.1rem 0.9rem; padding-top:0.2rem; }
+.tl-photo{
+  display:none; aspect-ratio:4/3; border-radius:var(--radius-s); overflow:hidden;
+  border:5px solid var(--panel); box-shadow:var(--shadow-md); background:var(--panel-2);
+  transition:transform 260ms var(--ease), box-shadow 260ms var(--ease), z-index 0s;
+  cursor:zoom-in;
+}
+.tl-gallery-grid .tl-photo:nth-child(1){ transform:rotate(-2.2deg); }
+.tl-gallery-grid .tl-photo:nth-child(2){ transform:rotate(1.6deg); }
+.tl-gallery-grid .tl-photo:nth-child(3){ transform:rotate(-1.1deg); }
+.tl-photo:hover{ transform:rotate(0deg) translateY(-5px) scale(1.045); box-shadow:var(--shadow-lg); position:relative; z-index:2; }
+.tl-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.projects-list{ display:flex; flex-direction:column; gap:1.5rem; }
+.project-card{
+  background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-l);
+  overflow:hidden; box-shadow:var(--shadow-sm); position:relative;
+  transition:box-shadow 260ms var(--ease), border-color 260ms var(--ease);
+}
+.project-card::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:3px; z-index:1;
+  background:linear-gradient(90deg, var(--signal), var(--amber));
+  transform:scaleX(0); transform-origin:left; transition:transform 420ms var(--ease);
+}
+.project-card:hover{ box-shadow:var(--shadow-lg); border-color:rgba(13,158,144,0.28); }
+.project-card:hover::before{ transform:scaleX(1); }
+.project-card.featured{ background:linear-gradient(155deg, var(--panel), var(--panel-2)); }
+.project-card.featured::before{ transform:scaleX(1); opacity:0.55; }
+.project-top{ display:grid; grid-template-columns:auto 1fr auto; gap:1.35rem; padding:1.85rem 2rem; align-items:flex-start; cursor:pointer; }
+.project-icon{
+  width:46px; height:46px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(155deg, var(--signal-dim), var(--amber-dim)); color:var(--signal);
+  box-shadow:inset 0 0 0 1px var(--border); transition:transform 320ms var(--ease), background 320ms var(--ease);
+}
+.project-icon svg{ width:22px; height:22px; }
+.project-card:hover .project-icon{ transform:rotate(-6deg) scale(1.08); background:linear-gradient(155deg, var(--signal), var(--signal-strong)); color:#fff; }
+.project-heading{ display:flex; flex-direction:column; gap:0.6rem; min-width:0; }
+.project-tag{ display:inline-flex; align-self:flex-start; font-family:var(--font-mono); font-size:0.7rem; font-weight:600; letter-spacing:0.03em; text-transform:uppercase; color:var(--signal); background:var(--signal-dim); padding:0.28rem 0.7rem; border-radius:999px; }
+.project-title{ font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--ink); }
+.project-desc{ font-size:0.93rem; color:var(--ink-soft); max-width:64ch; }
+.project-stack{ display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.2rem; }
+.project-stack span{ font-family:var(--font-mono); font-size:0.7rem; color:var(--ink-faint); border:1px solid var(--border); padding:0.22rem 0.55rem; border-radius:6px; transition:all 180ms var(--ease); }
+.project-card:hover .project-stack span{ border-color:rgba(13,158,144,0.3); color:var(--signal); }
+.project-expand{ display:flex; align-items:center; gap:0.4rem; font-family:var(--font-mono); font-size:0.72rem; color:var(--ink-faint); white-space:nowrap; padding-top:0.3rem; }
+.project-expand svg{ width:14px; height:14px; transition:transform 260ms var(--ease); }
+.project-card.open .project-expand svg{ transform:rotate(180deg); }
+.project-card.open .project-expand{ color:var(--signal); }
+
+.project-detail{ max-height:0; overflow:hidden; transition:max-height 380ms var(--ease); }
+.project-card.open .project-detail{ max-height:var(--detail-h, 2000px); }
+.project-detail-inner{ padding:0 2rem 2rem; display:grid; grid-template-columns:repeat(2, 1fr); gap:1.25rem; border-top:1px solid var(--border); margin-top:0; padding-top:1.5rem; }
+.rcs-block b{ display:flex; align-items:center; gap:0.4rem; font-family:var(--font-mono); font-size:0.7rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--amber); margin-bottom:0.45rem; }
+.rcs-block p{ font-size:0.88rem; color:var(--ink-soft); }
+.project-metrics{ display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.4rem; }
+.project-metrics span{ font-family:var(--font-mono); font-size:0.76rem; color:var(--signal); background:var(--signal-dim); padding:0.35rem 0.7rem; border-radius:6px; font-weight:600; }
+.projects-footer{ margin-top:1rem; display:flex; justify-content:center; }
+
+/* ============================================================
+   SKILLS - capability matrix
+   ============================================================ */
+.skills-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(260px,100%), 1fr)); gap:1.1rem; }
+.skill-group{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-m); padding:1.5rem; box-shadow:var(--shadow-sm); transition:box-shadow 220ms var(--ease), transform 220ms var(--ease); }
+@media (min-width:941px){
+  /* A slight, alternating vertical offset so the capability grid reads as
+     arranged rather than mechanically stamped out of a template. */
+  .skills-grid .skill-group:nth-child(3n+2){ transform:translateY(0.9rem); }
+  .skills-grid .skill-group:nth-child(3n+3){ transform:translateY(-0.5rem); }
+}
+.skill-group:hover{ box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.skill-group-head{ display:flex; align-items:center; gap:0.65rem; margin-bottom:1.1rem; }
+.skill-icon{ width:34px; height:34px; border-radius:50%; background:var(--signal-dim); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--signal); }
+.skill-icon svg{ width:18px; height:18px; }
+.skill-group h3{ font-size:0.98rem; font-weight:700; color:var(--ink); }
+.skill-tags{ display:flex; flex-wrap:wrap; gap:0.45rem; }
+.skill-tags span{ font-size:0.78rem; background:rgba(16,32,44,0.03); border:1px solid var(--border); color:var(--ink-soft); padding:0.32rem 0.65rem; border-radius:999px; transition:all 180ms; }
+.skill-tags span:hover{ background:var(--signal-dim); color:var(--signal); border-color:rgba(13,158,144,0.3); }
+
+/* ============================================================
+   CERTIFICATIONS
+   ============================================================ */
+.cert-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(440px,100%),1fr)); gap:1.25rem; }
+.cert-card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-m); padding:1.1rem; display:grid; grid-template-columns:0.85fr 1.15fr; gap:1.25rem; align-items:center; box-shadow:var(--shadow-sm); transition:transform 220ms var(--ease), box-shadow 220ms var(--ease); }
+.cert-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.cert-info{ min-width:0; }
+.cert-info b{ display:block; font-size:0.95rem; color:var(--ink); font-weight:700; line-height:1.35; }
+.cert-info .cert-meta{ font-size:0.76rem; color:var(--ink-faint); margin:0.35rem 0 0.65rem; font-family:var(--font-mono); }
+.cert-links{ display:flex; flex-wrap:wrap; gap:0.55rem; }
+.cert-link{ font-family:var(--font-mono); font-size:0.73rem; font-weight:600; color:var(--signal); display:inline-flex; align-items:center; gap:0.3rem; transition:gap 180ms; }
+.cert-link:hover{ gap:0.5rem; }
+.cert-link.li{
+  color:var(--amber); background:var(--amber-dim); border:1px solid rgba(184,127,46,0.28);
+  padding:0.32rem 0.65rem; border-radius:999px; gap:0.35rem;
+}
+.cert-link.li:hover{ background:rgba(184,127,46,0.2); gap:0.5rem; }
+.cert-link.li svg{ width:13px; height:13px; }
+
+/* Certificate visual: real scan if supplied via Supabase Storage
+   (certs/<nama-file>.jpg|.png|.pdf), else an
+   illustrated diploma mockup so the section already looks complete. */
+.cert-visual{ position:relative; border-radius:var(--radius-s); overflow:hidden; aspect-ratio:4/3; background:var(--panel-2); border:1px solid var(--border); }
+.pdf-asset-card{
+  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:0.7rem; color:var(--signal); background:linear-gradient(160deg, rgba(13,158,144,0.10), rgba(13,158,144,0.02));
+  text-decoration:none; font-family:var(--font-mono); font-size:0.76rem; font-weight:600;
+  letter-spacing:0.04em; text-transform:uppercase; transition:background 200ms var(--ease);
+}
+.pdf-asset-card:hover{ background:linear-gradient(160deg, rgba(13,158,144,0.16), rgba(13,158,144,0.04)); }
+.pdf-asset-card svg{ width:34px; height:34px; }
+.cert-visual img{ display:none; width:100%; height:100%; object-fit:cover; }
+.cert-mockup{ display:flex; position:absolute; inset:0; flex-direction:column; align-items:center; justify-content:center; gap:0.4rem; padding:1rem; text-align:center; }
+.cert-mockup::before{ content:""; position:absolute; inset:8px; border:1.5px dashed currentColor; opacity:0.28; border-radius:8px; pointer-events:none; }
+.cert-mockup.signal{ color:var(--signal); background:linear-gradient(160deg, rgba(13,158,144,0.10), rgba(13,158,144,0.02)); }
+.cert-mockup.amber{ color:var(--amber); background:linear-gradient(160deg, rgba(184,127,46,0.10), rgba(184,127,46,0.02)); }
+.cert-mockup-seal{ width:38px; height:38px; }
+.cert-mockup-label{ font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.14em; opacity:0.7; text-transform:uppercase; }
+.cert-mockup-name{ font-family:var(--font-display); font-weight:700; font-size:0.86rem; color:var(--ink); max-width:88%; line-height:1.25; }
+.cert-mockup-issuer{ font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.08em; opacity:0.65; text-transform:uppercase; }
+
+/* ============================================================
+   PUBLICATIONS
+   ============================================================ */
+.pub-card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-m); padding:1.75rem 2rem; display:grid; grid-template-columns:auto 1fr; gap:1.5rem; align-items:flex-start; box-shadow:var(--shadow-sm); }
+.pub-icon{ width:44px; height:44px; border-radius:50%; background:var(--amber-dim); display:flex; align-items:center; justify-content:center; color:var(--amber); flex-shrink:0; }
+.pub-icon svg{ width:22px; height:22px; }
+.pub-title{ font-family:var(--font-display); font-size:1.08rem; font-weight:700; color:var(--ink); margin-bottom:0.35rem; }
+.pub-meta{ font-family:var(--font-mono); font-size:0.75rem; color:var(--ink-faint); margin-bottom:0.6rem; }
+.pub-desc{ font-size:0.9rem; color:var(--ink-soft); margin-bottom:0.75rem; }
+.pub-status{ display:inline-flex; align-items:center; gap:0.4rem; font-family:var(--font-mono); font-size:0.7rem; font-weight:600; padding:0.28rem 0.65rem; border-radius:999px; }
+.pub-status.done{ color:var(--ok); background:rgba(30,154,91,0.1); border:1px solid rgba(30,154,91,0.3); }
+.pub-status.progress{ color:var(--amber); background:var(--amber-dim); border:1px solid rgba(184,127,46,0.3); }
+
+/* ============================================================
+   ORGANIZATIONS & AWARDS
+   ============================================================ */
+.org-award-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.oa-card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-m); padding:1.75rem; height:100%; box-shadow:var(--shadow-sm); }
+.oa-card h3{ font-size:1rem; font-weight:700; margin-bottom:1.1rem; display:flex; align-items:center; gap:0.55rem; }
+.oa-card h3 svg{ width:18px; height:18px; color:var(--signal); }
+.oa-row{ display:flex; gap:0.9rem; padding:0.9rem 0; border-bottom:1px solid var(--border); }
+.oa-row:last-child{ border-bottom:none; padding-bottom:0; }
+.oa-row:first-of-type{ padding-top:0; }
+.oa-dot{ width:8px; height:8px; border-radius:50%; background:var(--amber); margin-top:0.4rem; flex-shrink:0; box-shadow:0 0 0 3px var(--amber-dim); }
+.oa-row b{ display:block; font-size:0.92rem; color:var(--ink); font-weight:600; }
+.oa-row span{ font-size:0.8rem; color:var(--ink-faint); font-family:var(--font-mono); }
+.oa-row p{ font-size:0.85rem; color:var(--ink-soft); margin-top:0.3rem; }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center; }
+.contact-card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-l); padding:2.25rem; box-shadow:var(--shadow-md); }
+.contact-row{ display:flex; align-items:center; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--border); transition:padding-left 200ms var(--ease); }
+.contact-row:last-child{ border-bottom:none; padding-bottom:0; }
+.contact-row:first-child{ padding-top:0; }
+.contact-row:hover{ padding-left:0.5rem; }
+.contact-icon{ width:40px; height:40px; border-radius:50%; background:var(--signal-dim); display:flex; align-items:center; justify-content:center; color:var(--signal); flex-shrink:0; }
+.contact-icon svg{ width:19px; height:19px; }
+.contact-row b{ display:block; font-size:0.95rem; color:var(--ink); font-weight:600; }
+.contact-row span{ font-size:0.8rem; color:var(--ink-faint); }
+
+/* ============================================================
+   CONTACT FORM (Supabase-backed)
+   ============================================================ */
+.contact-form-card{
+  margin-top:3rem; background:var(--panel); border:1px solid var(--border);
+  border-radius:var(--radius-l); padding:clamp(1.75rem,4vw,2.75rem); box-shadow:var(--shadow-md);
+}
+.contact-form-card h3{ font-family:var(--font-display); font-size:clamp(1.3rem,2.6vw,1.7rem); font-weight:700; margin-bottom:0.5rem; }
+.cf-honeypot{ position:absolute; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none; }
+.cf-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin-bottom:1.1rem; }
+.cf-field{ display:flex; flex-direction:column; gap:0.45rem; margin-bottom:1.1rem; }
+.cf-field:last-of-type{ margin-bottom:0; }
+.cf-field label{ font-size:0.8rem; font-weight:600; color:var(--ink-soft); }
+.cf-field input, .cf-field textarea{
+  font-family:var(--font-body); font-size:0.94rem; color:var(--ink);
+  background:var(--panel-2); border:1.5px solid var(--border); border-radius:var(--radius-s);
+  padding:0.8rem 1rem; transition:border-color 180ms var(--ease), box-shadow 180ms var(--ease); resize:vertical;
+}
+.cf-field input:focus, .cf-field textarea:focus{
+  outline:none; border-color:var(--signal); box-shadow:0 0 0 3px var(--signal-dim);
+}
+.cf-footer{ display:flex; align-items:center; gap:1.1rem; flex-wrap:wrap; margin-top:1.4rem; }
+.contact-form-status{ font-size:0.85rem; font-weight:600; }
+.contact-form-status.ok{ color:var(--ok); }
+.contact-form-status.err{ color:var(--err); }
+@media (max-width:620px){
+  .cf-grid{ grid-template-columns:1fr; gap:0; }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{ background:var(--bg-alt); border-top:1px solid var(--border); padding:2.5rem 0; }
+.footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+.footer-links{ display:flex; gap:1.5rem; }
+footer a{ color:var(--ink-faint); font-size:0.85rem; transition:color 180ms; }
+footer a:hover{ color:var(--signal); }
+.footer-note{ font-size:0.78rem; color:var(--ink-faint); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 940px){
+  .hero-grid, .about-grid, .contact-wrap{ grid-template-columns:1fr; }
+  .hero-visual{ margin:2rem auto 0; max-width:340px; }
+  nav.links{ display:none; }
+  .nav-toggle{ display:flex; }
+  .org-award-grid{ grid-template-columns:1fr; }
+  .project-detail-inner{ grid-template-columns:1fr; }
+  .cert-card{ grid-template-columns:1fr; }
+  .cert-visual{ aspect-ratio:16/9; }
+}
+@media (max-width: 620px){
+  .about-cards{ grid-template-columns:1fr; }
+  .hero-stats{ gap:1.5rem; }
+  .project-top{ grid-template-columns:auto 1fr; row-gap:0.75rem; }
+  .project-expand{ grid-column:1 / -1; padding-top:0; }
+  .status-pill span.status-text{ display:none; }
+  .exp-arrow{ width:38px; height:38px; }
+  .exp-arrow svg{ width:16px; height:16px; }
+  .exp-slide{ padding:1.75rem 1.35rem; }
+  .exp-index{ top:1.1rem; right:1.35rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<svg class="grain-overlay" aria-hidden="true">
+  <filter id="grainFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0"/></filter>
+  <rect width="100%" height="100%" filter="url(#grainFilter)"/>
+</svg>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <div class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <img data-asset="photo.jpg" alt="" style="display:none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <span class="logo-mark-fallback" aria-hidden="true">ML</span>
+      </span>
+      <span>Muhamad Lutfi<small>IT Professional</small></span>
+    </div>
+    <nav class="links" aria-label="Navigasi utama">
+      <a href="#about">Tentang</a>
+      <a href="#experience">Pengalaman</a>
+      <a href="#projects">Proyek</a>
+      <a href="#skills">Keahlian</a>
+      <a href="#credentials">Kredensial</a>
+      <a href="#contact">Kontak</a>
+    </nav>
+    <div class="nav-actions">
+      <span class="status-pill"><span class="dot" aria-hidden="true"></span><span class="status-text">Terbuka untuk peluang baru</span></span>
+      <a href="#contact" class="nav-cta">Hubungi Saya</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">Tentang</a>
+  <a href="#experience">Pengalaman</a>
+  <a href="#projects">Proyek</a>
+  <a href="#skills">Keahlian</a>
+  <a href="#credentials">Kredensial</a>
+  <a href="#contact">Kontak</a>
+</div>
+
+<main>
+<section class="hero">
+  <div class="hero-media" aria-hidden="true">
+    <div class="parallax-layer" data-speed="0.05"><span class="hero-orb hero-orb-1"></span></div>
+    <div class="parallax-layer" data-speed="0.09"><span class="hero-orb hero-orb-2"></span></div>
+    <div class="parallax-layer" data-speed="0.03"><span class="hero-orb hero-orb-3"></span></div>
+    <div class="parallax-layer" data-speed="0.07">
+      <div class="parallax-grid" style="width:70vw; height:70vw; min-width:520px; min-height:520px; top:-18%; right:-14%; opacity:0.7;"></div>
+    </div>
+    <div class="parallax-layer" data-speed="0.1"><canvas id="signalCanvas"></canvas></div>
+    <div class="hero-spotlight" id="heroSpotlight"></div>
+  </div>
+  <div class="container hero-grid">
+    <div class="reveal in-view">
+      <div class="eyebrow-row">
+        <span class="eyebrow">Information Systems Graduate</span>
+        <span class="eyebrow-divider" aria-hidden="true"></span>
+        <span class="eyebrow" style="color:var(--amber);"><span style="background:var(--amber); box-shadow:0 0 0 4px var(--amber-dim); width:6px; height:6px; border-radius:50%; display:inline-block;"></span>IPK 3.94</span>
+      </div>
+      <h1 class="hero-title">Mengubah data dan sistem<br>menjadi <span class="accent">keputusan yang bisa dipercaya.</span></h1>
+      <p class="hero-desc">IT Professional dengan pengalaman lintas <strong style="color:var(--ink-soft); font-weight:600;">IT Operations &amp; SOC</strong>, <strong style="color:var(--ink-soft); font-weight:600;">Network Operations</strong>, dan <strong style="color:var(--ink-soft); font-weight:600;">Data Science</strong>, termasuk mendukung audit IT bersama KPMG dan membangun model Explainable AI untuk deteksi dini diabetes.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
+        <a href="#experience" class="btn btn-ghost">Rekam Jejak Karier</a>
+        <a id="cvDownloadBtn" data-asset="cv" href="#contact" target="_blank" rel="noopener" download="CV_Muhamad_Lutfi.pdf" class="btn btn-outline-amber">⬇ Unduh CV</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>3.94</b><span>IPK / GPA</span></div>
+        <div class="stat"><b>4+</b><span>Pengalaman Magang</span></div>
+        <div class="stat"><b>8+</b><span>Sertifikasi Profesional</span></div>
+        <div class="stat"><b>1</b><span>Bisnis Dirintis</span></div>
+      </div>
+      <div class="status-ticker mono">
+        <span class="cursor" aria-hidden="true"></span>
+        <span id="tickerText">STATUS: OPEN_TO_WORK :: BUMN · CPNS · IT Swasta · Jakarta / Jabodetabek / Remote</span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal in-view">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="label mono">SYSTEM_PANEL // LUTFI-01</span>
+          <div class="dots" aria-hidden="true"><span></span><span></span></div>
+        </div>
+        <div class="photo-wrap">
+          <svg class="orbit-arc" viewBox="0 0 340 340" aria-hidden="true">
+            <path d="M20,300 C60,230 40,120 130,60 C190,20 260,30 320,80"/>
+          </svg>
+          <div class="photo-frame">
+            <!-- Foto diambil otomatis dari Supabase Storage lewat alat upload
+                 (path: photo.jpg). Selama belum diunggah, monogram di bawah
+                 ini tampil otomatis. -->
+            <img style="display:none;" data-asset="photo.jpg" alt="Foto Muhamad Lutfi" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-fallback" aria-hidden="true">ML</div>
+            <span class="frame-corner tl"></span><span class="frame-corner tr"></span>
+            <span class="frame-corner bl"></span><span class="frame-corner br"></span>
+            <span class="scan-badge mono">VERIFIED</span>
+          </div>
+          <a href="#contact" class="satellite-cta" aria-label="Langsung ke kontak">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+        <div class="panel-rows">
+         
+          <div class="panel-row"><span class="k">DATA SCIENCE</span><span class="v">ACTIVE</span></div>
+          <div class="panel-row"><span class="k">EXPLAINABLE AI</span><span class="v">SHAP</span></div>
+          <div class="panel-row"><span class="k">IT AUDIT</span><span class="v">KPMG</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,55 480,5 720,20 C960,35 1200,55 1440,25 L1440,60 L0,60 Z" style="fill:var(--bg-alt)"></path></svg>
+  </div>
+</section>
+
+<section class="velocity-marquee" aria-hidden="true">
+  <div class="vm-inner">
+    <div class="vm-row">
+      <div class="vm-track" id="vmTrack1">
+        <span>Data Analytics</span><span class="vm-dot">✦</span>
+        <span>Machine Learning</span><span class="vm-dot">✦</span>
+        <span>SOC &amp; NOC</span><span class="vm-dot">✦</span>
+        <span>Python</span><span class="vm-dot">✦</span>
+        <span>SQL</span><span class="vm-dot">✦</span>
+        <span>Explainable AI</span><span class="vm-dot">✦</span>
+        <span>Data Analytics</span><span class="vm-dot">✦</span>
+        <span>Machine Learning</span><span class="vm-dot">✦</span>
+        <span>SOC &amp; NOC</span><span class="vm-dot">✦</span>
+        <span>Python</span><span class="vm-dot">✦</span>
+        <span>SQL</span><span class="vm-dot">✦</span>
+        <span>Explainable AI</span><span class="vm-dot">✦</span>
+      </div>
+    </div>
+    <div class="vm-row vm-row-alt">
+      <div class="vm-track" id="vmTrack2">
+        <span>IT Operations</span><span class="vm-dot">✦</span>
+        <span>Data Visualization</span><span class="vm-dot">✦</span>
+        <span>Network Security</span><span class="vm-dot">✦</span>
+        <span>Power BI</span><span class="vm-dot">✦</span>
+        <span>Tableau</span><span class="vm-dot">✦</span>
+        <span>MySQL</span><span class="vm-dot">✦</span>
+        <span>IT Operations</span><span class="vm-dot">✦</span>
+        <span>Data Visualization</span><span class="vm-dot">✦</span>
+        <span>Network Security</span><span class="vm-dot">✦</span>
+        <span>Power BI</span><span class="vm-dot">✦</span>
+        <span>Tableau</span><span class="vm-dot">✦</span>
+        <span>MySQL</span><span class="vm-dot">✦</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="about" style="overflow:hidden;">
+  <span class="ghost-watermark" aria-hidden="true" style="top:8%; left:-1%;">SYSTEMS</span>
+  <div class="parallax-grid" data-speed="0.05" style="width:34vw; height:34vw; min-width:320px; min-height:320px; top:-10%; right:-8%;"></div>
+  <span class="parallax-tag mono" data-speed="0.08" style="top:6%; right:3%; font-size:0.68rem;">SYS.LOG // 004</span>
+  <div class="container about-grid">
+    <div class="about-text reveal">
+      <div class="log-tag"><span class="blip" aria-hidden="true"></span>Tentang Saya</div>
+      <h2>Latar belakang yang menghubungkan sistem, data, dan operasional.</h2>
+      <p>Saya lulus dari Program Studi Sistem Informasi, Universitas Nusa Putra, Sukabumi, dengan IPK <strong>3.94</strong>. Perjalanan saya dimulai dari front-end development, berlanjut ke NOC engineering dan IT Operations &amp; SOC, termasuk mendukung audit IT bersama KPMG, hingga eksplorasi data science dan explainable AI.</p>
+      <p>Di luar dunia kerja formal, saya sempat ikut merintis <strong>CTRL+Coffee</strong> hingga September 2025, mendukung pengembangan website dan pelaporan operasional bisnis, termasuk analisis Break-Even Point dan performa penjualan untuk mitra bisnis.</p>
+      <p>Kombinasi ini membentuk cara saya bekerja: memvalidasi asumsi dengan data, mendokumentasikan proses secara sistematis, dan menjaga sistem tetap dapat dipercaya, baik itu jaringan, model machine learning, maupun laporan operasional.</p>
+    </div>
+    <div class="about-cards reveal">
+      <div class="info-card"><b>UNP</b><span>Sistem Informasi, lulus Mei 2026</span></div>
+      <div class="info-card"><b>B1</b><span>EnglishScore, British Council</span></div>
+      <div class="info-card"><b>A1</b><span>Sertifikat Bahasa Spanyol</span></div>
+      <div class="info-card"><b>ID</b><span>Sukabumi, terbuka untuk Jabodetabek &amp; remote</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="log-tag"><span class="blip" aria-hidden="true"></span>Pengalaman</div>
+      <h2>Jejak karier lintas disiplin IT</h2>
+      <p class="section-sub">Dari jaringan dan keamanan operasional hingga antarmuka dan data: setiap peran menambah satu lapisan pemahaman tentang bagaimana sistem benar-benar bekerja.</p>
+    </div>
+    <div class="exp-slider reveal">
+      <button class="exp-arrow" id="expPrev" aria-label="Pengalaman sebelumnya" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="exp-viewport">
+        <div class="exp-track" id="expTrack">
+
+          <article class="exp-slide">
+            <span class="exp-index mono">01 / 04</span>
+            <div class="tl-top">
+              <span class="tl-date mono">Sep 2025 – Jan 2026</span>
+              <span class="tl-badge">Terbaru</span>
+            </div>
+            <div class="tl-header">
+              <div class="tl-avatar">
+                <img data-asset="exp/telkominfra.jpg" alt="Foto kegiatan di Telkominfra, Jakarta Selatan" style="display:none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="tl-avatar-fallback" aria-hidden="true">TI</span>
+              </div>
+              <div class="tl-heading">
+                <div class="tl-role">IT Operations &amp; SOC Intern</div>
+                <div class="tl-org">Telkominfra, Jakarta Selatan</div>
+              </div>
+            </div>
+            <p class="tl-desc">Menangani tiket insiden dan layanan IT end-to-end sesuai SLA, mendukung audit IT bersama KPMG, memvalidasi aset jaringan (hostname, IP, MAC address), dan menyusun laporan operasional mingguan. Turut memberikan dukungan desain antarmuka untuk dashboard monitoring SOC.</p>
+            <div class="tl-impact">
+              <span>SLA Compliance</span>
+              <span>KPMG IT Audit Support</span>
+              <span>Network Asset Validation</span>
+              <span>SOC Dashboard UI</span>
+            </div>
+            <div class="tl-gallery" style="display:none;">
+              <div class="log-tag"><span class="blip" aria-hidden="true"></span>Jejak Karir · Telkominfra</div>
+              <div class="tl-gallery-grid">
+                <a class="tl-photo" data-asset="exp/telkominfra-1.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi Telkominfra 1" style="display:none;">
+                  <img data-asset="exp/telkominfra-1.jpg" alt="Dokumentasi kegiatan di Telkominfra" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+                <a class="tl-photo" data-asset="exp/telkominfra-2.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi Telkominfra 2" style="display:none;">
+                  <img data-asset="exp/telkominfra-2.jpg" alt="Dokumentasi kegiatan di Telkominfra" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+                <a class="tl-photo" data-asset="exp/telkominfra-3.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi Telkominfra 3" style="display:none;">
+                  <img data-asset="exp/telkominfra-3.jpg" alt="Dokumentasi kegiatan di Telkominfra" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="exp-slide">
+            <span class="exp-index mono">02 / 04</span>
+            <div class="tl-top"><span class="tl-date mono">Aug 2025 – Sep 2025</span></div>
+            <div class="tl-header">
+              <div class="tl-avatar">
+                <img data-asset="exp/proxinet.jpg" alt="Foto kegiatan di Proxinet" style="display:none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="tl-avatar-fallback" aria-hidden="true">PX</span>
+              </div>
+              <div class="tl-heading">
+                <div class="tl-role">NOC Engineer Intern</div>
+                <div class="tl-org">Proxinet</div>
+              </div>
+            </div>
+            <p class="tl-desc">Konfigurasi perangkat jaringan melalui MikroTik Winbox, pengelolaan hotspot dan bandwidth, troubleshooting jaringan dengan metodologi OSI Layer, serta monitoring uptime infrastruktur NOC secara berkelanjutan.</p>
+            <div class="tl-impact">
+              <span>MikroTik Winbox</span>
+              <span>OSI Layer Troubleshooting</span>
+              <span>Uptime Monitoring</span>
+            </div>
+            <div class="tl-gallery" style="display:none;">
+              <div class="log-tag"><span class="blip" aria-hidden="true"></span>Jejak Karir · Proxinet</div>
+              <div class="tl-gallery-grid">
+                <a class="tl-photo" data-asset="exp/proxinet-1.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi Proxinet 1" style="display:none;">
+                  <img data-asset="exp/proxinet-1.jpg" alt="Dokumentasi kegiatan di Proxinet" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+                <a class="tl-photo" data-asset="exp/proxinet-2.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi Proxinet 2" style="display:none;">
+                  <img data-asset="exp/proxinet-2.jpg" alt="Dokumentasi kegiatan di Proxinet" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+                <a class="tl-photo" data-asset="exp/proxinet-3.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi Proxinet 3" style="display:none;">
+                  <img data-asset="exp/proxinet-3.jpg" alt="Dokumentasi kegiatan di Proxinet" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="exp-slide">
+            <span class="exp-index mono">03 / 04</span>
+            <div class="tl-top"><span class="tl-date mono">2024 – 2025</span></div>
+            <div class="tl-header">
+              <div class="tl-avatar">
+                <img data-asset="exp/siber.jpg" alt="Foto kegiatan di PT Siber Teknologi Persada Indonesia" style="display:none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="tl-avatar-fallback" aria-hidden="true">ST</span>
+              </div>
+              <div class="tl-heading">
+                <div class="tl-role">Front-End Developer Intern</div>
+                <div class="tl-org">PT Siber Teknologi Persada Indonesia</div>
+              </div>
+            </div>
+            <p class="tl-desc">Mengembangkan dan memelihara antarmuka web responsif dengan HTML, CSS, dan JavaScript, menerjemahkan kebutuhan desain lintas fungsi menjadi komponen UI, serta melakukan debugging lintas browser dan resolusi layar.</p>
+            <div class="tl-impact">
+              <span>Responsive UI</span>
+              <span>Cross-Browser Debugging</span>
+            </div>
+            <div class="tl-gallery" style="display:none;">
+              <div class="log-tag"><span class="blip" aria-hidden="true"></span>Jejak Karir · PT Siber Teknologi</div>
+              <div class="tl-gallery-grid">
+                <a class="tl-photo" data-asset="exp/siber-1.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi PT Siber Teknologi 1" style="display:none;">
+                  <img data-asset="exp/siber-1.jpg" alt="Dokumentasi kegiatan di PT Siber Teknologi Persada Indonesia" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+                <a class="tl-photo" data-asset="exp/siber-2.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi PT Siber Teknologi 2" style="display:none;">
+                  <img data-asset="exp/siber-2.jpg" alt="Dokumentasi kegiatan di PT Siber Teknologi Persada Indonesia" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+                <a class="tl-photo" data-asset="exp/siber-3.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi PT Siber Teknologi 3" style="display:none;">
+                  <img data-asset="exp/siber-3.jpg" alt="Dokumentasi kegiatan di PT Siber Teknologi Persada Indonesia" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="exp-slide">
+            <span class="exp-index mono">04 / 04</span>
+            <div class="tl-top"><span class="tl-date mono">2024</span></div>
+            <div class="tl-header">
+              <div class="tl-avatar">
+                <img data-asset="exp/encryptix.jpg" alt="Foto kegiatan di Encryptix (Remote)" style="display:none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="tl-avatar-fallback" aria-hidden="true">EX</span>
+              </div>
+              <div class="tl-heading">
+                <div class="tl-role">Data Science Intern</div>
+                <div class="tl-org">Encryptix (Remote)</div>
+              </div>
+            </div>
+            <p class="tl-desc">Membangun model klasifikasi dan regresi dengan Python dan scikit-learn di atas data nyata, mencakup pembersihan data, EDA, feature engineering, hingga dokumentasi teknis dan pelaporan analisis untuk tim remote.</p>
+            <div class="tl-impact">
+              <span>Python · scikit-learn</span>
+              <span>EDA &amp; Feature Engineering</span>
+            </div>
+            <div class="tl-gallery" style="display:none;">
+              <div class="log-tag"><span class="blip" aria-hidden="true"></span>Jejak Karir · Encryptix</div>
+              <div class="tl-gallery-grid">
+                <a class="tl-photo" data-asset="exp/encryptix-1.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi Encryptix 1" style="display:none;">
+                  <img data-asset="exp/encryptix-1.jpg" alt="Dokumentasi kegiatan di Encryptix" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+                <a class="tl-photo" data-asset="exp/encryptix-2.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi Encryptix 2" style="display:none;">
+                  <img data-asset="exp/encryptix-2.jpg" alt="Dokumentasi kegiatan di Encryptix" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+                <a class="tl-photo" data-asset="exp/encryptix-3.jpg" target="_blank" rel="noopener" aria-label="Perbesar foto dokumentasi Encryptix 3" style="display:none;">
+                  <img data-asset="exp/encryptix-3.jpg" alt="Dokumentasi kegiatan di Encryptix" loading="lazy" style="display:none;" onerror="this.closest('.tl-photo').style.display='none'; var g=this.closest('.tl-gallery'); if(g.querySelectorAll('.tl-photo[style*=\'none\']').length>=g.querySelectorAll('.tl-photo').length) g.style.display='none';">
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+      <button class="exp-arrow" id="expNext" aria-label="Pengalaman berikutnya" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div class="exp-dots" id="expDots"></div>
+  </div>
+</section>
+
+<section class="section-alt" id="projects">
+  <div class="parallax-grid" data-speed="0.04" style="width:30vw; height:30vw; min-width:280px; min-height:280px; bottom:-8%; left:-7%;"></div>
+  <span class="parallax-tag mono" data-speed="0.07" style="bottom:8%; left:3%; font-size:0.68rem;">BUILD.LOG // 012</span>
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="log-tag"><span class="blip" aria-hidden="true"></span>Proyek Terpilih</div>
+      <h2>Membangun dari riset sampai alat yang dipakai sehari-hari</h2>
+      <p class="section-sub">Kombinasi riset akademik, proyek analitik data, dan produk kecil yang lahir dari kebutuhan nyata. Klik setiap proyek untuk melihat peran, tantangan, solusi, dan hasilnya.</p>
+    </div>
+    <div class="projects-list">
+
+      <div class="project-card featured reveal" data-project>
+        <div class="project-top" data-toggle tabindex="0" role="button" aria-expanded="false">
+          <div class="project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4c0 1.1.45 2.09 1.17 2.8A5 5 0 0 0 7 14.5V17a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3v-2.5a5 5 0 0 0-2.17-4.7A4 4 0 0 0 16 7a4 4 0 0 0-4-4Z"/><path d="M9 20h6M10 9.5h4"/></svg></div>
+          <div class="project-heading">
+            <span class="project-tag">Riset · Explainable AI</span>
+            <div class="project-title">Deteksi Dini Diabetes: Decision Tree vs Random Forest + SHAP</div>
+            <p class="project-desc">Skripsi yang membandingkan Decision Tree dan Random Forest untuk deteksi dini diabetes pada dataset klinis benchmark, dilengkapi kerangka XAI lima lapis menggunakan SHAP agar model tetap bisa dijelaskan, bukan sekadar akurat.</p>
+            <div class="project-stack"><span>Python</span><span>scikit-learn</span><span>SHAP</span><span>Explainable AI</span></div>
+          </div>
+          <div class="project-expand">Detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="rcs-block"><b>Peran</b><p>Peneliti utama, merancang eksperimen, membangun pipeline model, dan menyusun kerangka interpretabilitas.</p></div>
+            <div class="rcs-block"><b>Tantangan</b><p>Model machine learning untuk deteksi dini kerap bersifat "black box": akurat namun sulit dijelaskan ke pengguna klinis maupun reviewer akademik.</p></div>
+            <div class="rcs-block"><b>Solusi</b><p>Membandingkan Decision Tree dan Random Forest secara sistematis, lalu menerapkan kerangka XAI lima lapis berbasis SHAP agar kontribusi tiap fitur terhadap prediksi dapat dijelaskan.</p></div>
+            <div class="rcs-block"><b>Hasil</b><p>Model tervalidasi dengan performa kompetitif dan diajukan untuk publikasi pada dua jurnal terakreditasi SINTA.</p>
+              <div class="project-metrics"><span>CV F1-Score 0.9002</span><span>Test ROC-AUC 80.61%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-project>
+        <div class="project-top" data-toggle tabindex="0" role="button" aria-expanded="false">
+          <div class="project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13.5 13.5 0 0 1 0 18M12 3a13.5 13.5 0 0 0 0 18"/></svg></div>
+          <div class="project-heading">
+            <span class="project-tag">Web · Bisnis</span>
+            <div class="project-title">Website &amp; Sistem Pelaporan CTRL+Coffee</div>
+            <p class="project-desc">Website bisnis untuk branding dan informasi produk, ditambah laporan analitik penjualan dan perhitungan Break-Even Point untuk mendukung keputusan mitra bisnis.</p>
+            <div class="project-stack"><span>HTML/CSS/JS</span><span>Excel · openpyxl</span></div>
+          </div>
+          <div class="project-expand">Detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="rcs-block"><b>Peran</b><p>Co-founder, merangkap pengembang web dan penanggung jawab pelaporan operasional.</p></div>
+            <div class="rcs-block"><b>Tantangan</b><p>Mitra bisnis membutuhkan gambaran jelas soal titik impas dan performa penjualan untuk mengambil keputusan operasional.</p></div>
+            <div class="rcs-block"><b>Solusi</b><p>Membangun website untuk branding dan komunikasi pelanggan, serta menyusun perhitungan BEP dan laporan analitik penjualan berkala.</p></div>
+            <div class="rcs-block"><b>Hasil</b><p>Mitra bisnis memiliki data operasional yang konsisten sebagai dasar keputusan, bukan sekadar intuisi.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-project>
+        <div class="project-top" data-toggle tabindex="0" role="button" aria-expanded="false">
+          <div class="project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-6"/><path d="M2.5 20h19"/></svg></div>
+          <div class="project-heading">
+            <span class="project-tag">Capstone · Data Analytics</span>
+            <div class="project-title">Cyclistic Bike Share: Analisis Perilaku Rider</div>
+            <p class="project-desc">Proyek capstone Google Data Analytics yang membandingkan pola penggunaan sepeda antara member tahunan dan rider kasual pada layanan bike-share Cyclistic selama satu tahun penuh, untuk merancang strategi konversi keanggotaan berbasis data.</p>
+            <div class="project-stack"><span>R</span><span>Excel / Spreadsheet</span></div>
+          </div>
+          <div class="project-expand">Detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="rcs-block"><b>Peran</b><p>Analis tunggal, menjalankan siklus analisis penuh dari perumusan masalah hingga rekomendasi strategi.</p></div>
+            <div class="rcs-block"><b>Tantangan</b><p>Tim eksekutif Cyclistic membutuhkan strategi pemasaran berbasis data untuk mengonversi rider kasual menjadi member tahunan, bukan sekadar asumsi.</p></div>
+            <div class="rcs-block"><b>Solusi</b><p>Membandingkan pola perjalanan member dan rider kasual pada data Juni 2023 hingga Juli 2024 memakai R dan spreadsheet, mencakup pembersihan data serta analisis durasi dan frekuensi perjalanan per hari maupun per bulan.</p></div>
+            <div class="rcs-block"><b>Hasil</b><p>Insight perilaku rider yang siap dipakai tim pemasaran untuk merancang kampanye konversi keanggotaan, didokumentasikan lengkap mengikuti kerangka Ask-Prepare-Process-Analyze-Share-Act.</p>
+              <div class="project-metrics"><span>Data 1 Tahun Penuh</span><span>Kerangka Ask &#8594; Act</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-project>
+        <div class="project-top" data-toggle tabindex="0" role="button" aria-expanded="false">
+          <div class="project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="project-heading">
+            <span class="project-tag">Deep Learning · Computer Vision</span>
+            <div class="project-title">Klasifikasi Gambar: Model CNN Batu-Gunting-Kertas</div>
+            <p class="project-desc">Model klasifikasi citra berbasis Convolutional Neural Network untuk mengenali gestur tangan batu, gunting, dan kertas, dilatih dengan TensorFlow di Google Colab lengkap dengan augmentasi data.</p>
+            <div class="project-stack"><span>Python</span><span>TensorFlow</span><span>CNN</span><span>Google Colab</span></div>
+          </div>
+          <div class="project-expand">Detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="rcs-block"><b>Peran</b><p>Pengembang tunggal, merancang arsitektur CNN dan pipeline data dari nol.</p></div>
+            <div class="rcs-block"><b>Tantangan</b><p>Membangun model klasifikasi citra dengan akurasi tinggi sambil menjaga model tidak overfitting pada dataset gestur tangan yang variasinya terbatas.</p></div>
+            <div class="rcs-block"><b>Solusi</b><p>Menerapkan augmentasi data untuk memperkaya variasi dataset, merancang arsitektur CNN dengan TensorFlow, serta memantau grafik akurasi dan loss pada data training maupun validasi untuk fine-tuning.</p></div>
+            <div class="rcs-block"><b>Hasil</b><p>Model mencapai akurasi validasi sekitar 97,5%, dengan kurva loss dan akurasi training-validasi yang stabil dan konvergen.</p>
+              <div class="project-metrics"><span>Akurasi Validasi ~97,5%</span><span>Data Augmentation</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-project>
+        <div class="project-top" data-toggle tabindex="0" role="button" aria-expanded="false">
+          <div class="project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l7.79 4.5"/></svg></div>
+          <div class="project-heading">
+            <span class="project-tag">Data Analytics · Customer Segmentation</span>
+            <div class="project-title">RFM Analysis: Segmentasi Perilaku Pelanggan</div>
+            <p class="project-desc">Analisis Recency, Frequency, dan Monetary atas data transaksi pelanggan untuk memetakan segmen seperti Champions dan At-Risk, sebagai dasar strategi retensi dan kampanye pemasaran bertarget.</p>
+            <div class="project-stack"><span>Python</span><span>Google Colab</span><span>pandas</span></div>
+          </div>
+          <div class="project-expand">Detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="rcs-block"><b>Peran</b><p>Pengembang dan analis tunggal, dari pembersihan data hingga rekomendasi strategi.</p></div>
+            <div class="rcs-block"><b>Tantangan</b><p>Bisnis perlu memahami pelanggan bernilai tinggi, pola perilaku loyal, dan pelanggan berisiko churn dari ratusan pelanggan dan ribuan transaksi, tanpa alat segmentasi yang jelas.</p></div>
+            <div class="rcs-block"><b>Solusi</b><p>Menghitung skor RFM pada skala 1-5 dari data transaksi, mengelompokkan pelanggan ke label segmen seperti Champions, Loyal, dan At-Risk, lalu memvisualisasikan kontribusi pendapatan tiap segmen.</p></div>
+            <div class="rcs-block"><b>Hasil</b><p>Peta segmentasi pelanggan yang siap dipakai untuk merancang program loyalitas dan kampanye retensi bertarget.</p>
+              <div class="project-metrics"><span>946 Pelanggan</span><span>1.000 Transaksi</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="projects-footer reveal">
+      <a href="https://muhamadlutfi.my.canva.site/portfolio" target="_blank" rel="noopener" class="btn btn-primary">Lihat Portofolio Lengkap ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="parallax-band" aria-label="Transisi visual">
+  <div class="parallax-band-media">
+    <img src="https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1920&dpr=1" alt="" loading="lazy">
+  </div>
+  <div class="parallax-band-overlay" aria-hidden="true"></div>
+  <div class="container parallax-band-content reveal">
+    <div class="log-tag mono"><span class="blip" aria-hidden="true"></span>BUILD.LOG // NOTE</div>
+    <p class="parallax-band-text">Dari eksperimen kecil di kelas sampai sistem yang dipakai tim setiap hari, prinsipnya sama: validasi dulu dengan data, baru percaya hasilnya.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="parallax-grid" data-speed="0.06" style="width:26vw; height:26vw; min-width:260px; min-height:260px; top:2%; left:-8%;"></div>
+  <span class="parallax-tag mono" data-speed="0.09" style="top:8%; left:3%; font-size:0.68rem;">CAPABILITY.MAP</span>
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="log-tag"><span class="blip" aria-hidden="true"></span>Keahlian</div>
+      <h2>Kapabilitas lintas domain IT</h2>
+      <p class="section-sub">Dikelompokkan berdasarkan domain kerja: dari pengembangan perangkat lunak hingga keamanan dan operasional jaringan.</p>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-group reveal">
+        <div class="skill-group-head">
+          <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+          <h3>Programming</h3>
+        </div>
+        <div class="skill-tags"><span>Python</span><span>JavaScript</span><span>HTML &amp; CSS</span><span>Node.js</span><span>SQL</span></div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-head">
+          <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg></span>
+          <h3>Data Analytics</h3>
+        </div>
+        <div class="skill-tags"><span>SQL</span><span>Excel / openpyxl</span><span>Analisis BEP</span><span>Laporan Analitik Bisnis</span><span>matplotlib</span></div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-head">
+          <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <h3>Cyber Security</h3>
+        </div>
+        <div class="skill-tags"><span>SOC Monitoring</span><span>GRC &amp; Audit Support</span><span>IT Audit (KPMG)</span><span>Incident Ticket Handling</span></div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-head">
+          <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="20" height="6" rx="1"/><line x1="6" y1="17" x2="6.01" y2="17"/><line x1="10" y1="17" x2="10.01" y2="17"/><path d="M6 14V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"/></svg></span>
+          <h3>Networking</h3>
+        </div>
+        <div class="skill-tags"><span>MikroTik Winbox</span><span>OSI Layer Troubleshooting</span><span>Hotspot &amp; Bandwidth Mgmt</span><span>NOC Uptime Monitoring</span></div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-head">
+          <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></span>
+          <h3>AI / Machine Learning</h3>
+        </div>
+        <div class="skill-tags"><span>scikit-learn</span><span>SHAP</span><span>Explainable AI</span><span>Klasifikasi &amp; Regresi</span><span>Feature Engineering</span></div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-head">
+          <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+          <h3>Design</h3>
+        </div>
+        <div class="skill-tags"><span>Responsive Web UI</span><span>Dashboard UI Support</span><span>Cross-Browser Debugging</span></div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-head">
+          <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+          <h3>Tools &amp; Automation</h3>
+        </div>
+        <div class="skill-tags"><span>docx (Node.js)</span><span>pptxgenjs</span><span>ReportLab</span><span>openpyxl</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="credentials">
+  <div class="parallax-grid" data-speed="0.05" style="width:28vw; height:28vw; min-width:280px; min-height:280px; bottom:-10%; right:-6%;"></div>
+  <span class="parallax-tag mono" data-speed="0.08" style="bottom:6%; right:3%; font-size:0.68rem;">CRED.VERIFIED</span>
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="log-tag"><span class="blip" aria-hidden="true"></span>Sertifikasi</div>
+      <h2>Pembelajaran yang berkelanjutan</h2>
+      <p class="section-sub">Tautan mengarah ke halaman resmi masing-masing program.</p>
+    </div>
+    <div class="cert-grid">
+
+      <div class="cert-card reveal">
+        <div class="cert-visual">
+          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
+          <img data-asset="certs/certiport-software-development" alt="Sertifikat Certiport IT Specialist: Software Development" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-mockup signal" aria-hidden="true">
+            <span class="cert-mockup-label">Certificate</span>
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="cert-mockup-seal">
+              <path d="M4 30 Q2 22 6 16 M6 24 Q4 18 8 13 M8 18 Q7 13 11 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <path d="M56 30 Q58 22 54 16 M54 24 Q56 18 52 13 M52 18 Q53 13 49 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <circle cx="30" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M24 24 L28 28 L37 18" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 35 L24 47 L30 43 L36 47 L36 35" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+            </svg>
+            <span class="cert-mockup-name">IT Specialist: Software Development</span>
+            <span class="cert-mockup-issuer">Certiport</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <b>Certiport IT Specialist: Software Development</b>
+          <div class="cert-meta">Feb 2026 · berlaku 5 tahun</div>
+          <div class="cert-links">
+            <a class="cert-link" href="https://certiport.pearsonvue.com/" target="_blank" rel="noopener">Info Program ↗</a>
+            <a class="cert-link li" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener" aria-label="Lihat sertifikat ini di LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-visual">
+          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
+          <img data-asset="certs/englishscore-b1" alt="Sertifikat EnglishScore Core Skills: CEFR B1 (364)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-mockup amber" aria-hidden="true">
+            <span class="cert-mockup-label">Certificate</span>
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="cert-mockup-seal">
+              <path d="M4 30 Q2 22 6 16 M6 24 Q4 18 8 13 M8 18 Q7 13 11 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <path d="M56 30 Q58 22 54 16 M54 24 Q56 18 52 13 M52 18 Q53 13 49 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <circle cx="30" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M24 24 L28 28 L37 18" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 35 L24 47 L30 43 L36 47 L36 35" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+            </svg>
+            <span class="cert-mockup-name">CEFR B1: Core Skills</span>
+            <span class="cert-mockup-issuer">British Council</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <b>EnglishScore Core Skills: CEFR B1 (364)</b>
+          <div class="cert-meta">British Council · Mei 2026</div>
+          <div class="cert-links">
+            <a class="cert-link" href="https://englishscore.com/" target="_blank" rel="noopener">Info Program ↗</a>
+            <a class="cert-link li" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener" aria-label="Lihat sertifikat ini di LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-visual">
+          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
+          <img data-asset="certs/certiport-software-engineering" alt="Sertifikat Certiport IT Specialist: Software Engineering" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-mockup signal" aria-hidden="true">
+            <span class="cert-mockup-label">Certificate</span>
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="cert-mockup-seal">
+              <path d="M4 30 Q2 22 6 16 M6 24 Q4 18 8 13 M8 18 Q7 13 11 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <path d="M56 30 Q58 22 54 16 M54 24 Q56 18 52 13 M52 18 Q53 13 49 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <circle cx="30" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M24 24 L28 28 L37 18" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 35 L24 47 L30 43 L36 47 L36 35" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+            </svg>
+            <span class="cert-mockup-name">IT Specialist: Software Engineering</span>
+            <span class="cert-mockup-issuer">Certiport / Dicoding</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <b>Certiport IT Specialist: Software Engineering</b>
+          <div class="cert-meta">Termasuk Intermediate Machine Learning · Dicoding Academy, Feb 2025–Apr 2026</div>
+          <div class="cert-links">
+            <a class="cert-link" href="https://www.dicoding.com/" target="_blank" rel="noopener">Info Program ↗</a>
+            <a class="cert-link li" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener" aria-label="Lihat sertifikat ini di LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-visual">
+          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
+          <img data-asset="certs/certiport-databases" alt="Sertifikat Certiport IT Databases" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-mockup amber" aria-hidden="true">
+            <span class="cert-mockup-label">Certificate</span>
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="cert-mockup-seal">
+              <path d="M4 30 Q2 22 6 16 M6 24 Q4 18 8 13 M8 18 Q7 13 11 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <path d="M56 30 Q58 22 54 16 M54 24 Q56 18 52 13 M52 18 Q53 13 49 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <circle cx="30" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M24 24 L28 28 L37 18" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 35 L24 47 L30 43 L36 47 L36 35" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+            </svg>
+            <span class="cert-mockup-name">IT Databases</span>
+            <span class="cert-mockup-issuer">Certiport</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <b>Certiport IT Databases</b>
+          <div class="cert-meta">Desember 2024</div>
+          <div class="cert-links">
+            <a class="cert-link" href="https://certiport.pearsonvue.com/" target="_blank" rel="noopener">Info Program ↗</a>
+            <a class="cert-link li" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener" aria-label="Lihat sertifikat ini di LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-visual">
+          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
+          <img data-asset="certs/google-data-analytics" alt="Sertifikat Google Data Analytics Professional Certificate" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-mockup signal" aria-hidden="true">
+            <span class="cert-mockup-label">Certificate</span>
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="cert-mockup-seal">
+              <path d="M4 30 Q2 22 6 16 M6 24 Q4 18 8 13 M8 18 Q7 13 11 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <path d="M56 30 Q58 22 54 16 M54 24 Q56 18 52 13 M52 18 Q53 13 49 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <circle cx="30" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M24 24 L28 28 L37 18" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 35 L24 47 L30 43 L36 47 L36 35" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+            </svg>
+            <span class="cert-mockup-name">Data Analytics Professional Certificate</span>
+            <span class="cert-mockup-issuer">Google / Coursera</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <b>Google Data Analytics Professional Certificate</b>
+          <div class="cert-meta">Coursera · Apr–Agu 2024</div>
+          <div class="cert-links">
+            <a class="cert-link" href="https://www.coursera.org/professional-certificates/google-data-analytics" target="_blank" rel="noopener">Info Program ↗</a>
+            <a class="cert-link li" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener" aria-label="Lihat sertifikat ini di LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-visual">
+          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
+          <img data-asset="certs/data-science-academy" alt="Sertifikat Data Science Fresh Graduate Academy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-mockup amber" aria-hidden="true">
+            <span class="cert-mockup-label">Certificate</span>
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="cert-mockup-seal">
+              <path d="M4 30 Q2 22 6 16 M6 24 Q4 18 8 13 M8 18 Q7 13 11 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <path d="M56 30 Q58 22 54 16 M54 24 Q56 18 52 13 M52 18 Q53 13 49 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <circle cx="30" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M24 24 L28 28 L37 18" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 35 L24 47 L30 43 L36 47 L36 35" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+            </svg>
+            <span class="cert-mockup-name">Data Science Fresh Graduate Academy</span>
+            <span class="cert-mockup-issuer">Digitalent Kominfo</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <b>Data Science Fresh Graduate Academy</b>
+          <div class="cert-meta">Digitalent Scholarship Kominfo · Apr–Jul 2024</div>
+          <div class="cert-links">
+            <a class="cert-link" href="https://digitalent.kominfo.go.id/" target="_blank" rel="noopener">Info Program ↗</a>
+            <a class="cert-link li" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener" aria-label="Lihat sertifikat ini di LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-visual">
+          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
+          <img data-asset="certs/sql-hackerrank" alt="Sertifikat SQL Certification" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-mockup signal" aria-hidden="true">
+            <span class="cert-mockup-label">Certificate</span>
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="cert-mockup-seal">
+              <path d="M4 30 Q2 22 6 16 M6 24 Q4 18 8 13 M8 18 Q7 13 11 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <path d="M56 30 Q58 22 54 16 M54 24 Q56 18 52 13 M52 18 Q53 13 49 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <circle cx="30" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M24 24 L28 28 L37 18" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 35 L24 47 L30 43 L36 47 L36 35" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+            </svg>
+            <span class="cert-mockup-name">SQL (Advanced)</span>
+            <span class="cert-mockup-issuer">HackerRank</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <b>SQL Certification</b>
+          <div class="cert-meta">HackerRank</div>
+          <div class="cert-links">
+            <a class="cert-link" href="https://www.hackerrank.com/certification" target="_blank" rel="noopener">Info Program ↗</a>
+            <a class="cert-link li" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener" aria-label="Lihat sertifikat ini di LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-visual">
+          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
+          <img data-asset="certs/tpa-bappenas" alt="Sertifikat Tes Potensi Akademik (TPA)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cert-mockup amber" aria-hidden="true">
+            <span class="cert-mockup-label">Certificate</span>
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="cert-mockup-seal">
+              <path d="M4 30 Q2 22 6 16 M6 24 Q4 18 8 13 M8 18 Q7 13 11 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <path d="M56 30 Q58 22 54 16 M54 24 Q56 18 52 13 M52 18 Q53 13 49 9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+              <circle cx="30" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M24 24 L28 28 L37 18" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 35 L24 47 L30 43 L36 47 L36 35" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+            </svg>
+            <span class="cert-mockup-name">Tes Potensi Akademik</span>
+            <span class="cert-mockup-issuer">Kop. Pegawai Bappenas</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <b>Tes Potensi Akademik (TPA)</b>
+          <div class="cert-meta">Koperasi Pegawai Bappenas</div>
+          <div class="cert-links">
+            <a class="cert-link li" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener" aria-label="Lihat sertifikat ini di LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="parallax-band" aria-label="Transisi visual">
+  <div class="parallax-band-media">
+    <img src="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1920&dpr=1" alt="" loading="lazy">
+  </div>
+  <div class="parallax-band-overlay" aria-hidden="true"></div>
+  <div class="container parallax-band-content reveal">
+    <div class="log-tag mono"><span class="blip" aria-hidden="true"></span>CRED.LOG // NOTE</div>
+    <p class="parallax-band-text">Sertifikasi menandai apa yang sudah dikuasai; publikasi dan organisasi menunjukkan bagaimana hal itu dipakai untuk hal yang lebih besar.</p>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="log-tag"><span class="blip" aria-hidden="true"></span>Publikasi Ilmiah</div>
+      <h2>Riset Explainable AI menuju jurnal terakreditasi</h2>
+      <p class="section-sub">Skripsi tentang deteksi dini diabetes sedang diajukan sebagai artikel jurnal terakreditasi SINTA.</p>
+    </div>
+    <div class="pub-card reveal">
+      <span class="pub-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+      <div>
+        <div class="pub-title">Perbandingan Decision Tree dan Random Forest untuk Deteksi Dini Diabetes dengan Kerangka Explainable AI (SHAP)</div>
+        <div class="pub-meta mono">Naskah diajukan ke SISTEMASI (ID Manuskrip 6394) &amp; Jurnal Tekno Insentif (SINTA 3)</div>
+        <p class="pub-desc">Riset skripsi yang membandingkan performa Decision Tree dan Random Forest pada dataset klinis benchmark, dengan kerangka XAI lima lapis agar model tetap dapat dijelaskan. Naskah untuk Jurnal Tekno Insentif telah dikonversi ke format APA 7, termasuk penyusunan ulang rumus matematis dan proses revisi mengikuti masukan pembimbing untuk memperkuat kerangka analisis kuantitatif.</p>
+        <span class="pub-status progress">Dalam Proses Revisi &amp; Submisi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="organizations">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="log-tag"><span class="blip" aria-hidden="true"></span>Organisasi &amp; Penghargaan</div>
+      <h2>Kontribusi di luar ruang kelas</h2>
+    </div>
+    <div class="org-award-grid">
+      <div class="oa-card reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Organisasi</h3>
+        <div class="oa-row">
+          <span class="oa-dot" aria-hidden="true"></span>
+          <div>
+            <b>Staff Departemen Olahraga &amp; Kepemudaan</b>
+            <span>Himpunan Mahasiswa Sistem Informasi (HMSI), Universitas Nusa Putra · Agu 2023 – Agu 2024</span>
+          </div>
+        </div>
+      </div>
+      <div class="oa-card reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>Penghargaan</h3>
+        <div class="oa-row">
+          <span class="oa-dot" aria-hidden="true"></span>
+          <div>
+            <b>Best Staff Award</b>
+            <span>HMSI Universitas Nusa Putra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container contact-wrap">
+    <div class="reveal">
+      <div class="log-tag"><span class="blip" aria-hidden="true"></span>Kontak</div>
+      <h2>Terbuka untuk peluang baru</h2>
+      <p class="section-sub">Sedang mencari peran di institusi BUMN, CPNS, maupun posisi IT di sektor swasta, di Jakarta, Jabodetabek, atau remote. Silakan hubungi lewat salah satu kanal berikut, atau unduh CV lengkap.</p>
+      <div style="margin-top:1.75rem;">
+        <a id="cvDownloadBtn2" data-asset="cv" href="#contact" target="_blank" rel="noopener" download="CV_Muhamad_Lutfi.pdf" class="btn btn-primary">⬇ Unduh CV Lengkap (PDF)</a>
+      </div>
+    </div>
+    <div class="contact-card reveal">
+      <a class="contact-row" href="mailto:lutfi.muhammad.pro@gmail.com">
+        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg></span>
+        <div><b>Email</b><span>lutfi.muhammad.pro@gmail.com</span></div>
+      </a>
+      <a class="contact-row" href="tel:0895610844389">
+        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <div><b>Telepon</b><span>0895 6108 44389</span></div>
+      </a>
+      <a class="contact-row" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener">
+        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+        <div><b>LinkedIn</b><span>linkedin.com/in/muhammadlutfi20</span></div>
+      </a>
+      <a class="contact-row" href="https://muhamadlutfi.my.canva.site/portfolio" target="_blank" rel="noopener">
+        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+        <div><b>Portofolio Lengkap</b><span>muhamadlutfi.my.canva.site/portfolio</span></div>
+      </a>
+      <a class="contact-row" href="https://github.com/Muhammad-Lutfi-2002" target="_blank" rel="noopener">
+        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></span>
+        <div><b>GitHub</b><span>github.com/Muhammad-Lutfi-2002</span></div>
+      </a>
+      <a class="contact-row" href="https://kaggle.com/vvzero" target="_blank" rel="noopener">
+        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 8 5 8M4 20l7-7M14 4v16M14 12l6-8M14 12l6 8"/></svg></span>
+        <div><b>Kaggle</b><span>kaggle.com/vvzero</span></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="contact-form-card reveal">
+      <div class="log-tag"><span class="blip" aria-hidden="true"></span>Kirim Pesan Langsung</div>
+      <h3>Ada peluang atau ingin diskusi?</h3>
+      <p class="section-sub" style="margin-bottom:1.6rem;">Isi form ini dan pesannya masuk langsung ke saya, tanpa perlu membuka aplikasi email.</p>
+      <form id="contactForm" novalidate>
+        <!-- honeypot: kolom ini disembunyikan dari manusia lewat CSS; bot
+             pengisi form otomatis biasanya tetap mengisinya, jadi kalau
+             terisi kita diam-diam anggap ini spam dan abaikan. -->
+        <div class="cf-honeypot" aria-hidden="true">
+          <label for="cfCompanyWebsite">Jangan isi kolom ini</label>
+          <input type="text" id="cfCompanyWebsite" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="cf-grid">
+          <div class="cf-field">
+            <label for="cfName">Nama</label>
+            <input type="text" id="cfName" name="name" placeholder="Nama lengkap kamu" required>
+          </div>
+          <div class="cf-field">
+            <label for="cfEmail">Email</label>
+            <input type="email" id="cfEmail" name="email" placeholder="email@perusahaan.com" required>
+          </div>
+        </div>
+        <div class="cf-field">
+          <label for="cfMessage">Pesan</label>
+          <textarea id="cfMessage" name="message" rows="4" placeholder="Ceritakan peluang atau pertanyaan kamu..." required></textarea>
+        </div>
+        <div class="cf-footer">
+          <button type="submit" id="contactFormSubmit" class="btn btn-primary">Kirim Pesan</button>
+          <span id="contactFormStatus" class="contact-form-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="logo"><span class="logo-mark" aria-hidden="true"></span><span>Muhamad Lutfi</span></div>
+    <div class="footer-links">
+      <a href="#about">Tentang</a>
+      <a href="#experience">Pengalaman</a>
+      <a href="#projects">Proyek</a>
+      <a href="#contact">Kontak</a>
+    </div>
+    <span class="footer-note mono">© 2026 Muhamad Lutfi</span>
+  </div>
+</footer>
+
+<script>
+  // ==== Konfigurasi Supabase (isi sekali setelah setup selesai) ====
+  // Ganti dua nilai di bawah ini dengan Project URL dan anon public key
+  // dari Supabase Dashboard -> Project Settings -> API. WAJIB berada
+  // SEBELUM script utama, supaya nilainya sudah siap saat dibaca.
+  window.SUPABASE_URL = "https://xkzzqpimklspotuskqju.supabase.co";
+  window.SUPABASE_ANON_KEY = "sb_publishable_osdHslYO4n99f8SrzFNSTw_ge4qzOQG";
+  window.SUPABASE_BUCKET = "portfolio-assets";
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+<script>
+
+  // === Nav scroll shadow + scroll progress bar ===
+  const nav = document.getElementById('siteNav');
+  const scrollProgress = document.getElementById('scrollProgress');
+  function updateScrollUI(){
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+    scrollProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateScrollUI, { passive:true });
+  updateScrollUI();
+
+  // === Mobile menu toggle ===
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // === Reveal on scroll ===
+  const revealEls = document.querySelectorAll('.reveal:not(.in-view)');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if(entry.isIntersecting){
+        entry.target.style.transitionDelay = (idx % 6) * 80 + 'ms';
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // === Smooth anchor scroll offset for fixed nav ===
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 76;
+        window.scrollTo({ top, behavior:'smooth' });
+      }
+    });
+  });
+
+  // === Interactive project cards (role / challenge / solution / result) ===
+  // The expanding panel's height is measured from actual content
+  // (scrollHeight) instead of a fixed max-height, so longer text on
+  // narrow screens is never cut off.
+  document.querySelectorAll('[data-toggle]').forEach(trigger => {
+    const card = trigger.closest('[data-project]');
+    const detail = card.querySelector('.project-detail');
+    const setHeight = () => {
+      if(detail){ detail.style.setProperty('--detail-h', detail.scrollHeight + 'px'); }
+    };
+    const toggle = () => {
+      setHeight();
+      const isOpen = card.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+    trigger.addEventListener('click', toggle);
+    trigger.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+    window.addEventListener('resize', () => {
+      if(card.classList.contains('open')) setHeight();
+    });
+  });
+
+  // === Reduced motion respect (declared early; other blocks below use it) ===
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // === Living hero background =========================================
+  // A generative "signal network" canvas: nodes drift and link like
+  // packets on a monitored network (on-brand with the SOC/NOC theme),
+  // with small light-packets traveling along active links, and gentle
+  // attraction toward the cursor for a tactile, "alive" feel.
+  const signalCanvas = document.getElementById('signalCanvas');
+  const heroSpotlight = document.getElementById('heroSpotlight');
+  const heroEl = document.querySelector('.hero');
+
+  function startSignalCanvas(){
+    if(!signalCanvas) return;
+    if(reduceMotion) return;
+    const ctx = signalCanvas.getContext('2d');
+    let cw, ch, dpr;
+    function resizeCanvas(){
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cw = signalCanvas.offsetWidth; ch = signalCanvas.offsetHeight;
+      signalCanvas.width = cw * dpr; signalCanvas.height = ch * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const COUNT = 50;
+    const nodes = Array.from({ length: COUNT }, () => ({
+      x: Math.random(), y: Math.random(),
+      vx: (Math.random() - 0.5) * 0.00028,
+      vy: (Math.random() - 0.5) * 0.00028,
+      r: Math.random() * 1.6 + 1
+    }));
+    const LINK_DIST = 0.16;
+    const colorSignal = 'rgba(13,158,144,';
+    const colorAmber = 'rgba(184,127,46,';
+
+    // Traveling "packets": small dots that glide along a random active link
+    const packets = Array.from({ length: 7 }, () => ({ a: 0, b: 1, t: Math.random() }));
+    let activeLinks = [];
+
+    let pointer = { x: 0.5, y: 0.5, active: false };
+    heroEl.addEventListener('pointermove', e => {
+      const rect = heroEl.getBoundingClientRect();
+      pointer.x = (e.clientX - rect.left) / rect.width;
+      pointer.y = (e.clientY - rect.top) / rect.height;
+      pointer.active = true;
+      heroSpotlight.style.setProperty('--mx', (pointer.x * 100) + '%');
+      heroSpotlight.style.setProperty('--my', (pointer.y * 100) + '%');
+    });
+    heroEl.addEventListener('pointerleave', () => { pointer.active = false; });
+
+    function step(){
+      ctx.clearRect(0, 0, cw, ch);
+      nodes.forEach(n => {
+        n.x += n.vx; n.y += n.vy;
+        if(pointer.active){
+          const dx = pointer.x - n.x, dy = pointer.y - n.y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if(d < 0.18){
+            n.x -= dx * 0.0018; n.y -= dy * 0.0018;
+          }
+        }
+        if(n.x < 0 || n.x > 1) n.vx *= -1;
+        if(n.y < 0 || n.y > 1) n.vy *= -1;
+      });
+      activeLinks = [];
+      for(let i = 0; i < nodes.length; i++){
+        for(let j = i + 1; j < nodes.length; j++){
+          const a = nodes[i], b = nodes[j];
+          const dx = (a.x - b.x) * (cw / ch), dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if(dist < LINK_DIST){
+            const alpha = (1 - dist / LINK_DIST) * 0.18;
+            ctx.strokeStyle = colorSignal + alpha + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x * cw, a.y * ch);
+            ctx.lineTo(b.x * cw, b.y * ch);
+            ctx.stroke();
+            activeLinks.push([i, j]);
+          }
+        }
+      }
+      // glide packets of light along whichever links are currently active
+      if(activeLinks.length){
+        packets.forEach(p => {
+          p.t += 0.006;
+          if(p.t >= 1){
+            p.t = 0;
+            const link = activeLinks[Math.floor(Math.random() * activeLinks.length)];
+            p.a = link[0]; p.b = link[1];
+          }
+          const a = nodes[p.a], b = nodes[p.b];
+          if(!a || !b) return;
+          const px = (a.x + (b.x - a.x) * p.t) * cw;
+          const py = (a.y + (b.y - a.y) * p.t) * ch;
+          ctx.fillStyle = colorAmber + '0.85)';
+          ctx.beginPath();
+          ctx.arc(px, py, 1.8, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+      nodes.forEach((n, idx) => {
+        ctx.fillStyle = (idx % 7 === 0 ? colorAmber : colorSignal) + '0.55)';
+        ctx.beginPath();
+        ctx.arc(n.x * cw, n.y * ch, n.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  startSignalCanvas();
+
+  // === Experience slider (nav + dots + keyboard + swipe) ===
+  (function initExpSlider(){
+    const track = document.getElementById('expTrack');
+    if(!track) return;
+    const slides = Array.from(track.children);
+    const prevBtn = document.getElementById('expPrev');
+    const nextBtn = document.getElementById('expNext');
+    const dotsWrap = document.getElementById('expDots');
+    let index = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'exp-dot' + (i === 0 ? ' active' : '');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Ke pengalaman ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function goTo(i){
+      index = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    }
+    prevBtn.addEventListener('click', () => goTo(index - 1));
+    nextBtn.addEventListener('click', () => goTo(index + 1));
+
+    const viewport = track.parentElement;
+    viewport.setAttribute('tabindex', '0');
+    viewport.addEventListener('keydown', e => {
+      if(e.key === 'ArrowLeft'){ goTo(index - 1); }
+      if(e.key === 'ArrowRight'){ goTo(index + 1); }
+    });
+
+    // Pointer-based drag/swipe
+    let startX = 0, deltaX = 0, dragging = false;
+    track.addEventListener('pointerdown', e => {
+      dragging = true; startX = e.clientX;
+      track.style.transition = 'none';
+      track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', e => {
+      if(!dragging) return;
+      deltaX = e.clientX - startX;
+      track.style.transform = `translateX(calc(-${index * 100}% + ${deltaX}px))`;
+    });
+    function endDrag(){
+      if(!dragging) return;
+      dragging = false;
+      track.style.transition = '';
+      if(Math.abs(deltaX) > 60){
+        goTo(index + (deltaX < 0 ? 1 : -1));
+      } else {
+        goTo(index);
+      }
+      deltaX = 0;
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    track.addEventListener('pointerleave', () => { if(dragging) endDrag(); });
+
+    goTo(0);
+  })();
+
+  // === Scroll-driven parallax (multiple independent layers) ===
+  if(!reduceMotion){
+    const parallaxEls = document.querySelectorAll('[data-speed]');
+    let ticking = false;
+    function applyParallax(){
+      const y = window.scrollY;
+      parallaxEls.forEach(el => {
+        const speed = parseFloat(el.getAttribute('data-speed')) || 0.1;
+        el.style.transform = `translate3d(0, ${y * speed}px, 0)`;
+      });
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if(!ticking){ requestAnimationFrame(applyParallax); ticking = true; }
+    }, { passive:true });
+    applyParallax();
+  }
+
+  if(reduceMotion){
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+  }
+
+  // === Velocity-reactive marquee (kinetic type strip under the hero) ===
+  // Runs on a continuous rAF loop (not gated on scroll events) so the two
+  // rows keep a gentle idle drift even when the page is still, then
+  // accelerate and skew in opposite directions when the person scrolls
+  // fast, settling back to idle as scroll velocity decays.
+  (function(){
+    const track1 = document.getElementById('vmTrack1');
+    const track2 = document.getElementById('vmTrack2');
+    if(!track1 || !track2 || reduceMotion) return;
+
+    let pos1 = 0, pos2 = 0;
+    let lastY = window.scrollY;
+    let vel = 0;
+    let width1 = track1.scrollWidth / 2 || 1;
+    let width2 = track2.scrollWidth / 2 || 1;
+
+    function measure(){
+      width1 = track1.scrollWidth / 2 || 1;
+      width2 = track2.scrollWidth / 2 || 1;
+    }
+    window.addEventListener('resize', measure);
+
+    function frame(){
+      const y = window.scrollY;
+      const rawDelta = y - lastY;
+      lastY = y;
+      vel += (rawDelta - vel) * 0.14;
+      const clampedVel = Math.max(-45, Math.min(45, vel));
+
+      const idle1 = 0.55, idle2 = 0.46;
+      pos1 -= (idle1 + clampedVel * 0.6);
+      pos2 += (idle2 - clampedVel * 0.6);
+
+      if(pos1 <= -width1) pos1 += width1;
+      if(pos1 > 0) pos1 -= width1;
+      if(pos2 >= 0) pos2 -= width2;
+      if(pos2 < -width2) pos2 += width2;
+
+      const skew = Math.max(-9, Math.min(9, clampedVel * 0.32));
+      track1.style.transform = `translate3d(${pos1}px,0,0) skewX(${skew}deg)`;
+      track2.style.transform = `translate3d(${pos2}px,0,0) skewX(${-skew}deg)`;
+
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+
+  // === Parallax image bands between sections ===
+  // Offset is derived from the band's position relative to the viewport
+  // (not raw page scroll), so the effect looks correct no matter how far
+  // down the page the band sits.
+  if(!reduceMotion){
+    const bandImgs = document.querySelectorAll('.parallax-band-media img');
+    if(bandImgs.length){
+      let bandTicking = false;
+      function applyBandParallax(){
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        bandImgs.forEach(img => {
+          const rect = img.parentElement.getBoundingClientRect();
+          const center = rect.top + rect.height / 2;
+          const offset = (vh / 2 - center) * 0.16;
+          img.style.transform = `translate3d(-50%, calc(-50% + ${offset}px), 0) scale(1.12)`;
+        });
+        bandTicking = false;
+      }
+      window.addEventListener('scroll', () => {
+        if(!bandTicking){ requestAnimationFrame(applyBandParallax); bandTicking = true; }
+      }, { passive:true });
+      window.addEventListener('resize', applyBandParallax);
+      applyBandParallax();
+    }
+  }
+
+  // === 3D tilt on hover: panel, project cards, info/skill/cert/oa cards ===
+  // Only on fine-pointer (mouse/trackpad) devices, and skipped entirely
+  // when the user prefers reduced motion.
+  if(!reduceMotion && window.matchMedia('(pointer:fine)').matches){
+    const tiltTargets = document.querySelectorAll('.panel, .project-card, .info-card, .skill-group, .cert-card, .oa-card, .exp-slide');
+    tiltTargets.forEach(el => {
+      el.style.transformStyle = 'preserve-3d';
+      el.style.willChange = 'transform';
+      let raf = null;
+      el.addEventListener('mousemove', e => {
+        const rect = el.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width - 0.5;
+        const py = (e.clientY - rect.top) / rect.height - 0.5;
+        if(raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const rx = (py * -4).toFixed(2);
+          const ry = (px * 4).toFixed(2);
+          el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+        });
+      });
+      el.addEventListener('mouseleave', () => {
+        if(raf) cancelAnimationFrame(raf);
+        el.style.transform = '';
+      });
+    });
+  }
+
+  // === Magnetic pull on primary buttons ===
+  if(!reduceMotion && window.matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.btn, .nav-cta, .exp-arrow').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const mx = (e.clientX - rect.left - rect.width / 2) * 0.28;
+        const my = (e.clientY - rect.top - rect.height / 2) * 0.28;
+        btn.style.transform = `translate(${mx}px, ${my}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  // === Ripple feedback on click for buttons ===
+  document.querySelectorAll('.btn, .nav-cta').forEach(btn => {
+    btn.style.position = btn.style.position || 'relative';
+    btn.style.overflow = 'hidden';
+    btn.addEventListener('click', e => {
+      const rect = btn.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'btn-ripple';
+      ripple.style.left = (e.clientX - rect.left) + 'px';
+      ripple.style.top = (e.clientY - rect.top) + 'px';
+      btn.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    });
+  });
+
+  // === Animated count-up for hero stats (runs once, on first view) ===
+  const statEls = document.querySelectorAll('.hero-stats .stat b');
+  if(statEls.length){
+    const statIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        statIO.unobserve(entry.target);
+        const el = entry.target;
+        const raw = el.textContent.trim();
+        const match = raw.match(/^([\d.]+)(.*)$/);
+        if(!match || reduceMotion){ return; }
+        const target = parseFloat(match[1]);
+        const suffix = match[2] || '';
+        const isDecimal = match[1].includes('.');
+        const duration = 1100;
+        const start = performance.now();
+        function tick(now){
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const val = target * eased;
+          el.textContent = (isDecimal ? val.toFixed(2) : Math.round(val)) + suffix;
+          if(p < 1) requestAnimationFrame(tick);
+          else el.textContent = raw;
+        }
+        requestAnimationFrame(tick);
+      });
+    }, { threshold:0.5 });
+    statEls.forEach(el => statIO.observe(el));
+  }
+
+  // ============================================================
+  // SUPABASE: asset resolver (foto, galeri, sertifikat, CV) +
+  // form kontak. Semua elemen yang perlu file dari Storage punya
+  // atribut data-asset="path/tanpa-ekstensi-atau-dengan" -- fungsi
+  // di bawah ini melihat isi bucket sungguhan lalu mencocokkan file
+  // apa pun ekstensinya (jpg/png/pdf), supaya sertifikat boleh
+  // diunggah dalam format gambar ATAU PDF tanpa kode ini tahu
+  // sebelumnya file mana yang mana.
+  // ============================================================
+  (async function initSupabase(){
+    const configured = window.SUPABASE_URL && !window.SUPABASE_URL.includes('https://xkzzqpimklspotuskqju.supabase.co')
+      && window.SUPABASE_ANON_KEY && !window.SUPABASE_ANON_KEY.includes('sb_publishable_osdHslYO4n99f8SrzFNSTw_ge4qzOQG');
+    if(!configured) return; // belum di-setup -> semua fallback bawaan tetap tampil, tidak ada error
+
+    // SDK dimuat lewat <script defer> terpisah; tunggu sampai siap.
+    let tries = 0;
+    while(!window.supabase && tries < 50){ await new Promise(r => setTimeout(r, 100)); tries++; }
+    if(!window.supabase){ console.warn('Supabase SDK gagal dimuat.'); return; }
+
+    const client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    const bucket = window.SUPABASE_BUCKET || 'portfolio-assets';
+    const base = window.SUPABASE_URL.replace(/\/$/, '') + '/storage/v1/object/public/' + bucket + '/';
+
+    const assetEls = Array.from(document.querySelectorAll('[data-asset]'));
+    if(!assetEls.length) return;
+
+    // Kumpulkan folder unik yang perlu di-list (root, exp, certs, dst.)
+    const folders = new Set();
+    assetEls.forEach(el => {
+      const path = el.getAttribute('data-asset');
+      const idx = path.lastIndexOf('/');
+      folders.add(idx === -1 ? '' : path.slice(0, idx));
+    });
+
+    // fileMap: "certs/certiport-software-development" -> "certs/certiport-software-development.pdf"
+    const fileMap = {};
+    await Promise.all(Array.from(folders).map(async folder => {
+      try{
+        const { data, error } = await client.storage.from(bucket).list(folder || undefined, { limit: 200 });
+        if(error || !data) return;
+        data.forEach(f => {
+          if(!f.name || f.id === null) return; // skip folder placeholder entries
+          const noExt = f.name.replace(/\.[^.\/]+$/, '');
+          const key = folder ? folder + '/' + noExt : noExt;
+          fileMap[key] = folder ? folder + '/' + f.name : f.name;
+        });
+      } catch(e){ /* folder belum ada -> biarkan, fallback tetap tampil */ }
+    }));
+
+    assetEls.forEach(el => {
+      const path = el.getAttribute('data-asset');
+      const noExt = path.replace(/\.[^.\/]+$/, '');
+      const resolved = fileMap[noExt];
+
+      if(!resolved){
+        // Belum diunggah. PENTING: sebuah <img> tanpa atribut src tidak
+        // pernah memicu event 'error', jadi handler onerror bawaan di
+        // HTML TIDAK akan otomatis jalan di sini -- kita harus meniru
+        // efeknya secara eksplisit, atau kotak gambar kosong akan
+        // tampil alih-alih monogram/mockup/galeri yang disembunyikan.
+        if(el.tagName === 'IMG'){
+          const galleryPhoto = el.closest('.tl-photo');
+          if(galleryPhoto){
+            galleryPhoto.style.display = 'none';
+            const gallery = galleryPhoto.closest('.tl-gallery');
+            const grid = gallery && gallery.querySelector('.tl-gallery-grid');
+            const anyStillVisible = grid && Array.from(grid.querySelectorAll('.tl-photo'))
+              .some(p => p.style.display !== 'none');
+            if(gallery && !anyStillVisible) gallery.style.display = 'none';
+          } else {
+            el.style.display = 'none';
+            if(el.nextElementSibling) el.nextElementSibling.style.display = 'flex';
+          }
+        }
+        // <a> tanpa file (mis. tombol CV sebelum diunggah) sengaja
+        // dibiarkan memakai href default yang sudah ada di HTML.
+        return;
+      }
+
+      const url = base + resolved;
+      const ext = (resolved.split('.').pop() || '').toLowerCase();
+
+      if(el.tagName === 'IMG'){
+        if(ext === 'pdf'){
+          // Gambar tidak bisa merender PDF -- ganti jadi kartu "Lihat PDF"
+          // yang rapi, alih-alih membiarkan ikon gambar rusak tampil.
+          const card = document.createElement('a');
+          card.href = url; card.target = '_blank'; card.rel = 'noopener';
+          card.className = 'pdf-asset-card';
+          card.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg><span>Lihat Dokumen PDF</span>';
+          el.replaceWith(card);
+          const mockup = card.parentElement && card.parentElement.querySelector('.cert-mockup');
+          if(mockup) mockup.style.display = 'none';
+        } else {
+          el.src = url;
+          el.style.display = 'block';
+          if(el.nextElementSibling) el.nextElementSibling.style.display = 'none';
+          const galleryPhoto = el.closest('.tl-photo');
+          if(galleryPhoto){
+            galleryPhoto.style.display = '';
+            const gallery = galleryPhoto.closest('.tl-gallery');
+            if(gallery) gallery.style.display = '';
+          }
+        }
+      } else if(el.tagName === 'A'){
+        el.href = url;
+      }
+    });
+  })();
+
+  // === Form kontak (Supabase) ===
+  (function initContactForm(){
+    const form = document.getElementById('contactForm');
+    if(!form) return;
+    const statusEl = document.getElementById('contactFormStatus');
+    const submitBtn = document.getElementById('contactFormSubmit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const honeypot = form.querySelector('input[name="company_website"]');
+      if(honeypot && honeypot.value){ return; } // bot terjebak honeypot, diam-diam abaikan
+
+      const name = form.querySelector('#cfName').value.trim();
+      const email = form.querySelector('#cfEmail').value.trim();
+      const message = form.querySelector('#cfMessage').value.trim();
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if(!name || !emailOk || !message){
+        statusEl.textContent = 'Mohon isi nama, email yang valid, dan pesan.';
+        statusEl.className = 'contact-form-status err';
+        return;
+      }
+
+      const configured = window.SUPABASE_URL && !window.SUPABASE_URL.includes('https://xkzzqpimklspotuskqju.supabase.co')
+        && window.SUPABASE_ANON_KEY && !window.SUPABASE_ANON_KEY.includes('sb_publishable_osdHslYO4n99f8SrzFNSTw_ge4qzOQG');
+      if(!configured || !window.supabase){
+        statusEl.textContent = 'Form belum tersambung ke Supabase. Silakan hubungi lewat email langsung untuk saat ini.';
+        statusEl.className = 'contact-form-status err';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Mengirim...';
+      try{
+        const client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+        const { error } = await client.from('contact_messages').insert({ name, email, message });
+        if(error) throw error;
+        statusEl.textContent = 'Pesan terkirim, terima kasih! Saya akan membalas secepatnya.';
+        statusEl.className = 'contact-form-status ok';
+        form.reset();
+      } catch(err){
+        statusEl.textContent = 'Gagal mengirim pesan. Coba lagi, atau hubungi lewat email langsung.';
+        statusEl.className = 'contact-form-status err';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Kirim Pesan';
+      }
+    });
+  })();
+</script>
+</body>
+</html>
