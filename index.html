@@ -2125,8 +2125,7 @@ footer a:hover{ color:var(--signal); }
   // sebelumnya file mana yang mana.
   // ============================================================
   (async function initSupabase(){
-    const configured = window.SUPABASE_URL && !window.SUPABASE_URL.includes('https://xkzzqpimklspotuskqju.supabase.co')
-      && window.SUPABASE_ANON_KEY && !window.SUPABASE_ANON_KEY.includes('sb_publishable_osdHslYO4n99f8SrzFNSTw_ge4qzOQG');
+    const configured = !!(window.SUPABASE_URL && window.SUPABASE_ANON_KEY);
     if(!configured) return; // belum di-setup -> semua fallback bawaan tetap tampil, tidak ada error
 
     // SDK dimuat lewat <script defer> terpisah; tunggu sampai siap.
