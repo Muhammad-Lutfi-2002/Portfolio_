@@ -9,9 +9,9 @@
 <meta property="og:type" content="website">
 <meta property="og:description" content="Lulusan Sistem Informasi Universitas Nusa Putra (IPK 3.94). Spesialisasi Data Analytics, Cyber Security, IT Governance, dan Machine Learning.">
 <!-- TODO setelah deploy: ganti dua URL di bawah ini dengan URL Vercel/domain asli kamu -->
-<meta property="og:url" content="https://portfolio-six-orpin-82.vercel.app/">
-<meta property="og:image" content="https://portfolio-six-orpin-82.vercel.app/">
-<link rel="canonical" href="https://portfolio-six-orpin-82.vercel.app//">
+<meta property="og:url" content="https://GANTI-DENGAN-URL-VERCEL-KAMU.vercel.app/">
+<meta property="og:image" content="https://GANTI-DENGAN-URL-VERCEL-KAMU.vercel.app/og-image.jpg">
+<link rel="canonical" href="https://GANTI-DENGAN-URL-VERCEL-KAMU.vercel.app/">
 <meta name="theme-color" content="#14201F">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%230D9E90'/%3E%3Ctext x='16' y='21' font-family='Arial,sans-serif' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1340,7 +1340,7 @@ footer a:hover{ color:var(--signal); }
       <div class="cert-card reveal">
         <div class="cert-visual">
           <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
-          <img data-asset="certs/certiport-software-engineering" alt="Sertifikat Certiport IT Specialist: Python" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img data-asset="certs/certiport-software-engineering" alt="Sertifikat Certiport IT Specialist: Software Engineering" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="cert-mockup signal" aria-hidden="true">
             <span class="cert-mockup-label">Certificate</span>
             <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="cert-mockup-seal">
@@ -1350,13 +1350,13 @@ footer a:hover{ color:var(--signal); }
               <path d="M24 24 L28 28 L37 18" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M24 35 L24 47 L30 43 L36 47 L36 35" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
             </svg>
-            <span class="cert-mockup-name">IT Specialist: Python</span>
+            <span class="cert-mockup-name">IT Specialist: Software Engineering</span>
             <span class="cert-mockup-issuer">Certiport / Dicoding</span>
           </div>
         </div>
         <div class="cert-info">
-          <b>Certiport IT Specialist: Python</b>
-   
+          <b>Certiport IT Specialist: Software Engineering</b>
+          <div class="cert-meta">Termasuk Intermediate Machine Learning · Dicoding Academy, Feb 2025–Apr 2026</div>
           <div class="cert-links">
             <a class="cert-link" href="https://www.dicoding.com/" target="_blank" rel="noopener">Info Program ↗</a>
             <a class="cert-link li" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener" aria-label="Lihat sertifikat ini di LinkedIn">
@@ -1542,7 +1542,7 @@ footer a:hover{ color:var(--signal); }
       <span class="pub-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
       <div>
         <div class="pub-title">Perbandingan Decision Tree dan Random Forest untuk Deteksi Dini Diabetes dengan Kerangka Explainable AI (SHAP)</div>
-        <div class="pub-meta mono">Naskah diajukan ke pihak Publisher</div>
+        <div class="pub-meta mono">Naskah diajukan ke SISTEMASI (ID Manuskrip 6394) &amp; Jurnal Tekno Insentif (SINTA 3)</div>
         <p class="pub-desc">Riset skripsi yang membandingkan performa Decision Tree dan Random Forest pada dataset klinis benchmark, dengan kerangka XAI lima lapis agar model tetap dapat dijelaskan. Naskah untuk Jurnal Tekno Insentif telah dikonversi ke format APA 7, termasuk penyusunan ulang rumus matematis dan proses revisi mengikuti masukan pembimbing untuk memperkuat kerangka analisis kuantitatif.</p>
         <span class="pub-status progress">Dalam Proses Revisi &amp; Submisi</span>
       </div>
@@ -2126,6 +2126,7 @@ footer a:hover{ color:var(--signal); }
   // ============================================================
   (async function initSupabase(){
     const configured = !!(window.SUPABASE_URL && window.SUPABASE_ANON_KEY);
+    
     if(!configured) return; // belum di-setup -> semua fallback bawaan tetap tampil, tidak ada error
 
     // SDK dimuat lewat <script defer> terpisah; tunggu sampai siap.
