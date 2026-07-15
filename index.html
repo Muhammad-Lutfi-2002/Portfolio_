@@ -9,9 +9,9 @@
 <meta property="og:type" content="website">
 <meta property="og:description" content="Lulusan Sistem Informasi Universitas Nusa Putra (IPK 3.94). Spesialisasi Data Analytics, Cyber Security, IT Governance, dan Machine Learning.">
 <!-- TODO setelah deploy: ganti dua URL di bawah ini dengan URL Vercel/domain asli kamu -->
-<meta property="og:url" content="https://GANTI-DENGAN-URL-VERCEL-KAMU.vercel.app/">
-<meta property="og:image" content="https://GANTI-DENGAN-URL-VERCEL-KAMU.vercel.app/og-image.jpg">
-<link rel="canonical" href="https://GANTI-DENGAN-URL-VERCEL-KAMU.vercel.app/">
+<meta property="og:url" content="portfolio-hvfc7bv8a-muhammad-lutfi-2002s-projects.vercel.app">
+<meta property="og:image" content="portfolio-hvfc7bv8a-muhammad-lutfi-2002s-projects.vercel.app//og-image.jpg">
+<link rel="canonical" href="portfolio-hvfc7bv8a-muhammad-lutfi-2002s-projects.vercel.app/">
 <meta name="theme-color" content="#14201F">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%230D9E90'/%3E%3Ctext x='16' y='21' font-family='Arial,sans-serif' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,15 +19,6 @@
 <link rel="preconnect" href="https://images.pexels.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   DESIGN TOKENS
-   Direction: "Control Room, daylight shift": the same instrument
-   panel, moved into a bright, paper-white studio. One signal
-   teal, one warm ochre for annotation. Monospace stays structural
-   (real ops readouts), not decorative. Elevation now comes from
-   soft shadow instead of dark panels, which is what an all-white
-   surface needs to still feel premium rather than flat.
-   ============================================================ */
 :root{
   --bg:#F3F0EE;
   --bg-alt:#EDE9E5;
@@ -47,9 +38,6 @@
   --shadow-sm:0 1px 2px rgba(16,32,44,0.04), 0 2px 8px rgba(16,32,44,0.04);
   --shadow-md:0 16px 40px rgba(16,32,44,0.07);
   --shadow-lg:0 32px 70px rgba(16,32,44,0.11);
-  /* Radius scale deliberately skips the 8-16px middle ground: elements
-     read as either precise/utility (6px) or soft/editorial (24-40px,
-     50%, full pill). Nothing sits in between. */
   --radius-s:6px;
   --radius-m:24px;
   --radius-l:40px;
@@ -61,7 +49,6 @@
   --font-body:"Inter", -apple-system, sans-serif;
   --font-mono:"JetBrains Mono", monospace;
 }
-
 *{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; }
 body{
@@ -82,18 +69,11 @@ img,svg{ max-width:100%; display:block; }
 ::selection{ background:var(--signal-dim); color:var(--signal); }
 button{ font-family:inherit; border:none; background:none; color:inherit; cursor:pointer; }
 ul{ list-style:none; }
-
 :focus-visible{ outline:2px solid var(--signal); outline-offset:3px; border-radius:4px; }
-
-.container{ max-width:var(--maxw); margin:0 auto; padding:0 1.75rem; }
+.container{ max-width:var(--maxw); margin:0 auto; padding:0 clamp(1.1rem, 4vw, 1.75rem); }
 .visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
-
 .reveal{ opacity:0; transform:translateY(16px); transition:opacity 700ms var(--ease), transform 700ms var(--ease); }
 .reveal.in-view{ opacity:1; transform:translateY(0); }
-
-/* Structural device: every section is framed like a log entry.
-   This is grounded in the subject: SOC/NOC work is literally
-   organized as timestamped, labeled log entries, not decoration. */
 .log-tag{
   display:inline-flex; align-items:center; gap:0.5rem;
   font-family:var(--font-mono); font-size:0.72rem; font-weight:600;
@@ -102,12 +82,7 @@ ul{ list-style:none; }
 }
 .log-tag::before{ content:"//"; color:var(--ink-faint); font-weight:500; }
 .log-tag .blip{ width:6px; height:6px; border-radius:50%; background:var(--signal); box-shadow:0 0 0 4px var(--signal-dim); }
-
 h1,h2,h3{ font-family:var(--font-display); color:var(--ink); letter-spacing:-0.01em; }
-
-/* ============================================================
-   NAV
-   ============================================================ */
 header.nav{
   position:fixed; top:0; left:0; right:0; z-index:200;
   padding:14px 1.25rem 0; pointer-events:none;
@@ -132,13 +107,11 @@ header.nav.scrolled .nav-inner{ background:rgba(255,255,255,0.96); box-shadow:0 
 .logo-mark img{ width:100%; height:100%; object-fit:cover; display:none; }
 .logo-mark-fallback{ display:flex; align-items:center; justify-content:center; width:100%; height:100%; font-family:var(--font-display); font-weight:700; font-size:0.62rem; color:#fff; letter-spacing:0.02em; }
 .logo small{ display:block; font-family:var(--font-mono); font-weight:500; font-size:0.62rem; color:var(--ink-faint); letter-spacing:0.04em; }
-
 nav.links{ display:flex; gap:2rem; }
 nav.links a{ font-size:0.87rem; color:var(--ink-soft); font-weight:500; cursor:pointer; transition:color 200ms; position:relative; padding:0.25rem 0; }
 nav.links a:hover, nav.links a:focus-visible{ color:var(--ink); }
 nav.links a::after{ content:""; position:absolute; left:0; bottom:-2px; width:0; height:1.5px; background:var(--signal); transition:width 220ms var(--ease); }
 nav.links a:hover::after{ width:100%; }
-
 .nav-actions{ display:flex; align-items:center; gap:0.9rem; }
 .status-pill{
   display:inline-flex; align-items:center; gap:0.5rem;
@@ -148,13 +121,10 @@ nav.links a:hover::after{ width:100%; }
 }
 .status-pill .dot{ width:6px; height:6px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 3px rgba(30,154,91,0.25); animation:blink 2.4s ease infinite; }
 @keyframes blink{ 0%,100%{ opacity:1; } 50%{ opacity:0.35; } }
-
 .nav-cta{ background:var(--ink); color:var(--bg); padding:0.62rem 1.35rem; border-radius:var(--radius-btn); font-size:0.85rem; font-weight:700; cursor:pointer; transition:all 200ms var(--ease); white-space:nowrap; }
 .nav-cta:hover{ background:#0A1414; transform:translateY(-1px); box-shadow:0 10px 22px rgba(20,32,31,0.22); }
-
 .nav-toggle{ display:none; color:var(--ink); padding:0.4rem; }
 .nav-toggle svg{ width:22px; height:22px; }
-
 .mobile-menu{
   position:fixed; inset:0 0 auto 0; top:86px; z-index:190;
   background:rgba(255,255,255,0.98); border:1px solid var(--border); box-shadow:var(--shadow-md);
@@ -165,17 +135,7 @@ nav.links a:hover::after{ width:100%; }
 .mobile-menu.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
 .mobile-menu a{ font-size:1rem; font-weight:600; color:var(--ink-soft); padding:0.5rem 0; border-bottom:1px solid var(--border); }
 .mobile-menu a:hover{ color:var(--signal); }
-
-/* ============================================================
-   HERO
-   ============================================================ */
 .hero{ position:relative; min-height:100dvh; display:flex; align-items:center; padding:8.5rem 0 4rem; overflow:hidden; }
-
-/* Living background: a lightweight "signal network" canvas: nodes
-   drifting and linking like packets on a monitored network, layered
-   over slow-drifting gradient orbs for depth, plus a cursor-tracked
-   spotlight for interactivity. Fully generative, zero licensing risk,
-   on-brand with the SOC/NOC theme. */
 .hero-media{ position:absolute; inset:0; z-index:0; overflow:hidden; }
 .parallax-layer{ position:absolute; inset:0; will-change:transform; }
 .hero-media canvas{
@@ -184,9 +144,7 @@ nav.links a:hover::after{ width:100%; }
   transform-origin:center;
 }
 @keyframes heroZoom{ from{ transform:scale(1); } to{ transform:scale(1.06); } }
-@media (prefers-reduced-motion: reduce){
-  .hero-media canvas{ animation:none; }
-}
+@media (prefers-reduced-motion: reduce){ .hero-media canvas{ animation:none; } }
 .hero-orb{
   position:absolute; border-radius:50%; filter:blur(60px); opacity:0.5;
   will-change:transform; mix-blend-mode:multiply;
@@ -197,9 +155,7 @@ nav.links a:hover::after{ width:100%; }
 @keyframes orbFloat1{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(4%,6%) scale(1.12); } }
 @keyframes orbFloat2{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(-5%,4%) scale(0.92); } }
 @keyframes orbFloat3{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(3%,-5%) scale(1.08); } }
-@media (prefers-reduced-motion: reduce){
-  .hero-orb{ animation:none; }
-}
+@media (prefers-reduced-motion: reduce){ .hero-orb{ animation:none; } }
 .hero-spotlight{
   position:absolute; inset:0; pointer-events:none; opacity:0;
   background:radial-gradient(circle 280px at var(--mx,50%) var(--my,50%), rgba(13,158,144,0.14), transparent 70%);
@@ -212,13 +168,6 @@ nav.links a:hover::after{ width:100%; }
   font-size:clamp(6rem, 19vw, 15rem); line-height:0.85; color:#E7E1D8;
   white-space:nowrap;
 }
-
-/* ============================================================
-   VELOCITY MARQUEE: two rows of kinetic type that drift on their
-   own, but accelerate and skew in response to how fast the person
-   scrolls (classic "scroll velocity" effect). Pure transform
-   updates in a rAF loop, no dependency on scroll events firing.
-   ============================================================ */
 .velocity-marquee{ position:relative; height:clamp(150px,21vw,196px); overflow:hidden; margin:0; z-index:2; }
 .vm-inner{
   position:absolute; left:-6%; right:-6%; top:50%;
@@ -237,9 +186,7 @@ nav.links a:hover::after{ width:100%; }
 .vm-row-alt .vm-track{ color:var(--signal); }
 .vm-dot{ font-size:0.85em; opacity:0.55; color:var(--amber); }
 .vm-row-alt .vm-dot{ color:var(--bg); opacity:0.35; }
-@media (prefers-reduced-motion: reduce){
-  .vm-track{ transform:none !important; }
-}
+@media (prefers-reduced-motion: reduce){ .vm-track{ transform:none !important; } }
 .hero-media::after{
   content:""; position:absolute; inset:0;
   background:
@@ -248,19 +195,13 @@ nav.links a:hover::after{ width:100%; }
     linear-gradient(180deg, transparent 0%, transparent 82%, var(--bg) 100%);
   pointer-events:none;
 }
-/* Cinematic grain, very subtle, tied to the theme not decoration */
-.grain-overlay{
-  position:fixed; inset:0; z-index:150; pointer-events:none; opacity:0.05; mix-blend-mode:multiply;
-}
+.grain-overlay{ position:fixed; inset:0; z-index:150; pointer-events:none; opacity:0.05; mix-blend-mode:multiply; }
 .scroll-progress{
   position:fixed; top:0; left:0; height:3px; width:0%; z-index:300;
   background:linear-gradient(90deg, var(--signal), var(--amber));
   box-shadow:0 0 10px rgba(13,158,144,0.5);
   transition:width 80ms linear;
 }
-/* Blueprint grid: replaces generic blurred color blobs with something
-   that actually reads as "engineering/ops", moved via the same
-   scroll-parallax mechanism. */
 .parallax-grid{
   position:absolute; pointer-events:none; z-index:0; opacity:0.5;
   background-image:
@@ -276,16 +217,13 @@ nav.links a:hover::after{ width:100%; }
   color:var(--border-strong); white-space:nowrap; user-select:none;
 }
 .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.08fr 0.92fr; gap:3.5rem; align-items:center; width:100%; }
-
 .eyebrow-row{ display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem; flex-wrap:wrap; }
 .eyebrow{ font-family:var(--font-mono); font-size:0.74rem; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:var(--signal); display:inline-flex; align-items:center; gap:0.5rem; }
 .eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--signal); box-shadow:0 0 0 4px var(--signal-dim); }
 .eyebrow-divider{ width:1px; height:12px; background:var(--border-strong); }
-
 h1.hero-title{ font-size:clamp(2.35rem, 4.4vw, 3.7rem); font-weight:700; letter-spacing:-0.02em; line-height:1.08; margin-bottom:1.35rem; }
 h1.hero-title .accent{ color:var(--signal); }
 .hero-desc{ font-size:1.08rem; color:var(--ink-soft); max-width:52ch; margin-bottom:2rem; }
-
 .hero-actions{ display:flex; gap:0.9rem; flex-wrap:wrap; margin-bottom:2.25rem; }
 .btn{ padding:0.85rem 1.6rem; border-radius:var(--radius-btn); font-weight:700; font-size:0.9rem; cursor:pointer; transition:transform 200ms var(--ease), background 200ms var(--ease), box-shadow 200ms var(--ease); display:inline-flex; align-items:center; gap:0.55rem; border:1.5px solid transparent; position:relative; overflow:hidden; }
 .btn-ripple{
@@ -302,16 +240,13 @@ h1.hero-title .accent{ color:var(--signal); }
 .btn-ghost:hover{ background:var(--panel-2); transform:translateY(-2px); box-shadow:var(--shadow-sm); }
 .btn-outline-amber{ border-color:rgba(184,127,46,0.4); color:var(--amber); background:var(--amber-dim); }
 .btn-outline-amber:hover{ background:rgba(184,127,46,0.22); transform:translateY(-2px); }
-
 .hero-stats{ display:flex; gap:2.25rem; flex-wrap:wrap; padding-top:1.5rem; border-top:1px solid var(--border); }
 .stat b{ font-family:var(--font-display); display:block; font-size:1.55rem; font-weight:700; color:var(--ink); }
 .stat span{ font-size:0.78rem; color:var(--ink-faint); font-family:var(--font-mono); }
-
 .status-ticker{ margin-top:2rem; display:flex; align-items:center; gap:0.6rem; font-family:var(--font-mono); font-size:0.76rem; color:var(--ink-faint); overflow:hidden; white-space:nowrap; max-width:100%; }
 .status-ticker .cursor{ display:inline-block; width:7px; height:14px; background:var(--signal); animation:caret 1.1s steps(1) infinite; flex-shrink:0; }
 @keyframes caret{ 0%,49%{ opacity:1; } 50%,100%{ opacity:0; } }
 #tickerText{ color:var(--ink-soft); overflow:hidden; text-overflow:ellipsis; }
-
 .hero-visual{ position:relative; aspect-ratio:1/1.02; max-width:460px; width:100%; margin:0 auto; }
 .panel{
   position:relative; width:100%; height:100%; border-radius:var(--radius-l);
@@ -327,7 +262,6 @@ h1.hero-title .accent{ color:var(--signal); }
 .panel-head .dots span:nth-child(1){ background:var(--amber); opacity:0.7; }
 .panel-head .dots span:nth-child(2){ background:var(--signal); opacity:0.7; }
 .panel-head .label{ font-family:var(--font-mono); font-size:0.68rem; color:var(--ink-faint); letter-spacing:0.05em; }
-
 .photo-wrap{ position:relative; flex:1; display:flex; align-items:center; justify-content:center; padding:0.5rem 0; }
 .photo-frame{
   position:relative; width:78%; aspect-ratio:1/1; border-radius:50%;
@@ -340,8 +274,6 @@ h1.hero-title .accent{ color:var(--signal); }
   font-family:var(--font-display); font-weight:700; font-size:3rem; letter-spacing:0.02em; color:#fff;
 }
 .frame-corner{ display:none; }
-/* Satellite micro-CTA: docks onto the circular portrait's edge like a
-   moon, protruding partway outside the circle. */
 .satellite-cta{
   position:absolute; bottom:2%; right:2%; width:54px; height:54px; border-radius:50%;
   background:var(--panel); color:var(--ink); display:flex; align-items:center; justify-content:center;
@@ -357,25 +289,14 @@ h1.hero-title .accent{ color:var(--signal); }
   padding:0.3rem 0.7rem; border-radius:999px; border:1px solid rgba(255,255,255,0.3);
   z-index:2;
 }
-/* Thin orbital arc tracing a connection from the portrait outward,
-   echoing the reference's "constellation" motif. Teal instead of
-   orange to stay on-brand. */
 .orbit-arc{ position:absolute; pointer-events:none; z-index:1; overflow:visible; opacity:0.55; }
 .orbit-arc path{ fill:none; stroke:var(--signal); stroke-width:1.4; stroke-linecap:round; }
-
 .panel-rows{ display:flex; flex-direction:column; gap:0.6rem; }
 .panel-row{ display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:0.72rem; padding:0.5rem 0.7rem; border-radius:8px; background:rgba(16,32,44,0.025); border:1px solid var(--border); }
 .panel-row .k{ color:var(--ink-faint); }
 .panel-row .v{ color:var(--signal); font-weight:600; }
-
 .wave-divider{ display:block; width:100%; line-height:0; position:absolute; left:0; bottom:-2px; z-index:3; pointer-events:none; }
 .wave-divider svg{ width:100%; height:auto; display:block; }
-
-/* ============================================================
-   PARALLAX IMAGE BAND: full-bleed photo strip between sections,
-   image scrolls slower/faster than the page for depth. Same
-   grayscale/teal treatment as the hero so it reads as one system.
-   ============================================================ */
 .parallax-band{ position:relative; height:clamp(260px, 34vw, 420px); overflow:hidden; display:flex; align-items:center; }
 .parallax-band-media{ position:absolute; inset:0; overflow:hidden; }
 .parallax-band-media img{
@@ -394,32 +315,87 @@ h1.hero-title .accent{ color:var(--signal); }
 .parallax-band .log-tag{ color:#fff; }
 .parallax-band .log-tag::before{ color:rgba(255,255,255,0.55); }
 .parallax-band-text{ color:#fff; font-family:var(--font-display); font-weight:600; font-size:clamp(1.1rem, 2.3vw, 1.55rem); line-height:1.45; letter-spacing:-0.005em; }
-@media (prefers-reduced-motion: reduce){
-  .parallax-band-media img{ transform:translate3d(-50%,-50%,0) scale(1.02); }
-}
+@media (prefers-reduced-motion: reduce){ .parallax-band-media img{ transform:translate3d(-50%,-50%,0) scale(1.02); } }
+section{ position:relative; padding:clamp(3.25rem, 8vw, 6.5rem) 0; }
+section .container{ position:relative; z-index:1; }
+.section-alt{ position:relative; }
 
 /* ============================================================
-   SECTION SHELL
+   PALET PER SECTION
+   Setiap section punya warna dasar sendiri (masih satu keluarga
+   "kertas panel kontrol"), supaya halaman terasa seperti berjalan
+   melewati panel instrumen yang berbeda-beda alih-alih satu warna
+   datar dari atas ke bawah. Suhu warna mengikuti isi kontennya:
+   teal untuk bagian yang "teknis/monitoring", amber untuk yang
+   lebih personal/naratif, dan gelap (ink) untuk panel penutup.
+   Garis tipis di antara section dipakai sebagai pembatas panel,
+   bukan dekorasi acak.
    ============================================================ */
-section{ position:relative; padding:clamp(4rem, 7vw, 6.5rem) 0; }
-section .container{ position:relative; z-index:1; }
-.section-alt{
-  background:linear-gradient(180deg, transparent, rgba(255,255,255,0.015) 8%, rgba(255,255,255,0.015) 92%, transparent);
-  position:relative;
+main > section:not(.hero):not(.parallax-band){
+  border-top:1px solid var(--border);
 }
-.section-alt::before, .section-alt::after{
-  content:""; position:absolute; left:0; right:0; height:1px;
-  background:linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+
+#about{
+  background:
+    radial-gradient(ellipse 640px 420px at 90% -8%, rgba(184,127,46,0.11), transparent 62%),
+    radial-gradient(ellipse 520px 420px at 2% 108%, rgba(13,158,144,0.06), transparent 58%),
+    #EFEAE3;
 }
-.section-alt::before{ top:0; }
-.section-alt::after{ bottom:0; }
+#experience{
+  background:
+    radial-gradient(ellipse 760px 480px at 98% 4%, rgba(13,158,144,0.12), transparent 60%),
+    radial-gradient(ellipse 480px 380px at -2% 96%, rgba(184,127,46,0.05), transparent 55%),
+    #EAF1EF;
+}
+#projects{
+  background:
+    radial-gradient(ellipse 700px 460px at 6% -4%, rgba(184,127,46,0.14), transparent 60%),
+    radial-gradient(ellipse 560px 420px at 100% 104%, rgba(13,158,144,0.07), transparent 58%),
+    #F5EEE2;
+}
+#skills{
+  background:
+    radial-gradient(ellipse 720px 460px at 94% -4%, rgba(13,158,144,0.09), transparent 60%),
+    radial-gradient(ellipse 560px 420px at 4% 104%, rgba(184,127,46,0.05), transparent 55%),
+    #E8EDF0;
+}
+#credentials{
+  background:
+    radial-gradient(ellipse 760px 480px at 2% -8%, rgba(184,127,46,0.13), transparent 60%),
+    radial-gradient(ellipse 520px 400px at 100% 104%, rgba(13,158,144,0.06), transparent 55%),
+    #F4EDDF;
+}
+#publications{
+  background:
+    radial-gradient(ellipse 640px 420px at 100% -6%, rgba(13,158,144,0.08), transparent 58%),
+    #EDF2F0;
+}
+#organizations{
+  background:
+    radial-gradient(ellipse 620px 420px at -2% -4%, rgba(184,127,46,0.08), transparent 56%),
+    #F1ECE3;
+}
+#contact{
+  --ink:#F3F0EE;
+  --ink-soft:rgba(243,240,238,0.72);
+  --ink-faint:rgba(243,240,238,0.46);
+  --border:rgba(243,240,238,0.14);
+  --border-strong:rgba(243,240,238,0.24);
+  --panel:#1B2926;
+  --panel-2:#16211E;
+  --bg:#14201F;
+  background:
+    radial-gradient(ellipse 900px 600px at 12% -10%, rgba(13,158,144,0.20), transparent 60%),
+    radial-gradient(ellipse 700px 520px at 100% 108%, rgba(184,127,46,0.12), transparent 55%),
+    #14201F;
+  color:var(--ink);
+}
+#contact .cf-field input, #contact .cf-field textarea{ color:var(--ink); }
+#contact .contact-form-status.err{ color:#E8A24A; }
+#contact .btn-primary:hover{ background:#F7F4F1; box-shadow:0 16px 34px rgba(0,0,0,0.35); }
 .section-head{ max-width:660px; margin-bottom:3rem; }
 h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.015em; margin-bottom:0.75rem; }
 .section-sub{ color:var(--ink-soft); font-size:1rem; max-width:62ch; }
-
-/* ============================================================
-   ABOUT
-   ============================================================ */
 .about-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:3.5rem; align-items:start; position:relative; z-index:1; }
 .about-text p{ color:var(--ink-soft); margin-bottom:1.1rem; max-width:60ch; }
 .about-text strong{ color:var(--ink); font-weight:600; }
@@ -428,10 +404,6 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .info-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
 .info-card b{ font-family:var(--font-display); display:block; font-size:1.3rem; color:var(--signal); font-weight:700; margin-bottom:0.15rem; }
 .info-card span{ font-size:0.8rem; color:var(--ink-faint); }
-
-/* ============================================================
-   EXPERIENCE - interactive slider
-   ============================================================ */
 .exp-slider{ display:flex; align-items:center; gap:1.1rem; }
 .exp-viewport{ flex:1; overflow:hidden; border-radius:var(--radius-l); }
 .exp-track{ display:flex; transition:transform 480ms var(--ease); touch-action:pan-y; }
@@ -450,7 +422,6 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .exp-dots{ display:flex; justify-content:center; gap:0.5rem; margin-top:1.75rem; }
 .exp-dot{ width:8px; height:8px; padding:0; border-radius:999px; background:var(--border-strong); border:none; cursor:pointer; transition:all 220ms var(--ease); }
 .exp-dot.active{ background:var(--signal); width:24px; }
-
 .tl-top{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.6rem; margin-bottom:0.9rem; padding-right:3.5rem; }
 .tl-date{ font-family:var(--font-mono); font-size:0.72rem; font-weight:600; color:var(--amber); letter-spacing:0.03em; }
 .tl-badge{ font-family:var(--font-mono); font-size:0.66rem; font-weight:600; color:var(--signal); background:var(--signal-dim); padding:0.2rem 0.55rem; border-radius:999px; text-transform:uppercase; letter-spacing:0.04em; }
@@ -471,10 +442,12 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .tl-impact span{ font-family:var(--font-mono); font-size:0.72rem; color:var(--ink-faint); background:rgba(16,32,44,0.03); border:1px solid var(--border); padding:0.3rem 0.6rem; border-radius:6px; }
 
 /* ============================================================
-   "Jejak karir" photo trail: 2-3 real documentation photos per
-   internship, styled like tacked-up polaroids. Whole block hides
-   itself gracefully (via the onerror handler on each <img>) if
-   none of that company's photos have been uploaded yet.
+   FIX: sebelumnya class ini defaultnya display:none, dan skrip
+   Supabase hanya menghapus inline style (style.display = ''),
+   sehingga galeri & foto tidak pernah benar-benar tampil walau
+   file berhasil ditemukan di storage. Skrip sekarang menyetel
+   nilai display eksplisit ('block'), jadi aturan default di sini
+   tetap boleh 'none' sebagai fallback saat belum ada foto.
    ============================================================ */
 .tl-gallery{ display:none; margin-top:1.6rem; padding-top:1.4rem; border-top:1px dashed var(--border-strong); }
 .tl-gallery-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(150px,100%), 1fr)); gap:1.1rem 0.9rem; padding-top:0.2rem; }
@@ -489,10 +462,6 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .tl-gallery-grid .tl-photo:nth-child(3){ transform:rotate(-1.1deg); }
 .tl-photo:hover{ transform:rotate(0deg) translateY(-5px) scale(1.045); box-shadow:var(--shadow-lg); position:relative; z-index:2; }
 .tl-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
-
-/* ============================================================
-   PROJECTS
-   ============================================================ */
 .projects-list{ display:flex; flex-direction:column; gap:1.5rem; }
 .project-card{
   background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-l);
@@ -527,7 +496,6 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .project-expand svg{ width:14px; height:14px; transition:transform 260ms var(--ease); }
 .project-card.open .project-expand svg{ transform:rotate(180deg); }
 .project-card.open .project-expand{ color:var(--signal); }
-
 .project-detail{ max-height:0; overflow:hidden; transition:max-height 380ms var(--ease); }
 .project-card.open .project-detail{ max-height:var(--detail-h, 2000px); }
 .project-detail-inner{ padding:0 2rem 2rem; display:grid; grid-template-columns:repeat(2, 1fr); gap:1.25rem; border-top:1px solid var(--border); margin-top:0; padding-top:1.5rem; }
@@ -536,15 +504,9 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .project-metrics{ display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.4rem; }
 .project-metrics span{ font-family:var(--font-mono); font-size:0.76rem; color:var(--signal); background:var(--signal-dim); padding:0.35rem 0.7rem; border-radius:6px; font-weight:600; }
 .projects-footer{ margin-top:1rem; display:flex; justify-content:center; }
-
-/* ============================================================
-   SKILLS - capability matrix
-   ============================================================ */
 .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(260px,100%), 1fr)); gap:1.1rem; }
 .skill-group{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-m); padding:1.5rem; box-shadow:var(--shadow-sm); transition:box-shadow 220ms var(--ease), transform 220ms var(--ease); }
 @media (min-width:941px){
-  /* A slight, alternating vertical offset so the capability grid reads as
-     arranged rather than mechanically stamped out of a template. */
   .skills-grid .skill-group:nth-child(3n+2){ transform:translateY(0.9rem); }
   .skills-grid .skill-group:nth-child(3n+3){ transform:translateY(-0.5rem); }
 }
@@ -556,10 +518,6 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .skill-tags{ display:flex; flex-wrap:wrap; gap:0.45rem; }
 .skill-tags span{ font-size:0.78rem; background:rgba(16,32,44,0.03); border:1px solid var(--border); color:var(--ink-soft); padding:0.32rem 0.65rem; border-radius:999px; transition:all 180ms; }
 .skill-tags span:hover{ background:var(--signal-dim); color:var(--signal); border-color:rgba(13,158,144,0.3); }
-
-/* ============================================================
-   CERTIFICATIONS
-   ============================================================ */
 .cert-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(440px,100%),1fr)); gap:1.25rem; }
 .cert-card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-m); padding:1.1rem; display:grid; grid-template-columns:0.85fr 1.15fr; gap:1.25rem; align-items:center; box-shadow:var(--shadow-sm); transition:transform 220ms var(--ease), box-shadow 220ms var(--ease); }
 .cert-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
@@ -575,10 +533,6 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 }
 .cert-link.li:hover{ background:rgba(184,127,46,0.2); gap:0.5rem; }
 .cert-link.li svg{ width:13px; height:13px; }
-
-/* Certificate visual: real scan if supplied via Supabase Storage
-   (certs/<nama-file>.jpg|.png|.pdf), else an
-   illustrated diploma mockup so the section already looks complete. */
 .cert-visual{ position:relative; border-radius:var(--radius-s); overflow:hidden; aspect-ratio:4/3; background:var(--panel-2); border:1px solid var(--border); }
 .pdf-asset-card{
   position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -597,10 +551,6 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .cert-mockup-label{ font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.14em; opacity:0.7; text-transform:uppercase; }
 .cert-mockup-name{ font-family:var(--font-display); font-weight:700; font-size:0.86rem; color:var(--ink); max-width:88%; line-height:1.25; }
 .cert-mockup-issuer{ font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.08em; opacity:0.65; text-transform:uppercase; }
-
-/* ============================================================
-   PUBLICATIONS
-   ============================================================ */
 .pub-card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-m); padding:1.75rem 2rem; display:grid; grid-template-columns:auto 1fr; gap:1.5rem; align-items:flex-start; box-shadow:var(--shadow-sm); }
 .pub-icon{ width:44px; height:44px; border-radius:50%; background:var(--amber-dim); display:flex; align-items:center; justify-content:center; color:var(--amber); flex-shrink:0; }
 .pub-icon svg{ width:22px; height:22px; }
@@ -610,10 +560,6 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .pub-status{ display:inline-flex; align-items:center; gap:0.4rem; font-family:var(--font-mono); font-size:0.7rem; font-weight:600; padding:0.28rem 0.65rem; border-radius:999px; }
 .pub-status.done{ color:var(--ok); background:rgba(30,154,91,0.1); border:1px solid rgba(30,154,91,0.3); }
 .pub-status.progress{ color:var(--amber); background:var(--amber-dim); border:1px solid rgba(184,127,46,0.3); }
-
-/* ============================================================
-   ORGANIZATIONS & AWARDS
-   ============================================================ */
 .org-award-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
 .oa-card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-m); padding:1.75rem; height:100%; box-shadow:var(--shadow-sm); }
 .oa-card h3{ font-size:1rem; font-weight:700; margin-bottom:1.1rem; display:flex; align-items:center; gap:0.55rem; }
@@ -625,10 +571,6 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .oa-row b{ display:block; font-size:0.92rem; color:var(--ink); font-weight:600; }
 .oa-row span{ font-size:0.8rem; color:var(--ink-faint); font-family:var(--font-mono); }
 .oa-row p{ font-size:0.85rem; color:var(--ink-soft); margin-top:0.3rem; }
-
-/* ============================================================
-   CONTACT
-   ============================================================ */
 .contact-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center; }
 .contact-card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-l); padding:2.25rem; box-shadow:var(--shadow-md); }
 .contact-row{ display:flex; align-items:center; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--border); transition:padding-left 200ms var(--ease); }
@@ -639,10 +581,6 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .contact-icon svg{ width:19px; height:19px; }
 .contact-row b{ display:block; font-size:0.95rem; color:var(--ink); font-weight:600; }
 .contact-row span{ font-size:0.8rem; color:var(--ink-faint); }
-
-/* ============================================================
-   CONTACT FORM (Supabase-backed)
-   ============================================================ */
 .contact-form-card{
   margin-top:3rem; background:var(--panel); border:1px solid var(--border);
   border-radius:var(--radius-l); padding:clamp(1.75rem,4vw,2.75rem); box-shadow:var(--shadow-md);
@@ -665,23 +603,33 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .contact-form-status{ font-size:0.85rem; font-weight:600; }
 .contact-form-status.ok{ color:var(--ok); }
 .contact-form-status.err{ color:var(--err); }
-@media (max-width:620px){
-  .cf-grid{ grid-template-columns:1fr; gap:0; }
+@media (max-width:620px){ .cf-grid{ grid-template-columns:1fr; gap:0; } }
+footer{ background:#101917; border-top:1px solid rgba(243,240,238,0.1); padding:2.25rem 0; }
+.footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+.footer-links{ display:flex; gap:1.5rem; flex-wrap:wrap; }
+footer .logo{ color:#F3F0EE; }
+footer a{ color:rgba(243,240,238,0.5); font-size:0.85rem; transition:color 180ms; }
+footer a:hover{ color:var(--signal); }
+.footer-note{ font-size:0.78rem; color:rgba(243,240,238,0.4); }
+/* ============================================================
+   AUTO LAYOUT: dari desktop lebar -> tablet -> ponsel.
+   Setiap breakpoint hanya menyesuaikan hal yang perlu berubah di
+   ukuran itu, jadi transisinya bertahap dan tidak "meloncat".
+   ============================================================ */
+
+/* Layar sangat lebar: batasi grid dari terlalu renggang */
+@media (min-width: 1401px){
+  .hero-grid{ gap:4.5rem; }
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer{ background:var(--bg-alt); border-top:1px solid var(--border); padding:2.5rem 0; }
-.footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
-.footer-links{ display:flex; gap:1.5rem; }
-footer a{ color:var(--ink-faint); font-size:0.85rem; transition:color 180ms; }
-footer a:hover{ color:var(--signal); }
-.footer-note{ font-size:0.78rem; color:var(--ink-faint); }
+/* Tablet besar / laptop kecil: kerapatan grid mulai disesuaikan
+   sebelum akhirnya ditumpuk penuh di bawah 940px */
+@media (max-width: 1080px){
+  .hero-grid{ gap:2.75rem; }
+  .skills-grid .skill-group:nth-child(3n+2),
+  .skills-grid .skill-group:nth-child(3n+3){ transform:none; }
+}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width: 940px){
   .hero-grid, .about-grid, .contact-wrap{ grid-template-columns:1fr; }
   .hero-visual{ margin:2rem auto 0; max-width:340px; }
@@ -691,17 +639,50 @@ footer a:hover{ color:var(--signal); }
   .project-detail-inner{ grid-template-columns:1fr; }
   .cert-card{ grid-template-columns:1fr; }
   .cert-visual{ aspect-ratio:16/9; }
+  .skills-grid{ gap:0.9rem; }
 }
+
+/* Tablet portrait / ponsel besar */
+@media (max-width: 760px){
+  section{ padding:clamp(2.75rem, 9vw, 4.5rem) 0; }
+  .hero{ padding-top:7.5rem; }
+  h2{ font-size:clamp(1.45rem, 5vw, 1.85rem); }
+  .section-head{ margin-bottom:2.25rem; }
+  .about-cards{ grid-template-columns:1fr 1fr; gap:0.85rem; }
+  .skills-grid{ grid-template-columns:1fr; }
+  .oa-card{ padding:1.4rem; }
+  .cert-card{ padding:0.9rem; }
+  .pub-card{ padding:1.4rem 1.5rem; grid-template-columns:1fr; }
+  .pub-icon{ margin-bottom:0.25rem; }
+}
+
 @media (max-width: 620px){
   .about-cards{ grid-template-columns:1fr; }
-  .hero-stats{ gap:1.5rem; }
-  .project-top{ grid-template-columns:auto 1fr; row-gap:0.75rem; }
+  .hero-stats{ gap:1.25rem 1.5rem; }
+  .hero-actions{ gap:0.7rem; }
+  .btn{ padding:0.78rem 1.35rem; font-size:0.86rem; }
+  .project-top{ grid-template-columns:auto 1fr; row-gap:0.75rem; padding:1.5rem 1.35rem; }
   .project-expand{ grid-column:1 / -1; padding-top:0; }
   .status-pill span.status-text{ display:none; }
   .exp-arrow{ width:38px; height:38px; }
   .exp-arrow svg{ width:16px; height:16px; }
-  .exp-slide{ padding:1.75rem 1.35rem; }
+  .exp-slide{ padding:1.75rem 1.35rem; min-height:0; }
   .exp-index{ top:1.1rem; right:1.35rem; }
+  .tl-gallery-grid{ grid-template-columns:1fr 1fr; gap:0.75rem; }
+  .contact-card{ padding:1.5rem; }
+  .contact-form-card{ padding:1.5rem; }
+}
+
+/* Ponsel kecil */
+@media (max-width: 400px){
+  .container{ padding:0 1rem; }
+  .logo small{ display:none; }
+  .nav-cta{ padding:0.55rem 1.05rem; font-size:0.8rem; }
+  .hero-stats{ gap:1rem 1.25rem; }
+  .stat b{ font-size:1.3rem; }
+  .tl-gallery-grid{ grid-template-columns:1fr; }
+  .exp-index{ display:none; }
+  .tl-top{ padding-right:0; }
 }
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
@@ -802,9 +783,6 @@ footer a:hover{ color:var(--signal); }
             <path d="M20,300 C60,230 40,120 130,60 C190,20 260,30 320,80"/>
           </svg>
           <div class="photo-frame">
-            <!-- Foto diambil otomatis dari Supabase Storage lewat alat upload
-                 (path: photo.jpg). Selama belum diunggah, monogram di bawah
-                 ini tampil otomatis. -->
             <img style="display:none;" data-asset="photo.jpg" alt="Foto Muhamad Lutfi" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="photo-fallback" aria-hidden="true">ML</div>
             <span class="frame-corner tl"></span><span class="frame-corner tr"></span>
@@ -816,7 +794,6 @@ footer a:hover{ color:var(--signal); }
           </a>
         </div>
         <div class="panel-rows">
-         
           <div class="panel-row"><span class="k">DATA SCIENCE</span><span class="v">ACTIVE</span></div>
           <div class="panel-row"><span class="k">EXPLAINABLE AI</span><span class="v">SHAP</span></div>
           <div class="panel-row"><span class="k">IT AUDIT</span><span class="v">KPMG</span></div>
@@ -887,7 +864,9 @@ footer a:hover{ color:var(--signal); }
   </div>
 </section>
 
-<section id="experience">
+<section id="experience" style="overflow:hidden;">
+  <div class="parallax-grid" data-speed="0.05" style="width:32vw; height:32vw; min-width:300px; min-height:300px; top:-6%; right:-8%;"></div>
+  <span class="parallax-tag mono" data-speed="0.08" style="top:6%; right:3%; font-size:0.68rem;">OPS.LOG // 001</span>
   <div class="container">
     <div class="section-head reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Pengalaman</div>
@@ -1279,7 +1258,6 @@ footer a:hover{ color:var(--signal); }
 
       <div class="cert-card reveal">
         <div class="cert-visual">
-          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
           <img data-asset="certs/certiport-software-development" alt="Sertifikat Certiport IT Specialist: Software Development" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="cert-mockup signal" aria-hidden="true">
             <span class="cert-mockup-label">Certificate</span>
@@ -1309,7 +1287,6 @@ footer a:hover{ color:var(--signal); }
 
       <div class="cert-card reveal">
         <div class="cert-visual">
-          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
           <img data-asset="certs/englishscore-b1" alt="Sertifikat EnglishScore Core Skills: CEFR B1 (364)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="cert-mockup amber" aria-hidden="true">
             <span class="cert-mockup-label">Certificate</span>
@@ -1339,8 +1316,7 @@ footer a:hover{ color:var(--signal); }
 
       <div class="cert-card reveal">
         <div class="cert-visual">
-          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
-          <img data-asset="certs/certiport-software-engineering" alt="Sertifikat Certiport IT Specialist:Python" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img data-asset="certs/certiport-software-engineering" alt="Sertifikat Certiport IT Specialist: Python" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="cert-mockup signal" aria-hidden="true">
             <span class="cert-mockup-label">Certificate</span>
             <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="cert-mockup-seal">
@@ -1351,12 +1327,11 @@ footer a:hover{ color:var(--signal); }
               <path d="M24 35 L24 47 L30 43 L36 47 L36 35" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
             </svg>
             <span class="cert-mockup-name">IT Specialist: Python</span>
-            <span class="cert-mockup-issuer">Certiport </span>
+            <span class="cert-mockup-issuer">Certiport / Dicoding</span>
           </div>
         </div>
         <div class="cert-info">
           <b>Certiport IT Specialist: Python</b>
-         
           <div class="cert-links">
             <a class="cert-link" href="https://www.dicoding.com/" target="_blank" rel="noopener">Info Program ↗</a>
             <a class="cert-link li" href="https://linkedin.com/in/muhammadlutfi20" target="_blank" rel="noopener" aria-label="Lihat sertifikat ini di LinkedIn">
@@ -1369,7 +1344,6 @@ footer a:hover{ color:var(--signal); }
 
       <div class="cert-card reveal">
         <div class="cert-visual">
-          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
           <img data-asset="certs/certiport-databases" alt="Sertifikat Certiport IT Databases" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="cert-mockup amber" aria-hidden="true">
             <span class="cert-mockup-label">Certificate</span>
@@ -1399,7 +1373,6 @@ footer a:hover{ color:var(--signal); }
 
       <div class="cert-card reveal">
         <div class="cert-visual">
-          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
           <img data-asset="certs/google-data-analytics" alt="Sertifikat Google Data Analytics Professional Certificate" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="cert-mockup signal" aria-hidden="true">
             <span class="cert-mockup-label">Certificate</span>
@@ -1429,7 +1402,6 @@ footer a:hover{ color:var(--signal); }
 
       <div class="cert-card reveal">
         <div class="cert-visual">
-          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
           <img data-asset="certs/data-science-academy" alt="Sertifikat Data Science Fresh Graduate Academy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="cert-mockup amber" aria-hidden="true">
             <span class="cert-mockup-label">Certificate</span>
@@ -1459,7 +1431,6 @@ footer a:hover{ color:var(--signal); }
 
       <div class="cert-card reveal">
         <div class="cert-visual">
-          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
           <img data-asset="certs/sql-hackerrank" alt="Sertifikat SQL Certification" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="cert-mockup signal" aria-hidden="true">
             <span class="cert-mockup-label">Certificate</span>
@@ -1489,7 +1460,6 @@ footer a:hover{ color:var(--signal); }
 
       <div class="cert-card reveal">
         <div class="cert-visual">
-          <!-- Ganti src dengan hasil scan/foto sertifikat asli kamu -->
           <img data-asset="certs/tpa-bappenas" alt="Sertifikat Tes Potensi Akademik (TPA)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="cert-mockup amber" aria-hidden="true">
             <span class="cert-mockup-label">Certificate</span>
@@ -1531,7 +1501,8 @@ footer a:hover{ color:var(--signal); }
   </div>
 </section>
 
-<section id="publications">
+<section id="publications" style="overflow:hidden;">
+  <span class="parallax-tag mono" data-speed="0.07" style="top:8%; left:3%; font-size:0.68rem;">RESEARCH.LOG // 019</span>
   <div class="container">
     <div class="section-head reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Publikasi Ilmiah</div>
@@ -1542,7 +1513,7 @@ footer a:hover{ color:var(--signal); }
       <span class="pub-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
       <div>
         <div class="pub-title">Perbandingan Decision Tree dan Random Forest untuk Deteksi Dini Diabetes dengan Kerangka Explainable AI (SHAP)</div>
-        <div class="pub-meta mono">Naskah diajukan ke pihak Publisher/Proses Review</div>
+        <div class="pub-meta mono">Naskah diajukan ke pihak Publisher</div>
         <p class="pub-desc">Riset skripsi yang membandingkan performa Decision Tree dan Random Forest pada dataset klinis benchmark, dengan kerangka XAI lima lapis agar model tetap dapat dijelaskan. Naskah untuk Jurnal Tekno Insentif telah dikonversi ke format APA 7, termasuk penyusunan ulang rumus matematis dan proses revisi mengikuti masukan pembimbing untuk memperkuat kerangka analisis kuantitatif.</p>
         <span class="pub-status progress">Dalam Proses Revisi &amp; Submisi</span>
       </div>
@@ -1550,7 +1521,8 @@ footer a:hover{ color:var(--signal); }
   </div>
 </section>
 
-<section class="section-alt" id="organizations">
+<section class="section-alt" id="organizations" style="overflow:hidden;">
+  <span class="parallax-tag mono" data-speed="0.06" style="bottom:8%; right:3%; font-size:0.68rem;">ORG.LOG // 023</span>
   <div class="container">
     <div class="section-head reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Organisasi &amp; Penghargaan</div>
@@ -1581,7 +1553,8 @@ footer a:hover{ color:var(--signal); }
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" style="overflow:hidden;">
+  <span class="parallax-tag mono" data-speed="0.05" style="top:6%; right:4%; font-size:0.68rem;">SESSION.CLOSE // EOF</span>
   <div class="container contact-wrap">
     <div class="reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Kontak</div>
@@ -1625,9 +1598,6 @@ footer a:hover{ color:var(--signal); }
       <h3>Ada peluang atau ingin diskusi?</h3>
       <p class="section-sub" style="margin-bottom:1.6rem;">Isi form ini dan pesannya masuk langsung ke saya, tanpa perlu membuka aplikasi email.</p>
       <form id="contactForm" novalidate>
-        <!-- honeypot: kolom ini disembunyikan dari manusia lewat CSS; bot
-             pengisi form otomatis biasanya tetap mengisinya, jadi kalau
-             terisi kita diam-diam anggap ini spam dan abaikan. -->
         <div class="cf-honeypot" aria-hidden="true">
           <label for="cfCompanyWebsite">Jangan isi kolom ini</label>
           <input type="text" id="cfCompanyWebsite" name="company_website" tabindex="-1" autocomplete="off">
@@ -1670,10 +1640,7 @@ footer a:hover{ color:var(--signal); }
 </footer>
 
 <script>
-  // ==== Konfigurasi Supabase (isi sekali setelah setup selesai) ====
-  // Ganti dua nilai di bawah ini dengan Project URL dan anon public key
-  // dari Supabase Dashboard -> Project Settings -> API. WAJIB berada
-  // SEBELUM script utama, supaya nilainya sudah siap saat dibaca.
+  // ==== Konfigurasi Supabase ====
   window.SUPABASE_URL = "https://xkzzqpimklspotuskqju.supabase.co";
   window.SUPABASE_ANON_KEY = "sb_publishable_osdHslYO4n99f8SrzFNSTw_ge4qzOQG";
   window.SUPABASE_BUCKET = "portfolio-assets";
@@ -1731,10 +1698,7 @@ footer a:hover{ color:var(--signal); }
     });
   });
 
-  // === Interactive project cards (role / challenge / solution / result) ===
-  // The expanding panel's height is measured from actual content
-  // (scrollHeight) instead of a fixed max-height, so longer text on
-  // narrow screens is never cut off.
+  // === Interactive project cards ===
   document.querySelectorAll('[data-toggle]').forEach(trigger => {
     const card = trigger.closest('[data-project]');
     const detail = card.querySelector('.project-detail');
@@ -1755,14 +1719,10 @@ footer a:hover{ color:var(--signal); }
     });
   });
 
-  // === Reduced motion respect (declared early; other blocks below use it) ===
+  // === Reduced motion respect ===
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // === Living hero background =========================================
-  // A generative "signal network" canvas: nodes drift and link like
-  // packets on a monitored network (on-brand with the SOC/NOC theme),
-  // with small light-packets traveling along active links, and gentle
-  // attraction toward the cursor for a tactile, "alive" feel.
+  // === Living hero background ===
   const signalCanvas = document.getElementById('signalCanvas');
   const heroSpotlight = document.getElementById('heroSpotlight');
   const heroEl = document.querySelector('.hero');
@@ -1792,7 +1752,6 @@ footer a:hover{ color:var(--signal); }
     const colorSignal = 'rgba(13,158,144,';
     const colorAmber = 'rgba(184,127,46,';
 
-    // Traveling "packets": small dots that glide along a random active link
     const packets = Array.from({ length: 7 }, () => ({ a: 0, b: 1, t: Math.random() }));
     let activeLinks = [];
 
@@ -1839,7 +1798,6 @@ footer a:hover{ color:var(--signal); }
           }
         }
       }
-      // glide packets of light along whichever links are currently active
       if(activeLinks.length){
         packets.forEach(p => {
           p.t += 0.006;
@@ -1905,7 +1863,6 @@ footer a:hover{ color:var(--signal); }
       if(e.key === 'ArrowRight'){ goTo(index + 1); }
     });
 
-    // Pointer-based drag/swipe
     let startX = 0, deltaX = 0, dragging = false;
     track.addEventListener('pointerdown', e => {
       dragging = true; startX = e.clientX;
@@ -1935,7 +1892,7 @@ footer a:hover{ color:var(--signal); }
     goTo(0);
   })();
 
-  // === Scroll-driven parallax (multiple independent layers) ===
+  // === Scroll-driven parallax ===
   if(!reduceMotion){
     const parallaxEls = document.querySelectorAll('[data-speed]');
     let ticking = false;
@@ -1957,11 +1914,7 @@ footer a:hover{ color:var(--signal); }
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
   }
 
-  // === Velocity-reactive marquee (kinetic type strip under the hero) ===
-  // Runs on a continuous rAF loop (not gated on scroll events) so the two
-  // rows keep a gentle idle drift even when the page is still, then
-  // accelerate and skew in opposite directions when the person scrolls
-  // fast, settling back to idle as scroll velocity decays.
+  // === Velocity-reactive marquee ===
   (function(){
     const track1 = document.getElementById('vmTrack1');
     const track2 = document.getElementById('vmTrack2');
@@ -2004,10 +1957,7 @@ footer a:hover{ color:var(--signal); }
     requestAnimationFrame(frame);
   })();
 
-  // === Parallax image bands between sections ===
-  // Offset is derived from the band's position relative to the viewport
-  // (not raw page scroll), so the effect looks correct no matter how far
-  // down the page the band sits.
+  // === Parallax image bands ===
   if(!reduceMotion){
     const bandImgs = document.querySelectorAll('.parallax-band-media img');
     if(bandImgs.length){
@@ -2030,9 +1980,7 @@ footer a:hover{ color:var(--signal); }
     }
   }
 
-  // === 3D tilt on hover: panel, project cards, info/skill/cert/oa cards ===
-  // Only on fine-pointer (mouse/trackpad) devices, and skipped entirely
-  // when the user prefers reduced motion.
+  // === 3D tilt on hover ===
   if(!reduceMotion && window.matchMedia('(pointer:fine)').matches){
     const tiltTargets = document.querySelectorAll('.panel, .project-card, .info-card, .skill-group, .cert-card, .oa-card, .exp-slide');
     tiltTargets.forEach(el => {
@@ -2085,7 +2033,7 @@ footer a:hover{ color:var(--signal); }
     });
   });
 
-  // === Animated count-up for hero stats (runs once, on first view) ===
+  // === Animated count-up for hero stats ===
   const statEls = document.querySelectorAll('.hero-stats .stat b');
   if(statEls.length){
     const statIO = new IntersectionObserver((entries) => {
@@ -2117,19 +2065,24 @@ footer a:hover{ color:var(--signal); }
 
   // ============================================================
   // SUPABASE: asset resolver (foto, galeri, sertifikat, CV) +
-  // form kontak. Semua elemen yang perlu file dari Storage punya
-  // atribut data-asset="path/tanpa-ekstensi-atau-dengan" -- fungsi
-  // di bawah ini melihat isi bucket sungguhan lalu mencocokkan file
-  // apa pun ekstensinya (jpg/png/pdf), supaya sertifikat boleh
-  // diunggah dalam format gambar ATAU PDF tanpa kode ini tahu
-  // sebelumnya file mana yang mana.
+  // form kontak.
+  //
+  // PERBAIKAN (2 titik):
+  // 1) Pengecekan "configured" sebelumnya membandingkan URL/KEY
+  //    dengan string placeholder yang kebetulan identik dengan
+  //    nilai aslinya, sehingga selalu bernilai false. Sekarang
+  //    cukup cek apakah keduanya sudah terisi.
+  // 2) Saat foto galeri (.tl-photo / .tl-gallery) ditemukan,
+  //    kode lama menghapus inline style (style.display = ''),
+  //    padahal class CSS .tl-gallery dan .tl-photo memang
+  //    default-nya display:none -- jadi menghapus override
+  //    inline tidak pernah benar-benar menampilkannya. Sekarang
+  //    diset eksplisit ke 'block'.
   // ============================================================
   (async function initSupabase(){
     const configured = !!(window.SUPABASE_URL && window.SUPABASE_ANON_KEY);
-    
     if(!configured) return; // belum di-setup -> semua fallback bawaan tetap tampil, tidak ada error
 
-    // SDK dimuat lewat <script defer> terpisah; tunggu sampai siap.
     let tries = 0;
     while(!window.supabase && tries < 50){ await new Promise(r => setTimeout(r, 100)); tries++; }
     if(!window.supabase){ console.warn('Supabase SDK gagal dimuat.'); return; }
@@ -2141,7 +2094,6 @@ footer a:hover{ color:var(--signal); }
     const assetEls = Array.from(document.querySelectorAll('[data-asset]'));
     if(!assetEls.length) return;
 
-    // Kumpulkan folder unik yang perlu di-list (root, exp, certs, dst.)
     const folders = new Set();
     assetEls.forEach(el => {
       const path = el.getAttribute('data-asset');
@@ -2149,32 +2101,31 @@ footer a:hover{ color:var(--signal); }
       folders.add(idx === -1 ? '' : path.slice(0, idx));
     });
 
-    // fileMap: "certs/certiport-software-development" -> "certs/certiport-software-development.pdf"
     const fileMap = {};
     await Promise.all(Array.from(folders).map(async folder => {
       try{
         const { data, error } = await client.storage.from(bucket).list(folder || undefined, { limit: 200 });
-        if(error || !data) return;
+        if(error){ console.warn('Gagal list folder Supabase Storage:', folder, error); return; }
+        if(!data) return;
         data.forEach(f => {
           if(!f.name || f.id === null) return; // skip folder placeholder entries
           const noExt = f.name.replace(/\.[^.\/]+$/, '');
           const key = folder ? folder + '/' + noExt : noExt;
           fileMap[key] = folder ? folder + '/' + f.name : f.name;
+          // Simpan juga versi lowercase supaya pencocokan tidak gagal
+          // hanya karena beda huruf besar/kecil pada nama file.
+          const keyLower = key.toLowerCase();
+          if(!(keyLower in fileMap)) fileMap[keyLower] = fileMap[key];
         });
-      } catch(e){ /* folder belum ada -> biarkan, fallback tetap tampil */ }
+      } catch(e){ console.warn('Folder belum ada / gagal diakses:', folder, e); }
     }));
 
     assetEls.forEach(el => {
       const path = el.getAttribute('data-asset');
       const noExt = path.replace(/\.[^.\/]+$/, '');
-      const resolved = fileMap[noExt];
+      const resolved = fileMap[noExt] || fileMap[noExt.toLowerCase()];
 
       if(!resolved){
-        // Belum diunggah. PENTING: sebuah <img> tanpa atribut src tidak
-        // pernah memicu event 'error', jadi handler onerror bawaan di
-        // HTML TIDAK akan otomatis jalan di sini -- kita harus meniru
-        // efeknya secara eksplisit, atau kotak gambar kosong akan
-        // tampil alih-alih monogram/mockup/galeri yang disembunyikan.
         if(el.tagName === 'IMG'){
           const galleryPhoto = el.closest('.tl-photo');
           if(galleryPhoto){
@@ -2189,8 +2140,6 @@ footer a:hover{ color:var(--signal); }
             if(el.nextElementSibling) el.nextElementSibling.style.display = 'flex';
           }
         }
-        // <a> tanpa file (mis. tombol CV sebelum diunggah) sengaja
-        // dibiarkan memakai href default yang sudah ada di HTML.
         return;
       }
 
@@ -2199,8 +2148,6 @@ footer a:hover{ color:var(--signal); }
 
       if(el.tagName === 'IMG'){
         if(ext === 'pdf'){
-          // Gambar tidak bisa merender PDF -- ganti jadi kartu "Lihat PDF"
-          // yang rapi, alih-alih membiarkan ikon gambar rusak tampil.
           const card = document.createElement('a');
           card.href = url; card.target = '_blank'; card.rel = 'noopener';
           card.className = 'pdf-asset-card';
@@ -2214,9 +2161,10 @@ footer a:hover{ color:var(--signal); }
           if(el.nextElementSibling) el.nextElementSibling.style.display = 'none';
           const galleryPhoto = el.closest('.tl-photo');
           if(galleryPhoto){
-            galleryPhoto.style.display = '';
+            // FIX: eksplisit 'block', bukan '' -- lihat catatan di atas.
+            galleryPhoto.style.display = 'block';
             const gallery = galleryPhoto.closest('.tl-gallery');
-            if(gallery) gallery.style.display = '';
+            if(gallery) gallery.style.display = 'block';
           }
         }
       } else if(el.tagName === 'A'){
@@ -2235,7 +2183,7 @@ footer a:hover{ color:var(--signal); }
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const honeypot = form.querySelector('input[name="company_website"]');
-      if(honeypot && honeypot.value){ return; } // bot terjebak honeypot, diam-diam abaikan
+      if(honeypot && honeypot.value){ return; }
 
       const name = form.querySelector('#cfName').value.trim();
       const email = form.querySelector('#cfEmail').value.trim();
@@ -2248,8 +2196,7 @@ footer a:hover{ color:var(--signal); }
         return;
       }
 
-      const configured = window.SUPABASE_URL && !window.SUPABASE_URL.includes('https://xkzzqpimklspotuskqju.supabase.co')
-        && window.SUPABASE_ANON_KEY && !window.SUPABASE_ANON_KEY.includes('sb_publishable_osdHslYO4n99f8SrzFNSTw_ge4qzOQG');
+      const configured = !!(window.SUPABASE_URL && window.SUPABASE_ANON_KEY);
       if(!configured || !window.supabase){
         statusEl.textContent = 'Form belum tersambung ke Supabase. Silakan hubungi lewat email langsung untuk saat ini.';
         statusEl.className = 'contact-form-status err';
