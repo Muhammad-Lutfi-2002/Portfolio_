@@ -33,6 +33,7 @@
   --signal:#0D9E90;
   --signal-strong:#0B7F74;
   --signal-dim:rgba(13,158,144,0.10);
+  --section-green:#EAF5F2;
   --amber:#B87F2E;
   --amber-dim:rgba(184,127,46,0.10);
   --ok:#1E9A5B;
@@ -57,7 +58,6 @@ body{
   font-family:var(--font-body);
   background:
     radial-gradient(ellipse 900px 500px at 15% -10%, rgba(13,158,144,0.07), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(184,127,46,0.05), transparent 55%),
     var(--bg);
   color:var(--ink);
   line-height:1.6;
@@ -139,7 +139,7 @@ nav.links a:hover::after{ width:100%; }
 .mobile-menu a:hover{ color:var(--signal); }
 .hero{ position:relative; min-height:100dvh; display:flex; align-items:center; padding:8.5rem 0 4rem; overflow:hidden; }
 .hero-media{ position:absolute; inset:0; z-index:0; overflow:hidden; }
-.parallax-layer{ position:absolute; inset:0; will-change:transform; }
+.parallax-layer{ position:absolute; inset:0; }
 .hero-media canvas{
   position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   animation:heroZoom 26s ease-in-out infinite alternate;
@@ -304,7 +304,7 @@ h1.hero-title .accent{ color:var(--signal); }
 .parallax-band-media img{
   position:absolute; top:50%; left:50%; width:100%; height:140%;
   transform:translate3d(-50%,-50%,0) scale(1.12);
-  object-fit:cover; will-change:transform;
+  object-fit:cover;
   filter:grayscale(0.55) brightness(0.44) contrast(1.14) saturate(1.1) hue-rotate(-18deg);
 }
 .parallax-band-overlay{
@@ -323,60 +323,24 @@ section .container{ position:relative; z-index:1; }
 .section-alt{ position:relative; }
 
 /* ============================================================
-   PALET PER SECTION
-   Setiap section punya warna dasar sendiri (masih satu keluarga
-   "kertas panel kontrol"), supaya halaman terasa seperti berjalan
-   melewati panel instrumen yang berbeda-beda alih-alih satu warna
-   datar dari atas ke bawah. Suhu warna mengikuti isi kontennya:
-   teal untuk bagian yang "teknis/monitoring", amber untuk yang
-   lebih personal/naratif, dan gelap (ink) untuk panel penutup.
-   Garis tipis di antara section dipakai sebagai pembatas panel,
-   bukan dekorasi acak.
+   PALET PER SECTION -- disederhanakan
+   Hanya 2 warna datar yang dipakai bergantian: putih dan hijau
+   pucat (satu keluarga dengan --signal), tanpa gradient/aksen
+   warna lain, supaya ritme antar section terasa bersih dan tidak
+   ramai. Garis tipis di antara section tetap dipakai sebagai
+   pembatas panel.
    ============================================================ */
 main > section:not(.hero):not(.parallax-band){
   border-top:1px solid var(--border);
 }
 
-#about{
-  background:
-    radial-gradient(ellipse 640px 420px at 90% -8%, rgba(184,127,46,0.11), transparent 62%),
-    radial-gradient(ellipse 520px 420px at 2% 108%, rgba(13,158,144,0.06), transparent 58%),
-    #EFEAE3;
-}
-#experience{
-  background:
-    radial-gradient(ellipse 760px 480px at 98% 4%, rgba(13,158,144,0.12), transparent 60%),
-    radial-gradient(ellipse 480px 380px at -2% 96%, rgba(184,127,46,0.05), transparent 55%),
-    #EAF1EF;
-}
-#projects{
-  background:
-    radial-gradient(ellipse 700px 460px at 6% -4%, rgba(184,127,46,0.14), transparent 60%),
-    radial-gradient(ellipse 560px 420px at 100% 104%, rgba(13,158,144,0.07), transparent 58%),
-    #F5EEE2;
-}
-#skills{
-  background:
-    radial-gradient(ellipse 720px 460px at 94% -4%, rgba(13,158,144,0.09), transparent 60%),
-    radial-gradient(ellipse 560px 420px at 4% 104%, rgba(184,127,46,0.05), transparent 55%),
-    #E8EDF0;
-}
-#credentials{
-  background:
-    radial-gradient(ellipse 760px 480px at 2% -8%, rgba(184,127,46,0.13), transparent 60%),
-    radial-gradient(ellipse 520px 400px at 100% 104%, rgba(13,158,144,0.06), transparent 55%),
-    #F4EDDF;
-}
-#publications{
-  background:
-    radial-gradient(ellipse 640px 420px at 100% -6%, rgba(13,158,144,0.08), transparent 58%),
-    #EDF2F0;
-}
-#organizations{
-  background:
-    radial-gradient(ellipse 620px 420px at -2% -4%, rgba(184,127,46,0.08), transparent 56%),
-    #F1ECE3;
-}
+#about{ background:var(--panel); }
+#experience{ background:var(--section-green); }
+#projects{ background:var(--panel); }
+#skills{ background:var(--section-green); }
+#credentials{ background:var(--panel); }
+#publications{ background:var(--section-green); }
+#organizations{ background:var(--panel); }
 #contact{
   --ink:#F3F0EE;
   --ink-soft:rgba(243,240,238,0.72);
@@ -386,10 +350,7 @@ main > section:not(.hero):not(.parallax-band){
   --panel:#1B2926;
   --panel-2:#16211E;
   --bg:#14201F;
-  background:
-    radial-gradient(ellipse 900px 600px at 12% -10%, rgba(13,158,144,0.20), transparent 60%),
-    radial-gradient(ellipse 700px 520px at 100% 108%, rgba(184,127,46,0.12), transparent 55%),
-    #14201F;
+  background:var(--bg);
   color:var(--ink);
 }
 #contact .cf-field input, #contact .cf-field textarea{ color:var(--ink); }
@@ -834,13 +795,13 @@ footer a:hover{ color:var(--signal); }
 <main>
 <section class="hero">
   <div class="hero-media" aria-hidden="true">
-    <div class="parallax-layer" data-speed="0.05"><span class="hero-orb hero-orb-1"></span></div>
-    <div class="parallax-layer" data-speed="0.09"><span class="hero-orb hero-orb-2"></span></div>
-    <div class="parallax-layer" data-speed="0.03"><span class="hero-orb hero-orb-3"></span></div>
-    <div class="parallax-layer" data-speed="0.07">
+    <div class="parallax-layer"><span class="hero-orb hero-orb-1"></span></div>
+    <div class="parallax-layer"><span class="hero-orb hero-orb-2"></span></div>
+    <div class="parallax-layer"><span class="hero-orb hero-orb-3"></span></div>
+    <div class="parallax-layer">
       <div class="parallax-grid" style="width:70vw; height:70vw; min-width:520px; min-height:520px; top:-18%; right:-14%; opacity:0.7;"></div>
     </div>
-    <div class="parallax-layer" data-speed="0.1"><canvas id="signalCanvas"></canvas></div>
+    <div class="parallax-layer"><canvas id="signalCanvas"></canvas></div>
     <div class="hero-spotlight" id="heroSpotlight"></div>
   </div>
   <div class="container hero-grid">
@@ -942,8 +903,8 @@ footer a:hover{ color:var(--signal); }
 
 <section class="section-alt" id="about" style="overflow:hidden;">
   <span class="ghost-watermark" aria-hidden="true" style="top:8%; left:-1%;">SYSTEMS</span>
-  <div class="parallax-grid" data-speed="0.05" style="width:34vw; height:34vw; min-width:320px; min-height:320px; top:-10%; right:-8%;"></div>
-  <span class="parallax-tag mono" data-speed="0.08" style="top:6%; right:3%; font-size:0.68rem;">SYS.LOG // 004</span>
+  <div class="parallax-grid" style="width:34vw; height:34vw; min-width:320px; min-height:320px; top:-10%; right:-8%;"></div>
+  <span class="parallax-tag mono" style="top:6%; right:3%; font-size:0.68rem;">SYS.LOG // 004</span>
   <div class="container about-grid">
     <div class="about-text reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Tentang Saya</div>
@@ -962,8 +923,8 @@ footer a:hover{ color:var(--signal); }
 </section>
 
 <section id="experience" style="overflow:hidden;">
-  <div class="parallax-grid" data-speed="0.05" style="width:32vw; height:32vw; min-width:300px; min-height:300px; top:-6%; right:-8%;"></div>
-  <span class="parallax-tag mono" data-speed="0.08" style="top:6%; right:3%; font-size:0.68rem;">OPS.LOG // 001</span>
+  <div class="parallax-grid" style="width:32vw; height:32vw; min-width:300px; min-height:300px; top:-6%; right:-8%;"></div>
+  <span class="parallax-tag mono" style="top:6%; right:3%; font-size:0.68rem;">OPS.LOG // 001</span>
   <div class="container">
     <div class="section-head reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Pengalaman</div>
@@ -1130,8 +1091,8 @@ footer a:hover{ color:var(--signal); }
 </section>
 
 <section class="section-alt" id="projects">
-  <div class="parallax-grid" data-speed="0.04" style="width:30vw; height:30vw; min-width:280px; min-height:280px; bottom:-8%; left:-7%;"></div>
-  <span class="parallax-tag mono" data-speed="0.07" style="bottom:8%; left:3%; font-size:0.68rem;">BUILD.LOG // 012</span>
+  <div class="parallax-grid" style="width:30vw; height:30vw; min-width:280px; min-height:280px; bottom:-8%; left:-7%;"></div>
+  <span class="parallax-tag mono" style="bottom:8%; left:3%; font-size:0.68rem;">BUILD.LOG // 012</span>
   <div class="container">
     <div class="section-head reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Proyek Terpilih</div>
@@ -1272,8 +1233,8 @@ footer a:hover{ color:var(--signal); }
 </section>
 
 <section id="skills">
-  <div class="parallax-grid" data-speed="0.06" style="width:26vw; height:26vw; min-width:260px; min-height:260px; top:2%; left:-8%;"></div>
-  <span class="parallax-tag mono" data-speed="0.09" style="top:8%; left:3%; font-size:0.68rem;">CAPABILITY.MAP</span>
+  <div class="parallax-grid" style="width:26vw; height:26vw; min-width:260px; min-height:260px; top:2%; left:-8%;"></div>
+  <span class="parallax-tag mono" style="top:8%; left:3%; font-size:0.68rem;">CAPABILITY.MAP</span>
   <div class="container">
     <div class="section-head reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Keahlian</div>
@@ -1353,8 +1314,8 @@ footer a:hover{ color:var(--signal); }
 </section>
 
 <section class="section-alt" id="credentials">
-  <div class="parallax-grid" data-speed="0.05" style="width:28vw; height:28vw; min-width:280px; min-height:280px; bottom:-10%; right:-6%;"></div>
-  <span class="parallax-tag mono" data-speed="0.08" style="bottom:6%; right:3%; font-size:0.68rem;">CRED.VERIFIED</span>
+  <div class="parallax-grid" style="width:28vw; height:28vw; min-width:280px; min-height:280px; bottom:-10%; right:-6%;"></div>
+  <span class="parallax-tag mono" style="bottom:6%; right:3%; font-size:0.68rem;">CRED.VERIFIED</span>
   <div class="container">
     <div class="section-head reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Sertifikasi</div>
@@ -1609,7 +1570,7 @@ footer a:hover{ color:var(--signal); }
 </section>
 
 <section id="publications" style="overflow:hidden;">
-  <span class="parallax-tag mono" data-speed="0.07" style="top:8%; left:3%; font-size:0.68rem;">RESEARCH.LOG // 019</span>
+  <span class="parallax-tag mono" style="top:8%; left:3%; font-size:0.68rem;">RESEARCH.LOG // 019</span>
   <div class="container">
     <div class="section-head reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Publikasi Ilmiah</div>
@@ -1629,7 +1590,7 @@ footer a:hover{ color:var(--signal); }
 </section>
 
 <section class="section-alt" id="organizations" style="overflow:hidden;">
-  <span class="parallax-tag mono" data-speed="0.06" style="bottom:8%; right:3%; font-size:0.68rem;">ORG.LOG // 023</span>
+  <span class="parallax-tag mono" style="bottom:8%; right:3%; font-size:0.68rem;">ORG.LOG // 023</span>
   <div class="container">
     <div class="section-head reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Organisasi &amp; Penghargaan</div>
@@ -1661,7 +1622,7 @@ footer a:hover{ color:var(--signal); }
 </section>
 
 <section id="contact" style="overflow:hidden;">
-  <span class="parallax-tag mono" data-speed="0.05" style="top:6%; right:4%; font-size:0.68rem;">SESSION.CLOSE // EOF</span>
+  <span class="parallax-tag mono" style="top:6%; right:4%; font-size:0.68rem;">SESSION.CLOSE // EOF</span>
   <div class="container contact-wrap">
     <div class="reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Kontak</div>
@@ -2090,8 +2051,10 @@ footer a:hover{ color:var(--signal); }
   })();
 
   // ============================================================
-  // GSAP: timeline masuk (hero), reveal + stagger via ScrollTrigger,
-  // parallax scrub, dan pinning. Semuanya dibungkus pengecekan
+  // GSAP: timeline masuk (hero), reveal + stagger + fade + scale via
+  // ScrollTrigger.batch, dan pinning. Efek parallax scroll sengaja
+  // ditiadakan -- fokus animasi murni pada timeline, reveal, dan
+  // pinning. Semuanya dibungkus pengecekan
   // ketersediaan GSAP -- kalau CDN gagal dimuat, blok ini dilewati
   // total dan halaman tetap terlihat normal (fallback di bawah).
   // Hormat penuh ke prefers-reduced-motion: kalau reduceMotion aktif,
@@ -2125,38 +2088,6 @@ footer a:hover{ color:var(--signal); }
         duration:0.75, ease:'power2.out', stagger:0.09,
         overwrite:true
       })
-    });
-
-    // --- Parallax: lapisan hero (orbs, grid, canvas) mengikuti
-    // progres scroll selama hero berada di layar ---
-    gsap.utils.toArray('.hero [data-speed]').forEach(el => {
-      const speed = parseFloat(el.getAttribute('data-speed')) || 0.05;
-      gsap.to(el, {
-        yPercent: speed * 260,
-        ease:'none',
-        scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:0.4 }
-      });
-    });
-    // --- Parallax: elemen dekoratif (grid biru, label mono) di
-    // section lain, digulir relatif terhadap section masing-masing ---
-    gsap.utils.toArray('section:not(.hero) [data-speed]').forEach(el => {
-      const speed = parseFloat(el.getAttribute('data-speed')) || 0.05;
-      gsap.to(el, {
-        y: () => speed * 480,
-        ease:'none',
-        scrollTrigger:{ trigger: el.closest('section'), start:'top bottom', end:'bottom top', scrub:0.4 }
-      });
-    });
-
-    // --- Parallax band foto full-bleed antar section ---
-    gsap.utils.toArray('.parallax-band-media img').forEach(img => {
-      gsap.fromTo(img,
-        { yPercent:-8, scale:1.12 },
-        {
-          yPercent:8, scale:1.12, ease:'none',
-          scrollTrigger:{ trigger: img.closest('.parallax-band'), start:'top bottom', end:'bottom top', scrub:0.4 }
-        }
-      );
     });
 
     // --- Pinning: hero "ditahan" di tempat sejenak sementara
@@ -2224,8 +2155,6 @@ footer a:hover{ color:var(--signal); }
     }
     requestAnimationFrame(frame);
   })();
-
-  // (Parallax band foto sekarang ditangani GSAP ScrollTrigger di atas)
 
   // === 3D tilt on hover ===
   if(!reduceMotion && window.matchMedia('(pointer:fine)').matches){
