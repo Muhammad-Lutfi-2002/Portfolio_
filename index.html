@@ -13,11 +13,24 @@
 <meta property="og:image" content="portfolio-hvfc7bv8a-muhammad-lutfi-2002s-projects.vercel.app//og-image.jpg">
 <link rel="canonical" href="portfolio-hvfc7bv8a-muhammad-lutfi-2002s-projects.vercel.app/">
 <meta name="theme-color" content="#14201F">
+<script>
+  // Set tema secepat mungkin (sebelum CSS/paint) supaya tidak ada "flash"
+  // warna salah saat halaman dimuat. Prioritas: preferensi tersimpan di
+  // localStorage, lalu preferensi sistem (prefers-color-scheme), lalu light.
+  (function(){
+    try{
+      var saved = localStorage.getItem('ml-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }catch(e){ document.documentElement.setAttribute('data-theme', 'light'); }
+  })();
+</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%230D9E90'/%3E%3Ctext x='16' y='21' font-family='Arial,sans-serif' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.pexels.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://xkzzqpimklspotuskqju.supabase.co" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <noscript><style>.reveal{opacity:1!important; transform:none!important;}</style></noscript>
 <style>
 :root{
@@ -41,16 +54,61 @@
   --shadow-sm:0 1px 2px rgba(16,32,44,0.04), 0 2px 8px rgba(16,32,44,0.04);
   --shadow-md:0 16px 40px rgba(16,32,44,0.07);
   --shadow-lg:0 32px 70px rgba(16,32,44,0.11);
-  --radius-s:6px;
-  --radius-m:24px;
-  --radius-l:40px;
-  --radius-btn:20px;
+  --radius-s:5px;
+  --radius-m:14px;
+  --radius-l:20px;
+  --radius-btn:8px;
   --radius-pill:999px;
   --maxw:1240px;
   --ease:cubic-bezier(0.22, 1, 0.36, 1);
   --font-display:"Space Grotesk", sans-serif;
   --font-body:"Inter", -apple-system, sans-serif;
   --font-mono:"JetBrains Mono", monospace;
+  --nav-bg:rgba(255,255,255,0.86);
+  --nav-bg-scrolled:rgba(255,255,255,0.96);
+  --mobile-menu-bg:rgba(255,255,255,0.98);
+}
+/* ============================================================
+   MODE GELAP -- palet "terminal": hijau sinyal jadi lebih neon
+   di atas dasar nyaris hitam, garis grid & border memakai warna
+   sinyal transparan supaya terasa seperti panel HUD/dashboard.
+   Semua komponen sudah dibangun di atas custom property di atas,
+   jadi cukup mendefinisikan ulang variabelnya di sini -- tidak
+   perlu menyentuh CSS komponen satu per satu.
+   ============================================================ */
+[data-theme="dark"]{
+  --bg:#0A0F0E;
+  --bg-alt:#0D1413;
+  --panel:#111918;
+  --panel-2:#0C1211;
+  --border:rgba(120,255,215,0.14);
+  --border-strong:rgba(120,255,215,0.26);
+  --ink:#E9F5F1;
+  --ink-soft:rgba(233,245,241,0.68);
+  --ink-faint:rgba(233,245,241,0.42);
+  --signal:#3CF2BE;
+  --signal-strong:#22D6A3;
+  --signal-dim:rgba(60,242,190,0.13);
+  --section-green:#0E1615;
+  --amber:#E4B15C;
+  --amber-dim:rgba(228,177,92,0.13);
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.3), 0 2px 10px rgba(0,0,0,0.25);
+  --shadow-md:0 16px 40px rgba(0,0,0,0.4);
+  --shadow-lg:0 32px 70px rgba(0,0,0,0.5);
+  --nav-bg:rgba(13,20,19,0.82);
+  --nav-bg-scrolled:rgba(13,20,19,0.94);
+  --mobile-menu-bg:rgba(13,20,19,0.98);
+}
+html{ background:var(--bg); transition:background 320ms var(--ease); }
+body{ transition:background 320ms var(--ease), color 320ms var(--ease); }
+/* Saat tema sedang berpindah (class ditambah/dilepas sesaat oleh JS),
+   matikan SEMUA transisi di seluruh halaman supaya warna berbasis
+   custom property (--ink, --panel, --bg, dst.) langsung "snap" ke
+   nilai tema baru tanpa ada elemen yang keliatan nyangkut di warna
+   lama untuk sesaat. Transisi normal (hover, dsb.) menyala lagi
+   begitu class ini dilepas 2 frame kemudian. */
+html.theme-switching, html.theme-switching *, html.theme-switching *::before, html.theme-switching *::after{
+  transition:none !important;
 }
 *{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; }
@@ -92,13 +150,13 @@ header.nav{
 .nav-inner{
   display:flex; align-items:center; justify-content:space-between;
   padding:0.85rem 1.5rem; max-width:var(--maxw); margin:0 auto;
-  background:rgba(255,255,255,0.86); backdrop-filter:blur(16px) saturate(150%);
+  background:var(--nav-bg); backdrop-filter:blur(16px) saturate(150%);
   border-radius:var(--radius-pill); border:1px solid var(--border);
   box-shadow:0 4px 24px rgba(16,32,44,0.06);
-  transition:box-shadow 300ms ease, background 300ms ease;
+  transition:box-shadow 300ms ease, border-color 300ms ease;
   pointer-events:auto;
 }
-header.nav.scrolled .nav-inner{ background:rgba(255,255,255,0.96); box-shadow:0 10px 32px rgba(16,32,44,0.09); }
+header.nav.scrolled .nav-inner{ background:var(--nav-bg-scrolled); box-shadow:0 10px 32px rgba(16,32,44,0.09); }
 .logo{ font-family:var(--font-display); font-weight:700; font-size:1.05rem; letter-spacing:-0.01em; display:flex; align-items:center; gap:0.65rem; }
 .logo-mark{
   width:32px; height:32px; border-radius:50%; position:relative; flex-shrink:0; overflow:hidden;
@@ -124,15 +182,15 @@ nav.links a:hover::after{ width:100%; }
 .status-pill .dot{ width:6px; height:6px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 3px rgba(30,154,91,0.25); animation:blink 2.4s ease infinite; }
 @keyframes blink{ 0%,100%{ opacity:1; } 50%{ opacity:0.35; } }
 .nav-cta{ background:var(--ink); color:var(--bg); padding:0.62rem 1.35rem; border-radius:var(--radius-btn); font-size:0.85rem; font-weight:700; cursor:pointer; transition:all 200ms var(--ease); white-space:nowrap; }
-.nav-cta:hover{ background:#0A1414; transform:translateY(-1px); box-shadow:0 10px 22px rgba(20,32,31,0.22); }
+.nav-cta:hover{ background:var(--signal-strong); color:#fff; transform:translateY(-1px); box-shadow:0 10px 22px rgba(20,32,31,0.22); }
 .nav-toggle{ display:none; color:var(--ink); padding:0.4rem; }
 .nav-toggle svg{ width:22px; height:22px; }
 .mobile-menu{
   position:fixed; inset:0 0 auto 0; top:86px; z-index:190;
-  background:rgba(255,255,255,0.98); border:1px solid var(--border); box-shadow:var(--shadow-md);
+  background:var(--mobile-menu-bg); border:1px solid var(--border); box-shadow:var(--shadow-md);
   border-radius:var(--radius-m); margin:0 1.25rem;
   padding:1.25rem 1.75rem 1.75rem; display:flex; flex-direction:column; gap:1rem;
-  transform:translateY(-8px); opacity:0; pointer-events:none; transition:all 240ms var(--ease);
+  transform:translateY(-8px); opacity:0; pointer-events:none; transition:transform 240ms var(--ease), opacity 240ms var(--ease);
 }
 .mobile-menu.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
 .mobile-menu a{ font-size:1rem; font-weight:600; color:var(--ink-soft); padding:0.5rem 0; border-bottom:1px solid var(--border); }
@@ -167,7 +225,7 @@ nav.links a:hover::after{ width:100%; }
 .ghost-watermark{
   position:absolute; z-index:0; pointer-events:none; user-select:none;
   font-family:var(--font-display); font-weight:700; letter-spacing:-0.03em;
-  font-size:clamp(6rem, 19vw, 15rem); line-height:0.85; color:#E7E1D8;
+  font-size:clamp(6rem, 19vw, 15rem); line-height:0.85; color:var(--bg-alt);
   white-space:nowrap;
 }
 .velocity-marquee{ position:relative; height:clamp(150px,21vw,196px); overflow:hidden; margin:0; z-index:2; }
@@ -230,14 +288,14 @@ h1.hero-title .accent{ color:var(--signal); }
 .btn{ padding:0.85rem 1.6rem; border-radius:var(--radius-btn); font-weight:700; font-size:0.9rem; cursor:pointer; transition:transform 200ms var(--ease), background 200ms var(--ease), box-shadow 200ms var(--ease); display:inline-flex; align-items:center; gap:0.55rem; border:1.5px solid transparent; position:relative; overflow:hidden; }
 .btn-ripple{
   position:absolute; width:10px; height:10px; margin:-5px 0 0 -5px; border-radius:50%;
-  background:rgba(255,255,255,0.55); pointer-events:none; transform:scale(0);
+  background:rgba(140,140,140,0.45); pointer-events:none; transform:scale(0);
   animation:rippleOut 620ms var(--ease) forwards;
 }
 .btn-ghost .btn-ripple, .btn-outline-amber .btn-ripple{ background:rgba(13,158,144,0.25); }
 @keyframes rippleOut{ to{ transform:scale(22); opacity:0; } }
 .nav-cta{ position:relative; overflow:hidden; }
 .btn-primary{ background:var(--ink); color:var(--bg); }
-.btn-primary:hover{ background:#0A1414; transform:translateY(-2px); box-shadow:0 16px 34px rgba(20,32,31,0.28); }
+.btn-primary:hover{ background:var(--signal-strong); color:#fff; transform:translateY(-2px); box-shadow:0 16px 34px rgba(20,32,31,0.28); }
 .btn-ghost{ border-color:var(--border-strong); color:var(--ink); background:var(--panel); }
 .btn-ghost:hover{ background:var(--panel-2); transform:translateY(-2px); box-shadow:var(--shadow-sm); }
 .btn-outline-amber{ border-color:rgba(184,127,46,0.4); color:var(--amber); background:var(--amber-dim); }
@@ -451,8 +509,8 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
   font-size:0.68rem; color:var(--ink-faint); background:var(--bg-alt); border-radius:999px;
   padding:0.08rem 0.42rem; transition:all 220ms var(--ease);
 }
-.project-filter-btn.is-active{ color:#fff; background:var(--ink); border-color:var(--ink); box-shadow:var(--shadow-sm); }
-.project-filter-btn.is-active .pf-count{ background:rgba(255,255,255,0.18); color:#fff; }
+.project-filter-btn.is-active{ color:var(--bg); background:var(--ink); border-color:var(--ink); box-shadow:var(--shadow-sm); }
+.project-filter-btn.is-active .pf-count{ background:rgba(128,128,128,0.28); color:var(--bg); }
 .projects-count{ font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-faint); margin:-1.1rem 0 1.5rem; }
 .projects-count b{ color:var(--signal); font-weight:700; }
 
@@ -521,8 +579,8 @@ h2{ font-size:clamp(1.6rem, 2.6vw, 2.15rem); font-weight:700; letter-spacing:-0.
 .project-detail{ display:none; }
 
 /* --- Modal studi kasus proyek --- */
-.project-modal{ position:fixed; inset:0; z-index:500; display:flex; align-items:center; justify-content:center; padding:1.25rem; visibility:hidden; }
-.project-modal.is-open{ visibility:visible; }
+.project-modal{ position:fixed; inset:0; z-index:500; display:flex; align-items:center; justify-content:center; padding:1.25rem; opacity:0; pointer-events:none; transition:opacity 160ms linear; }
+.project-modal.is-open{ opacity:1; pointer-events:auto; }
 .project-modal-backdrop{
   position:absolute; inset:0; background:rgba(16,26,25,0.55); backdrop-filter:blur(6px);
   opacity:0; transition:opacity 280ms var(--ease);
@@ -770,6 +828,192 @@ footer .logo{ color:#F3F0EE; }
 footer a{ color:rgba(243,240,238,0.5); font-size:0.85rem; transition:color 180ms; }
 footer a:hover{ color:var(--signal); }
 .footer-note{ font-size:0.78rem; color:rgba(243,240,238,0.4); }
+
+/* ============================================================
+   BAHASA VISUAL TEKNIKAL / DASHBOARD
+   - Corner-tick ala crop-mark instrumen di setiap panel data
+   - Penomoran section otomatis lewat CSS counter (SECTION 01..08)
+   - Tombol bergaya bracket "[ Label ]"
+   - Overlay grid HUD tetap (fixed) di seluruh halaman, tipis
+   - Toggle terang/gelap + rail navigasi dashboard di sisi kanan
+   ============================================================ */
+.panel, .info-card, .skill-group, .cert-card, .oa-card, .exp-slide, .pub-card, .contact-card, .contact-form-card{ position:relative; }
+.panel::before, .info-card::before, .skill-group::before, .cert-card::before, .oa-card::before, .exp-slide::before, .pub-card::before, .contact-card::before, .contact-form-card::before,
+.panel::after, .info-card::after, .skill-group::after, .cert-card::after, .oa-card::after, .exp-slide::after, .pub-card::after, .contact-card::after, .contact-form-card::after{
+  content:""; position:absolute; width:9px; height:9px; pointer-events:none; opacity:0.5;
+  transition:opacity 220ms var(--ease);
+}
+.panel::before, .info-card::before, .skill-group::before, .cert-card::before, .oa-card::before, .exp-slide::before, .pub-card::before, .contact-card::before, .contact-form-card::before{
+  top:8px; left:8px; border-top:1.5px solid var(--signal); border-left:1.5px solid var(--signal);
+}
+.panel::after, .info-card::after, .skill-group::after, .cert-card::after, .oa-card::after, .exp-slide::after, .pub-card::after, .contact-card::after, .contact-form-card::after{
+  bottom:8px; right:8px; border-bottom:1.5px solid var(--signal); border-right:1.5px solid var(--signal);
+}
+.panel:hover::before, .info-card:hover::before, .skill-group:hover::before, .cert-card:hover::before, .oa-card:hover::before, .exp-slide:hover::before, .pub-card:hover::before, .contact-card:hover::before, .contact-form-card:hover::before,
+.panel:hover::after, .info-card:hover::after, .skill-group:hover::after, .cert-card:hover::after, .oa-card:hover::after, .exp-slide:hover::after, .pub-card:hover::after, .contact-card:hover::after, .contact-form-card:hover::after{ opacity:0.95; }
+
+/* Penomoran section otomatis: hero & band dekoratif tidak dihitung */
+body{ counter-reset:sec-idx; }
+main > section:not(.hero):not(.parallax-band):not(.velocity-marquee){ counter-increment:sec-idx; }
+.section-head{ position:relative; padding-left:0; }
+.section-head .log-tag::after{
+  content:"SECTION " counter(sec-idx, decimal-leading-zero) " / 08";
+  margin-left:0.75rem; padding-left:0.75rem; border-left:1px solid var(--border-strong);
+  color:var(--ink-faint); font-weight:500; letter-spacing:0.06em;
+}
+
+/* Tombol bergaya bracket -- brackets merapat saat hover, seperti
+   memberi jarak "[ Label ]" -> "[Label]" secara halus. PENTING:
+   animasi memakai transform (bukan margin) supaya lebar tombol
+   TIDAK PERNAH berubah saat hover -- kalau lebar berubah, efek
+   "magnetic pull" di tombol (yang membaca getBoundingClientRect
+   pada tiap gerakan mouse) ikut kebawa berubah dan saling memicu,
+   itulah penyebab tombol terlihat bergetar/gempa saat disentuh. */
+.btn::before, .btn::after{ content:"["; font-family:var(--font-mono); font-weight:600; display:inline-block; color:currentColor; opacity:0.55; transition:transform 220ms var(--ease), opacity 220ms var(--ease); }
+.btn::before{ margin-right:0.3rem; }
+.btn::after{ content:"]"; margin-left:0.3rem; }
+.btn:hover::before{ transform:translateX(2px); opacity:0.9; }
+.btn:hover::after{ transform:translateX(-2px); opacity:0.9; }
+.nav-cta{ font-family:var(--font-mono); letter-spacing:0.01em; }
+
+/* Overlay grid HUD -- tetap di posisi (fixed), sangat tipis, memberi
+   kesan "dilihat lewat layar instrumen" di seluruh halaman, bukan
+   cuma dekorasi lokal per-section seperti .parallax-grid sebelumnya. */
+.hud-grid-overlay{
+  position:fixed; inset:0; z-index:140; pointer-events:none;
+  background-image:
+    linear-gradient(var(--border-strong) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-strong) 1px, transparent 1px);
+  background-size:46px 46px; opacity:0.4; mix-blend-mode:overlay;
+}
+@media (max-width:760px){ .hud-grid-overlay{ background-size:34px 34px; opacity:0.28; } }
+
+/* Toggle tema terang/gelap */
+.theme-toggle{
+  position:relative; width:38px; height:38px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; color:var(--ink);
+  border:1px solid var(--border-strong); background:var(--panel); transition:all 220ms var(--ease);
+}
+.theme-toggle:hover{ border-color:var(--signal); color:var(--signal); transform:rotate(12deg); }
+.theme-toggle svg{ width:17px; height:17px; }
+.theme-toggle .icon-sun{ display:none; }
+[data-theme="dark"] .theme-toggle .icon-sun{ display:block; }
+[data-theme="dark"] .theme-toggle .icon-moon{ display:none; }
+
+/* Rail navigasi dashboard -- fixed di kanan layar, hanya desktop.
+   Menampilkan titik per-section (aktif = terisi + berdenyut) dan
+   label singkat yang muncul saat hover, plus jam lokal berjalan
+   sebagai sentuhan "readout" data hidup. */
+.hud-rail{
+  position:fixed; right:1.35rem; top:50%; transform:translateY(-50%); z-index:160;
+  display:flex; flex-direction:column; align-items:center; gap:1.1rem;
+}
+.hud-rail-dots{ display:flex; flex-direction:column; align-items:center; gap:0.65rem; }
+.hud-rail-dot{
+  position:relative; width:9px; height:9px; border-radius:50%; border:1.5px solid var(--border-strong);
+  background:transparent; transition:all 220ms var(--ease); cursor:pointer;
+}
+.hud-rail-dot::after{
+  content:attr(data-label); position:absolute; right:150%; top:50%; transform:translateY(-50%) translateX(4px);
+  font-family:var(--font-mono); font-size:0.66rem; font-weight:600; letter-spacing:0.04em; color:var(--ink);
+  background:var(--panel); border:1px solid var(--border); padding:0.3rem 0.6rem; border-radius:6px;
+  white-space:nowrap; opacity:0; pointer-events:none; box-shadow:var(--shadow-sm);
+  transition:opacity 180ms var(--ease), transform 180ms var(--ease);
+}
+.hud-rail-dot:hover::after{ opacity:1; transform:translateY(-50%) translateX(0); }
+.hud-rail-dot:hover{ border-color:var(--signal); }
+.hud-rail-dot.is-active{ background:var(--signal); border-color:var(--signal); box-shadow:0 0 0 4px var(--signal-dim); }
+.hud-rail-clock{
+  writing-mode:vertical-rl; text-orientation:mixed; font-family:var(--font-mono); font-size:0.64rem;
+  letter-spacing:0.08em; color:var(--ink-faint); padding-top:0.25rem; border-top:1px solid var(--border-strong);
+}
+@media (max-width:1180px){ .hud-rail{ display:none; } }
+@media (prefers-reduced-motion: reduce){ .theme-toggle:hover{ transform:none; } }
+
+/* ============================================================
+   COMMAND PALETTE (Ctrl/Cmd+K) -- navigasi cepat ala developer
+   tool. Trigger di navbar + shortcut keyboard global.
+   ============================================================ */
+.cmdk-trigger{
+  display:flex; align-items:center; gap:0.45rem; font-size:0.76rem; font-weight:600;
+  color:var(--ink-soft); background:var(--panel); border:1px solid var(--border-strong);
+  padding:0.5rem 0.65rem 0.5rem 0.8rem; border-radius:var(--radius-pill); cursor:pointer;
+  transition:all 200ms var(--ease);
+}
+.cmdk-trigger:hover{ border-color:var(--signal); color:var(--signal); }
+.cmdk-trigger svg{ width:15px; height:15px; flex-shrink:0; }
+.cmdk-trigger .cmdk-kbd{
+  font-family:var(--font-mono); font-size:0.66rem; font-weight:700; color:var(--ink-faint);
+  background:var(--bg-alt); border:1px solid var(--border-strong); border-radius:5px; padding:0.12rem 0.4rem;
+}
+@media (max-width:1180px){ .cmdk-trigger-label{ display:none; } .cmdk-trigger{ padding:0.5rem; } .cmdk-trigger .cmdk-kbd{ display:none; } }
+
+.cmdk{ position:fixed; inset:0; z-index:600; display:flex; align-items:flex-start; justify-content:center; padding:12vh 1.25rem 1.25rem; opacity:0; pointer-events:none; transition:opacity 160ms linear; }
+.cmdk.is-open{ opacity:1; pointer-events:auto; }
+.cmdk-backdrop{ position:absolute; inset:0; background:rgba(10,15,14,0.55); backdrop-filter:blur(6px); opacity:0; transition:opacity 240ms var(--ease); }
+.cmdk.is-open .cmdk-backdrop{ opacity:1; }
+.cmdk-panel{
+  position:relative; width:100%; max-width:560px; max-height:60vh; display:flex; flex-direction:column;
+  background:var(--panel); border:1px solid var(--border-strong); border-radius:var(--radius-l);
+  box-shadow:var(--shadow-lg); overflow:hidden; transform:translateY(-14px) scale(0.97); opacity:0;
+  transition:all 260ms var(--ease);
+}
+.cmdk.is-open .cmdk-panel{ transform:translateY(0) scale(1); opacity:1; }
+.cmdk-input-row{ display:flex; align-items:center; gap:0.7rem; padding:1.1rem 1.25rem; border-bottom:1px solid var(--border); flex-shrink:0; }
+.cmdk-input-row svg{ width:18px; height:18px; color:var(--ink-faint); flex-shrink:0; }
+.cmdk-input-row input{
+  flex:1; border:none; outline:none; background:transparent; font-family:var(--font-mono);
+  font-size:0.92rem; color:var(--ink);
+}
+.cmdk-input-row input::placeholder{ color:var(--ink-faint); }
+.cmdk-close{
+  font-family:var(--font-mono); font-size:0.68rem; font-weight:700; color:var(--ink-faint);
+  background:var(--bg-alt); border:1px solid var(--border-strong); border-radius:5px; padding:0.25rem 0.5rem; cursor:pointer;
+}
+.cmdk-list{ overflow-y:auto; padding:0.5rem; flex:1; }
+.cmdk-item{
+  display:flex; align-items:center; gap:0.85rem; width:100%; text-align:left; padding:0.7rem 0.85rem;
+  border-radius:var(--radius-m); cursor:pointer; color:var(--ink); background:transparent; border:none;
+  font-family:var(--font-body); font-size:0.88rem; transition:background 120ms var(--ease);
+}
+.cmdk-item svg{ width:17px; height:17px; flex-shrink:0; color:var(--signal); }
+.cmdk-item-main{ flex:1; min-width:0; display:flex; flex-direction:column; gap:0.1rem; }
+.cmdk-item-main small{ color:var(--ink-faint); font-size:0.72rem; }
+.cmdk-item-hint{ font-family:var(--font-mono); font-size:0.68rem; color:var(--ink-faint); flex-shrink:0; }
+.cmdk-item.is-active{ background:var(--signal-dim); }
+.cmdk-empty{ padding:1.75rem 1rem; text-align:center; color:var(--ink-faint); font-size:0.85rem; }
+.cmdk-footer{ display:flex; gap:1.1rem; padding:0.7rem 1.25rem; border-top:1px solid var(--border); flex-shrink:0; }
+.cmdk-footer span{ display:flex; align-items:center; gap:0.3rem; font-size:0.68rem; color:var(--ink-faint); }
+.cmdk-footer kbd{
+  font-family:var(--font-mono); font-size:0.65rem; background:var(--bg-alt); border:1px solid var(--border-strong);
+  border-radius:4px; padding:0.08rem 0.35rem;
+}
+body.cmdk-open{ overflow:hidden; }
+@media (max-width:620px){ .cmdk{ padding:6vh 0.75rem; } }
+
+/* ============================================================
+   DOCK NAVIGASI BAWAH (mobile) -- rail dashboard disembunyikan
+   di layar sempit, dock ini menggantikan perannya dengan pola
+   tab-bar yang familiar di thumb reach.
+   ============================================================ */
+.mobile-dock{
+  display:none; position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); z-index:170;
+  align-items:center; gap:0.3rem; background:var(--panel); border:1px solid var(--border-strong);
+  border-radius:var(--radius-pill); padding:0.4rem; box-shadow:var(--shadow-lg);
+}
+.mobile-dock-item{
+  display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%;
+  color:var(--ink-faint); background:transparent; border:none; cursor:pointer; transition:all 200ms var(--ease);
+}
+.mobile-dock-item svg{ width:19px; height:19px; }
+.mobile-dock-item.is-active{ color:var(--signal); background:var(--signal-dim); }
+.mobile-dock-cmdk{ color:var(--bg); background:var(--ink); }
+.mobile-dock-cmdk:active{ transform:scale(0.92); }
+@media (max-width:760px){
+  .mobile-dock{ display:flex; }
+  footer{ padding-bottom:5rem; }
+  .cmdk-trigger{ display:none; }
+}
 /* ============================================================
    AUTO LAYOUT: dari desktop lebar -> tablet -> ponsel.
    Setiap breakpoint hanya menyesuaikan hal yang perlu berubah di
@@ -842,6 +1086,13 @@ footer a:hover{ color:var(--signal); }
   .contact-card{ padding:1.5rem; }
   .contact-form-card{ padding:1.5rem; }
 }
+/* Navbar mobile: pill status & CTA "Hubungi Saya" disembunyikan supaya
+   navbar tidak melebar dan mendorong tombol hamburger keluar layar --
+   fungsinya sudah tercakup lewat dock bawah (ikon Kontak) & hero. */
+@media (max-width:520px){
+  .status-pill, .nav-cta{ display:none; }
+  .nav-actions{ gap:0.5rem; }
+}
 
 /* Ponsel kecil */
 @media (max-width: 400px){
@@ -862,6 +1113,7 @@ footer a:hover{ color:var(--signal); }
 <body>
 
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<div class="hud-grid-overlay" aria-hidden="true"></div>
 
 <svg class="grain-overlay" aria-hidden="true">
   <filter id="grainFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0"/></filter>
@@ -887,6 +1139,15 @@ footer a:hover{ color:var(--signal); }
     </nav>
     <div class="nav-actions">
       <span class="status-pill"><span class="dot" aria-hidden="true"></span><span class="status-text">Terbuka untuk peluang baru</span></span>
+      <button type="button" class="cmdk-trigger mono" id="cmdkTrigger" aria-label="Buka command palette (Ctrl+K)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <span class="cmdk-trigger-label">Cari</span>
+        <kbd class="cmdk-kbd">⌘K</kbd>
+      </button>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Ganti tema terang/gelap" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+      </button>
       <a href="#contact" class="nav-cta">Hubungi Saya</a>
       <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobileMenu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -904,7 +1165,16 @@ footer a:hover{ color:var(--signal); }
   <a href="#contact">Kontak</a>
 </div>
 
+<!-- Rail navigasi dashboard: titik per-section + jam lokal berjalan.
+     Diisi otomatis oleh JS dari daftar <section id="..."> di <main>,
+     supaya tidak ada data yang didobel-tulis secara manual. -->
+<nav class="hud-rail" id="hudRail" aria-label="Navigasi bagian halaman">
+  <div class="hud-rail-dots" id="hudRailDots"></div>
+  <span class="hud-rail-clock mono" id="hudClock">--:--:--</span>
+</nav>
+
 <main>
+
 <section class="hero">
   <div class="hero-media" aria-hidden="true">
     <div class="parallax-layer"><span class="hero-orb hero-orb-1"></span></div>
@@ -923,8 +1193,13 @@ footer a:hover{ color:var(--signal); }
         <span class="eyebrow-divider" aria-hidden="true"></span>
         <span class="eyebrow" style="color:var(--amber);"><span style="background:var(--amber); box-shadow:0 0 0 4px var(--amber-dim); width:6px; height:6px; border-radius:50%; display:inline-block;"></span>IPK 3.94</span>
       </div>
-      <h1 class="hero-title">Mengubah data dan sistem<br>menjadi <span class="accent">keputusan yang bisa dipercaya.</span></h1>
-      <p class="hero-desc">IT Professional dengan pengalaman lintas <strong style="color:var(--ink-soft); font-weight:600;">IT Operations &amp; SOC</strong>, <strong style="color:var(--ink-soft); font-weight:600;">Network Operations</strong>, dan <strong style="color:var(--ink-soft); font-weight:600;">Data Science</strong>, termasuk mendukung audit IT bersama KPMG dan membangun model Explainable AI untuk deteksi dini diabetes.</p>
+      <h1 class="hero-title">
+        Building secure systems and<br>
+        <span class="accent">trusted governance.</span>
+        </h1>
+        <p class="hero-desc">
+          IT Professional with hands-on experience in <strong style="color:var(--ink-soft); font-weight:600;">IT Security</strong>, <strong style="color:var(--ink-soft); font-weight:600;">IT Governance</strong>, <strong style="color:var(--ink-soft); font-weight:600;">IT Audit</strong>, and <strong style="color:var(--ink-soft); font-weight:600;">Enterprise IT Operations</strong>. Experienced in supporting IT audits Internal &  External , strengthening cybersecurity awareness, and contributing to secure, compliant, and resilient IT environments.
+          </p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
         <a href="#experience" class="btn btn-ghost">Rekam Jejak Karier</a>
@@ -1021,9 +1296,13 @@ footer a:hover{ color:var(--signal); }
     <div class="about-text reveal">
       <div class="log-tag"><span class="blip" aria-hidden="true"></span>Tentang Saya</div>
       <h2>Latar belakang yang menghubungkan sistem, data, dan operasional.</h2>
-      <p>Saya lulus dari Program Studi Sistem Informasi, Universitas Nusa Putra, Sukabumi, dengan IPK <strong>3.94</strong>. Perjalanan saya dimulai dari front-end development, berlanjut ke NOC engineering dan IT Operations &amp; SOC, termasuk mendukung audit IT bersama KPMG, hingga eksplorasi data science dan explainable AI.</p>
-      <p>Di luar dunia kerja formal, saya sempat ikut merintis <strong>CTRL+Coffee</strong> hingga September 2025, mendukung pengembangan website dan pelaporan operasional bisnis, termasuk analisis Break-Even Point dan performa penjualan untuk mitra bisnis.</p>
-      <p>Kombinasi ini membentuk cara saya bekerja: memvalidasi asumsi dengan data, mendokumentasikan proses secara sistematis, dan menjaga sistem tetap dapat dipercaya, baik itu jaringan, model machine learning, maupun laporan operasional.</p>
+      <h2>Membangun fondasi dalam keamanan, tata kelola, dan operasional TI.</h2>
+
+<p>Saya merupakan lulusan Program Studi Sistem Informasi Universitas Nusa Putra, Sukabumi, dengan IPK <strong>3,94</strong>. Selama perjalanan akademik dan profesional, saya membangun pengalaman di bidang <strong>Enterprise IT Operations</strong>, <strong>IT Security</strong>, <strong>IT Governance</strong>, dan <strong>IT Audit</strong>, dengan keterlibatan langsung pada operasional infrastruktur TI, tata kelola, serta proses audit perusahaan.</p>
+
+<p>Saat menjalani program magang di <strong>PT Telkom Infrastruktur Indonesia (Telkominfra)</strong>, saya mengelola operasional TI, mendukung implementasi <strong>IT Governance</strong> dan proses audit bersama <strong>KPMG</strong>, berkontribusi dalam Business Analysis, menyusun dokumentasi operasional, serta mendukung peningkatan kesadaran keamanan informasi melalui simulasi phishing dan program Cyber Security Awareness.</p>
+
+<p>Pengalaman tersebut membentuk cara saya bekerja: memastikan teknologi berjalan secara aman, terdokumentasi dengan baik, sesuai tata kelola dan kepatuhan, serta mampu mendukung tujuan bisnis melalui pengelolaan risiko dan peningkatan operasional secara berkelanjutan.</p>
     </div>
     <div class="about-cards reveal">
       <div class="info-card"><b>UNP</b><span>Sistem Informasi, lulus Mei 2026</span></div>
@@ -1066,7 +1345,7 @@ footer a:hover{ color:var(--signal); }
                 <div class="tl-org">Telkominfra, Jakarta Selatan</div>
               </div>
             </div>
-            <p class="tl-desc">Menangani tiket insiden dan layanan IT end-to-end sesuai SLA, mendukung audit IT bersama KPMG, memvalidasi aset jaringan (hostname, IP, MAC address), dan menyusun laporan operasional mingguan. Turut memberikan dukungan desain antarmuka untuk dashboard monitoring SOC.</p>
+            <p class="tl-desc">Berkontribusi pada operasional TI perusahaan melalui pengelolaan incident dan service ticket sesuai SLA, mendukung implementasi IT Governance dan audit IT internal & External bersama KPMG, melakukan analisis kebutuhan bisnis dan User Acceptance Testing (UAT), menyusun dokumentasi operasional, serta meningkatkan budaya keamanan informasi melalui simulasi phishing dan Campaign Cyber Security Awareness.</p>
             <div class="tl-impact">
               <span>SLA Compliance</span>
               <span>KPMG IT Audit Support</span>
@@ -1360,7 +1639,7 @@ footer a:hover{ color:var(--signal); }
 
 <section class="parallax-band" aria-label="Transisi visual">
   <div class="parallax-band-media">
-    <img src="https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1920&dpr=1" alt="" loading="lazy">
+    <img src="https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1920&dpr=1" srcset="https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=640&dpr=1 640w, https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1080&dpr=1 1080w, https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1920&dpr=1 1920w" sizes="100vw" alt="" loading="lazy" decoding="async">
   </div>
   <div class="parallax-band-overlay" aria-hidden="true"></div>
   <div class="container parallax-band-content reveal">
@@ -1697,7 +1976,7 @@ footer a:hover{ color:var(--signal); }
 
 <section class="parallax-band" aria-label="Transisi visual">
   <div class="parallax-band-media">
-    <img src="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1920&dpr=1" alt="" loading="lazy">
+    <img src="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1920&dpr=1" srcset="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=640&dpr=1 640w, https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1080&dpr=1 1080w, https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1920&dpr=1 1920w" sizes="100vw" alt="" loading="lazy" decoding="async">
   </div>
   <div class="parallax-band-overlay" aria-hidden="true"></div>
   <div class="container parallax-band-content reveal">
@@ -1719,7 +1998,7 @@ footer a:hover{ color:var(--signal); }
       <div>
         <div class="pub-title">Perbandingan Decision Tree dan Random Forest untuk Deteksi Dini Diabetes dengan Kerangka Explainable AI (SHAP)</div>
         <div class="pub-meta mono">Naskah diajukan ke pihak Publisher</div>
-        <p class="pub-desc">Riset skripsi yang membandingkan performa Decision Tree dan Random Forest pada dataset klinis benchmark, dengan kerangka XAI lima lapis agar model tetap dapat dijelaskan. Naskah untuk Jurnal Tekno Insentif telah dikonversi ke format APA 7, termasuk penyusunan ulang rumus matematis dan proses revisi mengikuti masukan pembimbing untuk memperkuat kerangka analisis kuantitatif.</p>
+        <p class="pub-desc">Riset skripsi yang membandingkan performa Decision Tree dan Random Forest pada dataset klinis benchmark, dengan kerangka XAI lima lapis agar model tetap dapat dijelaskan.  termasuk penyusunan ulang rumus matematis dan proses revisi mengikuti masukan pembimbing untuk memperkuat kerangka analisis kuantitatif.</p>
         <span class="pub-status progress">Dalam Proses Revisi &amp; Submisi</span>
       </div>
     </div>
@@ -1813,6 +2092,49 @@ footer a:hover{ color:var(--signal); }
   </div>
 </footer>
 
+<!-- Command Palette: navigasi cepat khas developer tool. Dipicu lewat
+     tombol "Cari" di navbar atau pintasan Ctrl/Cmd+K dari mana saja.
+     Daftar perintah dibangun di JS (bukan hardcode di sini) supaya
+     mudah dirawat dan konsisten dengan data section yang sama dipakai
+     oleh rail navigasi dashboard. -->
+<div class="cmdk" id="cmdk" aria-hidden="true">
+  <div class="cmdk-backdrop" data-cmdk-close></div>
+  <div class="cmdk-panel" role="dialog" aria-modal="true" aria-label="Command palette navigasi cepat">
+    <div class="cmdk-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="cmdkInput" class="mono" placeholder="Ketik perintah... (proyek, gelap, cv, email)" autocomplete="off" spellcheck="false">
+      <button type="button" class="cmdk-close" data-cmdk-close aria-label="Tutup command palette">ESC</button>
+    </div>
+    <div class="cmdk-list" id="cmdkList" role="listbox"></div>
+    <div class="cmdk-footer">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigasi</span>
+      <span><kbd>↵</kbd> pilih</span>
+      <span><kbd>esc</kbd> tutup</span>
+    </div>
+  </div>
+</div>
+
+<!-- Dock navigasi bawah untuk mobile: rail dashboard sisi kanan
+     disembunyikan di layar sempit, jadi dock ini memberi parity
+     navigasi cepat + akses command palette lewat ibu jari. -->
+<nav class="mobile-dock" id="mobileDock" aria-label="Navigasi cepat mobile">
+  <a href="#about" class="mobile-dock-item" data-dock="about" aria-label="Tentang">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.5-4 4-6 7.5-6s6 2 7.5 6"/></svg>
+  </a>
+  <a href="#projects" class="mobile-dock-item" data-dock="projects" aria-label="Proyek">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="4.5" width="7" height="7" rx="1.2"/><rect x="3.5" y="14.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="14.5" width="7" height="7" rx="1.2"/></svg>
+  </a>
+  <button type="button" class="mobile-dock-item mobile-dock-cmdk" id="mobileDockCmdk" aria-label="Buka pencarian cepat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+  </button>
+  <a href="#skills" class="mobile-dock-item" data-dock="skills" aria-label="Keahlian">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
+  </a>
+  <a href="#contact" class="mobile-dock-item" data-dock="contact" aria-label="Kontak">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="m4.5 6.5 7.5 6 7.5-6"/></svg>
+  </a>
+</nav>
+
 <!-- Lightbox sertifikat: satu dialog dipakai ulang untuk menampilkan
      PDF/gambar sertifikat secara penuh saat kartu di section
      Sertifikasi diklik. Diisi secara dinamis lewat JS. -->
@@ -1836,8 +2158,13 @@ footer a:hover{ color:var(--signal); }
   window.SUPABASE_URL = "https://xkzzqpimklspotuskqju.supabase.co";
   window.SUPABASE_ANON_KEY = "sb_publishable_osdHslYO4n99f8SrzFNSTw_ge4qzOQG";
   window.SUPABASE_BUCKET = "portfolio-assets";
+  // Promise yang selesai begitu SDK Supabase benar-benar siap (event
+  // 'load'/'error' dari <script> di bawah) -- menggantikan polling
+  // setInterval 100ms yang lama. Begitu script kelar dimuat, foto
+  // langsung diproses tanpa menunggu tick polling berikutnya.
+  window.__supabaseReadyPromise = new Promise((resolve) => { window.__resolveSupabaseReady = resolve; });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer onload="window.__resolveSupabaseReady()" onerror="window.__resolveSupabaseReady()"></script>
 
 <!-- GSAP: dimuat sinkron (tanpa defer) supaya `gsap`/`ScrollTrigger` sudah
      tersedia sebelum script utama di bawah ini berjalan. Semua animasi di
@@ -1860,6 +2187,289 @@ footer a:hover{ color:var(--signal); }
   }
   window.addEventListener('scroll', updateScrollUI, { passive:true });
   updateScrollUI();
+
+  // === Toggle tema terang/gelap (tersimpan di localStorage) ===
+  (function initThemeToggle(){
+    const btn = document.getElementById('themeToggle');
+    if(!btn) return;
+    const root = document.documentElement;
+    const sync = () => btn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
+    sync();
+    btn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.classList.add('theme-switching');
+      root.setAttribute('data-theme', next);
+      try{ localStorage.setItem('ml-theme', next); }catch(e){}
+      sync();
+      // Lepas guard 2 frame kemudian -- cukup untuk browser meng-commit
+      // semua warna baru sekaligus, lalu transisi hover normal aktif lagi.
+      requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('theme-switching')));
+    });
+  })();
+
+  // === Rail navigasi dashboard: titik per-section + jam lokal ===
+  // Daftar section dipakai bersama oleh rail dashboard, dock mobile,
+  // dan command palette -- satu sumber data supaya label/urutan selalu
+  // konsisten di ketiga tempat itu.
+  // Helper fokus yang andal untuk dialog (command palette & modal proyek):
+  // mencoba lewat requestAnimationFrame dan otomatis mengulang beberapa
+  // kali kalau elemen belum benar-benar bisa menerima fokus di frame
+  // pertama (mis. karena transisi CSS belum selesai di-commit browser).
+  // Menghindari ketergantungan pada satu tebakan angka delay yang rapuh.
+  function focusSoon(el, attempts){
+    if(!el) return;
+    attempts = attempts === undefined ? 6 : attempts;
+    requestAnimationFrame(() => {
+      el.focus();
+      if(document.activeElement !== el && attempts > 0){
+        setTimeout(() => focusSoon(el, attempts - 1), 40);
+      }
+    });
+  }
+
+  const SECTION_LABELS = {
+    about:'01 TENTANG', experience:'02 PENGALAMAN', projects:'03 PROYEK',
+    skills:'04 KEAHLIAN', credentials:'05 KREDENSIAL', publications:'06 PUBLIKASI',
+    organizations:'07 ORGANISASI', contact:'08 KONTAK'
+  };
+  const mainSections = Array.from(document.querySelectorAll('main > section[id]')).filter(s => SECTION_LABELS[s.id]);
+
+  (function initHudRail(){
+    const dotsWrap = document.getElementById('hudRailDots');
+    const clockEl = document.getElementById('hudClock');
+    if(!dotsWrap) return;
+    const dots = mainSections.map(section => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'hud-rail-dot';
+      dot.dataset.label = SECTION_LABELS[section.id];
+      dot.setAttribute('aria-label', 'Ke bagian ' + SECTION_LABELS[section.id]);
+      dot.addEventListener('click', () => section.scrollIntoView({ behavior:'smooth', block:'start' }));
+      dotsWrap.appendChild(dot);
+      return { dot, section };
+    });
+    if('IntersectionObserver' in window && dots.length){
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const match = dots.find(d => d.section === entry.target);
+          if(match) match.dot.classList.toggle('is-active', entry.isIntersecting);
+        });
+      }, { rootMargin:'-45% 0px -45% 0px', threshold:0 });
+      dots.forEach(d => io.observe(d.section));
+    }
+    if(clockEl){
+      const tick = () => {
+        clockEl.textContent = new Date().toLocaleTimeString('id-ID', { timeZone:'Asia/Jakarta', hour:'2-digit', minute:'2-digit', second:'2-digit' });
+      };
+      tick();
+      setInterval(tick, 1000);
+    }
+  })();
+
+  // === Dock navigasi bawah (mobile): highlight ikon aktif via scroll-spy ===
+  (function initMobileDock(){
+    const dock = document.getElementById('mobileDock');
+    if(!dock) return;
+    const items = Array.from(dock.querySelectorAll('[data-dock]'));
+    const map = items.map(item => ({
+      item, section: document.getElementById(item.dataset.dock)
+    })).filter(m => m.section);
+    if('IntersectionObserver' in window && map.length){
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const match = map.find(m => m.section === entry.target);
+          if(match) match.item.classList.toggle('is-active', entry.isIntersecting);
+        });
+      }, { rootMargin:'-45% 0px -45% 0px', threshold:0 });
+      map.forEach(m => io.observe(m.section));
+    }
+  })();
+
+  // === Command Palette (Ctrl/Cmd+K) ===
+  (function initCmdk(){
+    const cmdk = document.getElementById('cmdk');
+    const input = document.getElementById('cmdkInput');
+    const list = document.getElementById('cmdkList');
+    if(!cmdk || !input || !list) return;
+    const trigger = document.getElementById('cmdkTrigger');
+    const mobileTrigger = document.getElementById('mobileDockCmdk');
+
+    const iconSection = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+    const iconTheme = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>';
+    const iconCopy = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V5a1 1 0 0 1 1-1h11"/></svg>';
+    const iconExternal = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4 10 14M6 6h4M6 6v12h12v-4"/></svg>';
+    const iconDownload = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>';
+    const iconTop = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>';
+
+    function buildCommands(){
+      const cmds = mainSections.map(section => ({
+        id:'goto-' + section.id,
+        icon:iconSection,
+        title:'Ke bagian ' + (SECTION_LABELS[section.id] || section.id).replace(/^\d+\s/, ''),
+        hint:SECTION_LABELS[section.id],
+        keywords:section.id,
+        run:() => section.scrollIntoView({ behavior:'smooth', block:'start' })
+      }));
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      cmds.push({
+        id:'theme', icon:iconTheme, title:isDark ? 'Ganti ke tema terang' : 'Ganti ke tema gelap',
+        hint:'tema', keywords:'tema dark light gelap terang mode',
+        run:() => document.getElementById('themeToggle').click()
+      });
+      cmds.push({
+        id:'email', icon:iconCopy, title:'Salin alamat email', hint:'salin',
+        keywords:'email kontak salin copy',
+        run: async () => {
+          try{ await navigator.clipboard.writeText('lutfi.muhammad.pro@gmail.com'); }catch(e){}
+          window.location.href = 'mailto:lutfi.muhammad.pro@gmail.com';
+        }
+      });
+      cmds.push({
+        id:'cv', icon:iconDownload, title:'Unduh CV (PDF)', hint:'unduh',
+        keywords:'cv resume unduh download pdf',
+        run: () => { const el = document.getElementById('cvDownloadBtn2') || document.getElementById('cvDownloadBtn'); if(el) el.click(); }
+      });
+      cmds.push({
+        id:'linkedin', icon:iconExternal, title:'Buka LinkedIn', hint:'buka tab baru',
+        keywords:'linkedin profil kerja',
+        run:() => window.open('https://linkedin.com/in/muhammadlutfi20', '_blank', 'noopener')
+      });
+      cmds.push({
+        id:'github', icon:iconExternal, title:'Buka GitHub', hint:'buka tab baru',
+        keywords:'github kode code repo',
+        run:() => window.open('https://github.com/Muhammad-Lutfi-2002', '_blank', 'noopener')
+      });
+      cmds.push({
+        id:'portfolio', icon:iconExternal, title:'Buka Portofolio Lengkap', hint:'buka tab baru',
+        keywords:'portofolio canva lengkap',
+        run:() => window.open('https://muhamadlutfi.my.canva.site/portfolio', '_blank', 'noopener')
+      });
+      cmds.push({
+        id:'top', icon:iconTop, title:'Kembali ke atas', hint:'scroll',
+        keywords:'atas top awal beranda home',
+        run:() => window.scrollTo({ top:0, behavior:'smooth' })
+      });
+      return cmds;
+    }
+
+    let commands = [];
+    let filtered = [];
+    let activeIdx = 0;
+    let lastFocused = null;
+
+    function render(){
+      list.innerHTML = '';
+      if(!filtered.length){
+        list.innerHTML = '<div class="cmdk-empty">Tidak ada perintah yang cocok.</div>';
+        return;
+      }
+      filtered.forEach((cmd, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'cmdk-item' + (i === activeIdx ? ' is-active' : '');
+        btn.setAttribute('role', 'option');
+        btn.innerHTML = cmd.icon + '<span class="cmdk-item-main">' + cmd.title + '</span><span class="cmdk-item-hint">' + (cmd.hint || '') + '</span>';
+        btn.addEventListener('click', () => execute(cmd));
+        btn.addEventListener('mousemove', () => { if(activeIdx !== i){ activeIdx = i; render(); } });
+        list.appendChild(btn);
+      });
+      const activeEl = list.children[activeIdx];
+      if(activeEl) activeEl.scrollIntoView({ block:'nearest' });
+    }
+    function filter(){
+      const q = input.value.trim().toLowerCase();
+      filtered = !q ? commands : commands.filter(c => (c.title + ' ' + (c.keywords||'')).toLowerCase().includes(q));
+      activeIdx = 0;
+      render();
+    }
+    function execute(cmd){
+      close();
+      setTimeout(() => cmd.run(), 40);
+    }
+    function open(){
+      commands = buildCommands();
+      filtered = commands;
+      activeIdx = 0;
+      input.value = '';
+      lastFocused = document.activeElement;
+      render();
+      cmdk.classList.add('is-open');
+      cmdk.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('cmdk-open');
+      focusSoon(input);
+    }
+    function close(){
+      cmdk.classList.remove('is-open');
+      cmdk.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('cmdk-open');
+      if(lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    if(trigger) trigger.addEventListener('click', open);
+    if(mobileTrigger) mobileTrigger.addEventListener('click', open);
+    cmdk.querySelectorAll('[data-cmdk-close]').forEach(el => el.addEventListener('click', close));
+    input.addEventListener('input', filter);
+    document.addEventListener('keydown', e => {
+      const metaK = (e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k';
+      if(metaK){ e.preventDefault(); cmdk.classList.contains('is-open') ? close() : open(); return; }
+      if(!cmdk.classList.contains('is-open')) return;
+      if(e.key === 'Escape'){ close(); return; }
+      if(e.key === 'ArrowDown'){ e.preventDefault(); if(filtered.length){ activeIdx = (activeIdx + 1) % filtered.length; render(); } }
+      if(e.key === 'ArrowUp'){ e.preventDefault(); if(filtered.length){ activeIdx = (activeIdx - 1 + filtered.length) % filtered.length; render(); } }
+      if(e.key === 'Enter'){ e.preventDefault(); if(filtered[activeIdx]) execute(filtered[activeIdx]); }
+    });
+  })();
+
+  // === Typewriter untuk baris status hero (sekali saja, hormat reduced-motion) ===
+  function typewriterTicker(){
+    const el = document.getElementById('tickerText');
+    if(!el || el.dataset.typed === '1') return;
+    el.dataset.typed = '1';
+    const full = el.textContent;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent = full; return; }
+    el.textContent = '';
+    let i = 0;
+    const step = () => {
+      el.textContent = full.slice(0, i);
+      i++;
+      if(i <= full.length) setTimeout(step, 13);
+    };
+    step();
+  }
+
+  // === Efek scramble/decode saat hover pada nav & tombol utama ===
+  (function initScramble(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&';
+    function scramble(el){
+      if(el._scrambling) return;
+      const original = el.dataset.originalText || el.textContent;
+      el.dataset.originalText = original;
+      el._scrambling = true;
+      const len = original.length;
+      let frame = 0;
+      const totalFrames = 9;
+      const timer = setInterval(() => {
+        frame++;
+        let out = '';
+        for(let i = 0; i < len; i++){
+          const ch = original[i];
+          if(ch === ' '){ out += ' '; continue; }
+          const revealAt = (i / len) * totalFrames;
+          out += (frame > revealAt + 3) ? ch : CHARS[Math.floor(Math.random() * CHARS.length)];
+        }
+        el.textContent = out;
+        if(frame >= totalFrames + 4){
+          clearInterval(timer);
+          el.textContent = original;
+          el._scrambling = false;
+        }
+      }, 26);
+    }
+    document.querySelectorAll('.links a, .nav-cta').forEach(el => {
+      el.addEventListener('mouseenter', () => scramble(el));
+    });
+  })();
 
   // === Mobile menu toggle ===
   const navToggle = document.getElementById('navToggle');
@@ -2037,7 +2647,7 @@ footer a:hover{ color:var(--signal); }
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.classList.add('modal-open');
-      modal.querySelector('.project-modal-close').focus();
+      focusSoon(modal.querySelector('.project-modal-close'));
     }
     function closeModal(){
       modal.classList.remove('is-open');
@@ -2050,7 +2660,7 @@ footer a:hover{ color:var(--signal); }
       if(next < 0 || next >= visibleCards.length) return;
       activeIndex = next;
       renderModal(visibleCards[activeIndex]);
-      modal.querySelector('.project-modal-close').focus();
+      focusSoon(modal.querySelector('.project-modal-close'));
     }
 
     cards.forEach(card => {
@@ -2277,7 +2887,8 @@ footer a:hover{ color:var(--signal); }
       .from('.hero-actions .btn', { opacity:0, y:14, duration:0.5, stagger:0.09 }, '-=0.35')
       .from('.hero-stats .stat', { opacity:0, y:14, duration:0.5, stagger:0.08 }, '-=0.25')
       .from('.status-ticker', { opacity:0, duration:0.5 }, '-=0.2')
-      .from('.hero-visual', { opacity:0, scale:0.92, duration:0.9, ease:'power2.out' }, '-=0.85');
+      .from('.hero-visual', { opacity:0, scale:0.92, duration:0.9, ease:'power2.out' }, '-=0.85')
+      .add(typewriterTicker);
 
     // --- Reveal + Stagger + Fade + Scale: satu batch untuk semua
     // elemen ".reveal" di seluruh halaman. Elemen yang muncul dalam
@@ -2314,6 +2925,7 @@ footer a:hover{ color:var(--signal); }
     // Fallback: GSAP tidak tersedia (CDN gagal) atau pengguna minta
     // gerak minim -- tampilkan semua elemen langsung, tanpa animasi.
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+    typewriterTicker();
   }
 
   // === Velocity-reactive marquee ===
@@ -2462,8 +3074,9 @@ footer a:hover{ color:var(--signal); }
     const configured = !!(window.SUPABASE_URL && window.SUPABASE_ANON_KEY);
     if(!configured) return; // belum di-setup -> semua fallback bawaan tetap tampil, tidak ada error
 
-    let tries = 0;
-    while(!window.supabase && tries < 50){ await new Promise(r => setTimeout(r, 100)); tries++; }
+    if(window.__supabaseReadyPromise){
+      await Promise.race([window.__supabaseReadyPromise, new Promise(r => setTimeout(r, 6000))]);
+    }
     if(!window.supabase){ console.warn('Supabase SDK gagal dimuat.'); return; }
 
     const client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
